@@ -8,7 +8,7 @@ window.onload = function () {
       console.log('réponse', json);
       const result = document.getElementById('result');
       result.innerHTML = `
-        <ul>
+        <ul class="cthg-map-list">
           <li>Identifiant: ${json.id}</li>
           <li>Nom: ${json.athlete.name}</li>
           <li>Sport: ${json.epreuve.name}</li>
