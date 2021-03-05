@@ -23,13 +23,6 @@
   <!-- chartjs -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-  <style>
-    #carte, #usMap, #geomap { height: 280px; }
-    .leaflet-control.info {
-      background-color: antiquewhite;
-    }
-    .leaflet-control.info img { height: 70px;}
-  </style>
 </head>
 <body>
 
@@ -37,30 +30,14 @@
 
     <%- include("nav") -%>
 
-    <h2>Exo4 - Chart JS !!</h2>
-
-    <canvas id="myChart" width="400" height="400"></canvas>
-
-    <h2>Exo3 - Carte geoserver</h2>
-
-    <div id="geomap"></div>
-     
-    <h2>Exo2 - Carte thématique</h2>
-
-    <div id="usMap"></div>
-
-    <h2>Exo1 - La carte aux canards</h2>
-
-    <div id="carte"></div>
+    <h2>Exo - Chart</h2>
 
     <%- include("footer") -%>
 
   </div>
 
 <!-- ici l'ordre est important -->
-<script src="js/us-states.js"></script>
-<script src="js/top-25.js"></script>
-<script src="js/exoleaflet.js"></script>
-<script src="js/mychat.js"></script>
 </body>
 </html>
+
+

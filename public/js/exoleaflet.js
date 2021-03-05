@@ -141,3 +141,45 @@ info.update = function(target) {
 }
 // ajout du controle à la carte
 info.addTo(map);
+
+
+L.geoJson(top25data).addTo(map);
+
+
+var geomap = L.map('geomap').setView([51.505, -0.09], 4);
+
+/*
+var wmsLayer = L.tileLayer.wms(
+    'http://localhost:8080/geoserver/infrastructure/wms?',
+    {
+        layers: 'countries'
+    }
+).addTo(geomap);
+*/
+
+// j'enregistre l'adresse
+
+const url = "http://localhost:8080/geoserver/infrastructure/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infrastructure%3Acountries&outputFormat=application%2Fjson";
+
+const newColorFunction = function(feature) {
+    const name = feature.properties.name_fr;
+    if (name === 'France') {
+        return 'red';
+    }
+}
+
+const newStyle = function(feature) {
+    return {
+        fillColor: newColorFunction(feature)
+    }
+}
+
+fetch(url)
+    .then((response) => response.json())
+    .then((json) => {
+        console.log(json);
+        L.geoJson(json, {
+            style: newStyle
+        }).addTo(geomap);
+    });
+
