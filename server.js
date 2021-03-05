@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({
 // for parsing application/json
 app.use(bodyParser.json());
 
+// je peux acceder par le navigateur a tous le fichier de mon
+// repertoire public
 app.use(express.static(path.join(__dirname, 'public')));
 
 // api routes
@@ -33,6 +35,7 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 app.get('/map', (req, res) => { res.render('map') });
+app.get('/exo', (req, res) => { res.render('exoleaflet') });
 
 
 // Connect to postgresql and set connection variable

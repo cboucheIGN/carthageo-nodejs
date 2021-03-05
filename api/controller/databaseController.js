@@ -22,7 +22,7 @@ const TABLES = [
 exports.list = function(req, res){
   const table = req.params.table;
   // check(req, res);
-  if (table == 'livres'){
+  if (table == 'livres') {
     return listLivres(req, res);
   }
 }
