@@ -1,0 +1,331 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{minted}
+\usemintedstyle{borland}
+
+\usepackage[svgnames]{xcolor}
+
+\graphicspath{ {img/} }
+
+\title{Jeux Olympiques, médailles dans le temps}
+\author{Master CarthaGéo}
+\date{Mars 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Contexte}
+
+Les Jeux Olympiques sont un évènement sportif majeur qui a lieu sur un cycle de 4 ans. Depuis les dernières années, on peut constater une explosion du nombre d’épreuves, d’athlètes engagés, de pays représentés corrélée à une augmentation du budget dédié à cette manifestation.
+Depuis 1896, de nombreux athlètes se sont succédé sur les podiums, l'occasion de faire un récapitulatif.
+
+\section{Projet}
+
+\subsection{Objectif}
+
+\vspace{3mm}
+
+\colorbox{Gainsboro}{
+Concevoir un site internet permettant d’analyser visuellement les résultats des Jeux Olympiques.
+}
+
+\vspace{5mm}
+
+A vous d'organiser votre site pour mettre en valeur les résultats présents dans la base de données d'une façon pertinente.
+
+\subsection{Données}
+
+Une base de données recensant les médailles (Or, Argent, Bronze) des épreuves des JO de 1896 à 2014.
+
+\subsubsection{Source des données}
+
+La base de données repose sur des données récupérées librement sur Internet.
+
+\begin{itemize}
+
+\item
+\href{https://www.kaggle.com/the-guardian/olympic-games/home}{Données relatives aux JO}
+
+\item
+\href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-details/}{Données spatiales}
+
+\item
+\href{http://www.wikipedia.org}{Wikipedia}
+
+\end{itemize}
+
+\subsubsection{Modélisation de la base de données}
+
+\includegraphics[width=\textwidth]{bdd.png}
+
+\newpage
+
+\subsubsection{Descriptif rapide de la base de données}
+
+{\footnotesize NB : En gras, les clés étrangères}
+
+\begin{itemize}
+
+\item
+Une table \textit{event} contenant les épreuves pour lesquelles des médailles ont été décernées. Chacun des enregistrements (i.e. chaque épreuve) a :
+
+\begin{itemize}
+
+\item un sport \textit{sport}
+
+\item une discipline \textit{discipline}
+
+\item un nom d'épreuve \textit{name}
+
+\end{itemize}
+
+{\footnotesize Découpage effectué par le CIO}
+
+\item
+Une table \underline{géométrique} \textit{country} répertoriant les pays/délégations participants aux Jeux Olympiques avec :
+
+\begin{itemize}
+
+\item un nom \textit{name}
+
+\item le code CIO associé \textit{code}
+
+\item sa population \textit{pop}
+
+\item sa première participation aux JO \textit{first\_participation}
+
+\item sa dernière participation aux JO \textit{last\_participation}
+
+\item sa géométrie \textit{geometry} {\footnotesize (type : MultiPolygon, projection : 4326, dimension : 2) }
+
+\end{itemize}
+
+{\footnotesize NB : Certaines délégations ont été représentées géographiquement de façon fictive : IOP, ZZX}
+
+\item
+Une table \textit{olympiad} listant toutes les olympiades pendant lesquelles des médailles ont été décernées :
+
+\begin{itemize}
+
+\item l'année de l'olympiade \textit{year}
+
+\item la ville dans laquelle s'est déroulée l'olympiade \textit{city}
+
+\item la saison de l'olympiade \textit{season}
+
+\item \textbf{l'identifiant du pays} \textit{country\_id}
+
+\end{itemize}
+
+\item
+Une table \textit{athlete} recensant tous les athlètes médaillés dans une olympiade avec :
+
+\begin{itemize}
+
+\item le nom de l'athlète \textit{name}
+
+\item son sexe \textit{gender}
+
+\item \textbf{l'identifiant du pays pour lequel il a participé} \textit{country\_id}
+
+\end{itemize}
+
+\item
+Une table \textit{medal} avec toutes les médailles décernées lors des Jeux Olympiques.
+
+\begin{itemize}
+
+\item le métal de la médaille \textit{metal}
+
+\item \textbf{l'identifiant de l'athlète auquel la médaille a été remise} \textit{athlete\_id}
+
+\item \textbf{l'identifiant de l'olympiade pendant laquelle la médaille a été remise} \textit{olympiad\_id}
+
+\item \textbf{l'identifiant de l'épreuve pour laquelle la médaille a été remise} \textit{event\_id}
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Cadre technique}
+
+Sont imposées dans la réalisation de votre projet :
+
+\begin{itemize}
+
+\item l'utilisation d'une bibliothèque cartographique : \textit{OpenLayers} ou \textit{Leaflet}
+
+\item la récupération d'un ou plusieurs flux \textit{WMS}/\textit{TMS} externes (\textit{OSM}, \textit{Stamen} ...)
+
+\item la création d'un ou plusieurs flux \textit{WFS} se reposant sur la base de données grâce à un \textit{GeoServer}
+
+\item l'exposition cartographique de ces flux
+
+\end{itemize}
+
+\newpage
+
+\subsection{Fonctionnalités}
+
+Faites valider vos choix de fonctionnalités avec l'intervenant dans les premières séances.
+Voici les premières contraintes fonctionnelles et techniques :
+
+\subsubsection{Besoins}
+
+\begin{itemize}
+
+\item la visualisation de la répartition des médailles (avec filtres : épreuve, nationalité, sexe ...)
+
+\item la consultation des résultats par athlète, par délégation...
+
+\end{itemize}
+
+\subsubsection{Contraintes}
+
+\begin{itemize}
+
+\item Accessibilité des données à la fois sur la carte et dans des tableaux/graphiques. Une sélection dans la carte met à jour un graphique et inversement.
+
+\item Utilisation des fonctionnalités de symbologie cartographique pour mettre en valeur vos données.
+
+\end{itemize}
+
+\subsubsection{Spécificités}
+
+Toute fonctionnalité vous paraissant intéressante pour votre site peut être développée : l'influence du pays hôte sur les résultats, le respect de la parité homme/femme, l'Histoire via les pays participants aux JO, \textit{insert here any good idea}...
+
+Si votre site raconte une histoire, c'est mieux ! Il faut trouver une direction, un thème à votre application. Appropriez-vous le sujet pour éviter de développer une suite de fonctionnalités.
+
+\subsection{Ouvertures possibles}
+
+Les ouvertures ci-dessus ne sont pas prioritaires (ni personnelles), mais la richesse d'une application se situe dans les petits détails.
+
+\begin{itemize}
+
+\item l'administration de la base de données (ex: fonctionnalités de mise à jour)
+
+\item la comparaison de cartes pour différentes années (ex: sur une même page, au passage de la souris ou autre)
+
+\item la récupération et l'intégration d'autres données (ex: tracés des trajets des flammes olympiques)
+
+\end{itemize}
+
+\section{Lancement du projet}
+
+Au début du projet, vous avez récupéré deux scripts sql. Créez une base de données \textit{olympics} ; puis dans cette base, lancez \texttt{olympics.schema.sql} puis \texttt{olympics.data.sql}.
+
+Une fois la base de données chargée, il est fortement conseillé de s'amuser un peu avec, afin de bien la prendre en main.
+
+\section{Liens utiles}
+
+\begin{itemize}
+
+\item
+\href{https://www.lemonde.fr/les-decodeurs/article/2018/02/26/jo-2018-et-si-on-revoyait-le-classement_5262807_4355770.html}{Vu par le Monde}
+/
+\href{http://www.wedodata.fr/equipe-jo2016.php}{Vu par l'Équipe}
+
+\item
+\href{https://www.statista.com/topics/1730/olympic-summer-games/}{Vision statistique}
+
+\item
+
+\href{https://www.bbc.com/sport/olympics/37148372}{Vu par la BBC}
+/
+\href{https://www.theguardian.com/commentisfree/2012/aug/03/london-2012-olympics-open-data}{Version 2012}
+
+\end{itemize}
+
+\section{Conseils}
+
+\begin{itemize}
+
+\item Ne pas se lancer tête la première sans avoir trouvé un fil conducteur (et le conserver une fois acquis)
+
+\item Structurer proprement son projet
+
+\item Garder un code clair, organisé, bien indenté (pour faciliter la relecture)
+
+\item Ne pas abuser du copier/coller
+
+\item Demander de l'aide en cas de blocage problématique
+
+\end{itemize}
+
+\newpage
+
+\section{Annexes}
+
+\begin{itemize}
+
+\item Les 10 athlètes avec le plus de médailles pour un pays donné
+\begin{minted}{sql}
+SELECT athlete.id, athlete.name, count(medal.medal) AS medalcount
+FROM athlete
+    JOIN medal ON athlete.id = medal.athlete_id
+WHERE athlete.country_id = 40
+GROUP BY athlete.id
+ORDER BY medalcount DESC
+LIMIT 10;
+\end{minted}
+
+{\footnotesize Le pays est le Chili (id=40)}
+
+\item Les athlètes, leur(s) médailles, leur(s) disciplines qui ont gagné une médaille "à domicile"
+\begin{minted}{sql}
+SELECT athlete.name, medal.medal, event.name
+FROM medal
+    JOIN athlete ON medal.athlete_id = athlete.id
+    JOIN olympiad ON medal.olympiad_id = olympiad.id
+    JOIN event ON medal.event_id = event.id
+WHERE athlete.country_id = olympiad.country_id;
+\end{minted}
+
+\item Les pays qui gagnent le plus de médailles d'or pour un sport donné
+\begin{minted}{sql}
+SELECT count(medal.medal) as medalcount, country.name, country.geometry
+FROM medal
+    JOIN athlete ON medal.athlete_id = athlete.id
+    JOIN country ON athlete.country_id = country.id
+WHERE
+    medal.event_id = 56
+AND medal.medal = 'Gold'
+GROUP BY country.id
+ORDER BY medalcount DESC, country.first_participation ASC;
+\end{minted}
+
+{\footnotesize L'épreuve est le saut en longueur [sans distinction de sexe] (id=56)}
+
+\item La performance des nouveaux pays pour leur première particiaption
+\begin{minted}{sql}
+SELECT c.name, c.first_participation, count(m.*) as medalcount FROM country c
+    JOIN athlete a ON a.country_id = c.id
+    JOIN medal m ON m.athlete_id = a.id
+    JOIN olympiad o ON o.id = m.olympiad_id
+WHERE o.year = c.first_participation
+GROUP BY c.name, c.first_participation
+ORDER BY c.first_participation, c.name;
+\end{minted}
+
+\item Les pays triés par "densité" de médailles
+\begin{minted}{sql}
+SELECT id, code, name, total, medalcount.total/ST_AREA(country.geometry) AS density
+FROM (
+    SELECT athlete.country_id, count(medal.*) AS total
+    FROM medal
+    JOIN athlete ON medal.athlete_id = athlete.id
+    GROUP BY athlete.country_id
+    ) AS medalcount
+JOIN country ON medalcount.country_id = country.id
+ORDER by density
+\end{minted}
+
+\end{itemize}
+
+\end{document}
