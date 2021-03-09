@@ -1,7 +1,7 @@
 // alert('Script exoleaflet.js est bien chargé!!!, Merci de votre dévéloppement. '
 // setview = latitude, longitude, niv.zoom
-var mymap = L.map('carte').setView([48.859, 2.347], 12);
-
+// Les tous les années de cartes sont crées; et aussi, 
+var mymap = L.map('carte').setView([48.859, 2.347], 2);
 // importation des cartes leaflet(on doit changer notre propre Token créé sur mapbox)
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -12,9 +12,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     // mon propre token // mapbox//username : Takikov
     accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
 }).addTo(mymap);
-
 var marker = L.marker([48.861918, 2.354164]).addTo(mymap);
-
 var circle = L.circle([48.859, 2.347], {
     color: 'red',
     fillColor: '#f03',
@@ -22,15 +20,8 @@ var circle = L.circle([48.859, 2.347], {
     weight:0,
     radius: 4000
 }).addTo(mymap);
-
-
-
-
-
-
 marker.bindPopup("<b style='color:red'>Lacalisation de ma maison</b><br> Maison avec moisissures et bruits.").openPopup();
 // circle.bindPopup("<b style='color:red'>1km de rayon pour possibilité de courses pendant le confinement</b><br>Paris, on habite dans le pays de la guerre? Liverté de déplacement! nous sommes pas d'oiseau dans un cage!!!").openPopup();
-
 const coords = [48.859, 2.347];
 for (var i=0; i < 200; i++){
     let newCoords = [48.859 + i * 0.1, 2.347+ i * 0.1]
@@ -43,10 +34,8 @@ for (var i=0; i < 200; i++){
     }
     L.circle(newCoords, style).addTo(mymap);
 }
-
 //je prepare une nouvellepopup que j'appelle 'popup'
 var popup = L.popup();
-
 // je définie une fonctionne que je veux jouer au click sur la carte
 function onMapClick(e) {
     popup
@@ -56,9 +45,6 @@ function onMapClick(e) {
 }
 // sur la map 'mymap' je lie l'action 'click' à la méthode 'onMapClick'
 mymap.on('click', onMapClick);
-
-
-
 function createCanard(e){
     console.log('Create a canard there', e.latlng);
     var icone = L.icon({
@@ -72,15 +58,9 @@ function createCanard(e){
    marker.on('click',function() {marker.remove()});
    marker.addTo(mymap);
 }
-
 mymap.on('click',createCanard);
 
-
-
-
-
 // Exo 2 ! USA Dansity Map !
-
 //Création de Token of mapbox
 var mapboxAccessToken = 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ';
 
@@ -88,7 +68,7 @@ var map = L.map('USAMap').setView([37.8, -96], 4);
 
 
 
-
+//
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
     id: 'mapbox/light-v9',
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',

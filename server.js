@@ -45,6 +45,7 @@ app.get('/chat', (req, res) => { res.render('mychat') });
 // app.get('/olympics', (req, res) => { res.render('olympics') });
 app.get('/epreuve', (req, res) => { res.render('epreuve') });
 app.get('/participation', (req, res) => { res.render('participation') });
+app.get('/', (req, res) => { res.render('index') });
 // Connect to postgresql and set connection variable
 
 // Launch app to listen to specified port
