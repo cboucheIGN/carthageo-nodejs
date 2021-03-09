@@ -1,6 +1,7 @@
 // alert('Script exoleaflet.js est bien chargé!!!, Merci de votre dévéloppement. '
 // setview = latitude, longitude, niv.zoom
-var mymap = L.map('carte').setView([48.859, 2.347], 12);
+var mymap = L.map('carte').setView([48, 2], 2);
+var mapboxAccessToken = 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ';
 
 // importation des cartes leaflet(on doit changer notre propre Token créé sur mapbox)
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -10,79 +11,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     tileSize: 512,
     zoomOffset: -1,
     // mon propre token // mapbox//username : Takikov
-    accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
-}).addTo(mymap);
-
-var marker = L.marker([48.861918, 2.354164]).addTo(mymap);
-
-var circle = L.circle([48.859, 2.347], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    weight:0,
-    radius: 4000
+    accessToken:mapboxAccessToken
 }).addTo(mymap);
 
 
-
-
-
-
-marker.bindPopup("<b style='color:red'>Lacalisation de ma maison</b><br> Maison avec moisissures et bruits.").openPopup();
-// circle.bindPopup("<b style='color:red'>1km de rayon pour possibilité de courses pendant le confinement</b><br>Paris, on habite dans le pays de la guerre? Liverté de déplacement! nous sommes pas d'oiseau dans un cage!!!").openPopup();
-
-const coords = [48.859, 2.347];
-for (var i=0; i < 200; i++){
-    let newCoords = [48.859 + i * 0.1, 2.347+ i * 0.1]
-    let style  = {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        weight:0,
-        radius: 4000
-    }
-    L.circle(newCoords, style).addTo(mymap);
-}
-
-//je prepare une nouvellepopup que j'appelle 'popup'
-var popup = L.popup();
-
-// je définie une fonctionne que je veux jouer au click sur la carte
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("Les coordonnées géographiques d'ici sont... : " + e.latlng.toString())
-        .openOn(mymap);
-}
-// sur la map 'mymap' je lie l'action 'click' à la méthode 'onMapClick'
-mymap.on('click', onMapClick);
-
-
-
-function createCanard(e){
-    console.log('Create a canard there', e.latlng);
-    var icone = L.icon({
-        iconUrl: 'img/canard.png',
-        iconSize:[38, 95]
-    });
-    var marker = L.marker(e.latlng,{
-        icon: icone,
-        draggrable:true
-    })
-   marker.on('click',function() {marker.remove()});
-   marker.addTo(mymap);
-}
-
-mymap.on('click',createCanard);
-
-
-
-
-
-// Exo 2 ! USA Dansity Map !
-
-//Création de Token of mapbox
-var mapboxAccessToken = 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ';
 
 var map = L.map('USAMap').setView([37.8, -96], 4);
 
@@ -96,22 +28,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
 }).addTo(map);
-
-
-
-L.geoJson(statesData).addTo(map);
-function getColor(d) {
-    return d > 1000 ? '#800026' :
-           d > 500  ? '#BD0026' :
-           d > 200  ? '#E31A1C' :
-           d > 100  ? '#FC4E2A' :
-           d > 50   ? '#FD8D3C' :
-           d > 20   ? '#FEB24C' :
-           d > 10   ? '#FED976' :
-                      '#FFEDA0';
-}
-
-
 
 
 function style(feature) {
