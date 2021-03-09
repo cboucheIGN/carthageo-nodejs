@@ -1,7 +1,8 @@
-// alert('Script exoleaflet.js est bien chargé!!!, Merci de votre dévéloppement. '
-// setview = latitude, longitude, niv.zoom
-// Les tous les années de cartes sont crées; et aussi, 
-var mymap = L.map('carte').setView([48.859, 2.347], 2);
+// Les tous les années de cartes sont crées
+var mymap = L.map('carte').setView([28.859, 2.347], 2);
+
+
+
 // importation des cartes leaflet(on doit changer notre propre Token créé sur mapbox)
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -62,13 +63,11 @@ mymap.on('click',createCanard);
 
 // Exo 2 ! USA Dansity Map !
 //Création de Token of mapbox
+
 var mapboxAccessToken = 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ';
 
 var map = L.map('USAMap').setView([37.8, -96], 4);
 
-
-
-//
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
     id: 'mapbox/light-v9',
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -76,7 +75,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
 }).addTo(map);
-
 
 
 L.geoJson(statesData).addTo(map);
