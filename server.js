@@ -36,6 +36,10 @@ app.get('/', (req, res) => {
 });
 app.get('/map', (req, res) => { res.render('map') });
 app.get('/exo', (req, res) => { res.render('exoleaflet') });
+app.get('/bloc', (req, res) => { res.render('bloc') });
+app.get('/hel', (req, res) => { res.render('jhel') });
+app.get('/mos', (req, res) => { res.render('jmos') });
+app.get('/la', (req, res) => { res.render('jla') });
 
 
 // Connect to postgresql and set connection variable

@@ -64,3 +64,16 @@ http://blogs.bu.edu/guidedhistory/russia-and-its-empires/guy-mcfall/
 https://en.wikipedia.org/wiki/Soviet_Union_at_the_Olympics
 https://apnews.com/article/winter-olympics-boycotts-cold-war-afghanistan-soviet-union-8b447c53e96621f1ca2b06e8621b351f
 ```
+
+```sql
+SELECT count(medal.medal) as m, country.name, country.code, ST_AsGeoJSON(country.geometry) FROM medal
+INNER JOIN athlete ON athlete.id= medal.athlete_id
+INNER JOIN olympiad ON olympiad.id = medal.olympiad_id
+INNER JOIN country ON athlete.country_id = country.id
+INNER JOIN event ON medal.event_id = event.id
+WHERE olympiad.year = 1980 AND olympiad.season LIKE 'Summer' 
+GROUP BY country.name, country.code, ST_AsGeoJSON(country.geometry)  ORDER BY m DESC
+
+--medal.medal, event.discipline
+```
+
