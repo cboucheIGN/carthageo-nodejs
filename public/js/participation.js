@@ -10,7 +10,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1
 }).addTo(carte);
 
-L.geoJson(carte1880).addTo(carte);
+var carte = L.geoJSON().addTo(carte);
+carte.addData(carte1914);
 
 
 // geojson = L.geoJson(wmsLayer, {
