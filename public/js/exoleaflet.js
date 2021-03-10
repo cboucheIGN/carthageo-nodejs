@@ -5,6 +5,7 @@ var mymap = L.map('carte').setView([48.859, 2.347], 12);
 
 // importation des cartes leaflet(on doit changer notre propre Token créé sur mapbox)
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
