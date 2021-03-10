@@ -77,3 +77,123 @@ GROUP BY country.name, country.code, ST_AsGeoJSON(country.geometry)  ORDER BY m 
 --medal.medal, event.discipline
 ```
 
+
+```sql
+DROP TABLE jomed;
+
+--table totale
+CREATE TABLE jomed AS
+SELECT
+	count(medal.medal) as mtot,
+	event.sport, 
+	country.name,
+	medal.medal, 
+	olympiad.year,
+	olympiad.season, 
+	country.code
+FROM
+	medal
+INNER JOIN athlete ON athlete.id= medal.athlete_id
+INNER JOIN olympiad ON olympiad.id = medal.olympiad_id
+INNER JOIN country ON athlete.country_id = country.id
+INNER JOIN event ON medal.event_id = event.id
+--WHERE
+--	olympiad.year = 1980 AND olympiad.season LIKE 'Summer' 
+GROUP BY
+	country.name,
+	olympiad.year,
+	event.sport,
+	olympiad.season,
+	country.code,
+	medal.medal
+ORDER BY
+	mtot DESC
+	
+-----
+--table (--réduite) + géom
+DROP TABLE jomedgeom
+CREATE TABLE jomedgeom AS (SELECT 
+	jomed.code, year, season, sum(mtot) as mall, --ST_AsGeoJSON(country.geometry)::json AS geometry, --sport, --country.geometry, 
+	sum(CASE WHEN medal ILIKE 'Gold' THEN mtot ELSE '0' END) as mg,
+	sum(CASE WHEN medal ILIKE 'Silver' THEN mtot ELSE '0' END) as ms,
+	sum(CASE WHEN medal ILIKE 'Bronze' THEN mtot ELSE '0' END) as mb
+FROM 
+	jomed
+INNER JOIN country ON jomed.code = country.code
+--WHERE
+--	year = 1980 AND season LIKE 'Summer' --AND sport like 'Boxing'
+GROUP BY
+	jomed.code, year, season --country.geometry--, sport, country.geometry)
+);
+	
+	
+	
+--table réduite + géom + sport
+DROP TABLE jomedsportgeom
+CREATE TABLE jomedsportgeom AS (SELECT 
+	jomed.code, year, season, sum(mtot) as mall, sport,--ST_AsGeoJSON(country.geometry)::json AS geometry, sport,
+	sum(CASE WHEN medal ILIKE 'Gold' THEN mtot ELSE '0' END) as mg,
+	sum(CASE WHEN medal ILIKE 'Silver' THEN mtot ELSE '0' END) as ms,
+	sum(CASE WHEN medal ILIKE 'Bronze' THEN mtot ELSE '0' END) as mb
+FROM 
+	jomed
+INNER JOIN country ON jomed.code = country.code
+--WHERE
+--	year = 1980 AND season LIKE 'Summer' --AND sport like 'Boxing'
+GROUP BY
+	jomed.code, year, season, sport--country.geometry, sport --country.geometry)
+);
+
+
+--table pays
+DROP TABLE countryjson
+CREATE TABLE countryjson AS (SELECT code, ST_AsGeoJSON(geometry)::json AS geometry FROM country)
+	
+SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code WHERE year = 1980 AND season LIKE 'Summer'
+SELECT * FROM jomedsportgeom INNER JOIN countryjson ON jomedsportgeom.code = countryjson.code WHERE year = 1980 AND season LIKE 'Summer' AND sport LIKE 'Boxing'
+
+*****
+--table réduite + géom en geoJSON
+SELECT jsonb_build_object(
+  'type',     'FeatureCollection',
+  'features', jsonb_agg(feature)
+)
+FROM (
+  SELECT jsonb_build_object(
+    'type',       'Feature',
+    'id',         code,
+    'geometry',   ST_AsGeoJSON(geometry)::jsonb,
+    'properties', to_jsonb(inputs) - 'code' - 'geometry'
+  ) AS feature
+  FROM (
+    SELECT 
+	jomed.code, year, sum(mtot) as mall, country.geometry,  
+	sum(CASE WHEN medal ILIKE 'Gold' THEN mtot ELSE '0' END) as mg,
+	sum(CASE WHEN medal ILIKE 'Silver' THEN mtot ELSE '0' END) as ms,
+	sum(CASE WHEN medal ILIKE 'Bronze' THEN mtot ELSE '0' END) as mb
+FROM 
+	jomed
+INNER JOIN country ON jomed.code = country.code
+WHERE
+	year = 1980 AND season LIKE 'Summer' 
+GROUP BY
+	jomed.code, year, country.geometry
+  ) inputs
+) features;
+
+--, sport, country.geometry --sport, --country.geometry, --AND sport like 'Boxing'
+
+--en ligne
+SELECT jsonb_build_object('type', 'FeatureCollection', 'features', jsonb_agg(feature)) FROM (SELECT jsonb_build_object('type', 'Feature', 'id', code, 'geometry', ST_AsGeoJSON(geometry)::jsonb,'properties', to_jsonb(inputs) - 'code' - 'geometry') AS feature FROM (SELECT jomed.code, year, sum(mtot) as mall, country.geometry, sum(CASE WHEN medal ILIKE 'Gold' THEN mtot ELSE '0' END) as mg, sum(CASE WHEN medal ILIKE 'Silver' THEN mtot ELSE '0' END) as ms, sum(CASE WHEN medal ILIKE 'Bronze' THEN mtot ELSE '0' END) as mb FROM jomed INNER JOIN country ON jomed.code = country.code WHERE year = 1980 AND season LIKE 'Summer' GROUP BY jomed.code, year, country.geometry) inputs) features;
+	------------
+
+
+
+CREATE TABLE jomedgeojson AS (
+	SELECT 
+		'Feature' AS type, 
+		(SELECT row_to_json(jomedgeom) FROM (SELECT code, year, season, mall, mg, ms, mb) tt) AS properties,
+		ST_AsGeoJSON(geometry)::json AS geometry
+	FROM jomedgeom)
+);
+```

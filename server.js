@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 app.get('/map', (req, res) => { res.render('map') });
+app.get('/ex', (req, res) => {res.render('exoleaf2') });
 app.get('/exo', (req, res) => { res.render('exoleaflet') });
 app.get('/bloc', (req, res) => { res.render('bloc') });
 app.get('/hel', (req, res) => { res.render('jhel') });
