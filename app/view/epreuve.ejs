@@ -20,14 +20,19 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<!-- def #carte is my map on the page epreuve -->
   <style>#carte { height: 650px; background-color: aqua; }
   .leaflet-control.info{
     background-color: antiquewhite;
   }
   </style>
-
-  <style>#USAMap { height: 500px; background-color: aqua; }</style>
-  <style>#geomap { height: 500px; background-color: pink; }</style>
+  <!-- <style>#USMap { height: 500px; background-color: aqua; }</style> -->
+  <!-- <style>#geomap { height: 500px; background-color: pink; }</style> -->
+  <style>#logo { height: 250px; background-color: aqua; }
+  .leaflet-control.info{
+    background-color: antiquewhite;
+  }
+  </style>
 
   <style> .info {
     padding: 6px 8px;
@@ -46,14 +51,10 @@
     margin: 0 0 5px;
     color: #777;
    }</style>
-
   <style>.legend {
   line-height: 18px;
   color: #555;
-
   }</style>
-
-
   <style>.legend i {
     width: 18px;
     height: 18px;
@@ -62,45 +63,25 @@
     opacity: 0.7;
   }</style>
 
-
 </head>
 
 
 
 <body>
-
   <div class="container">
     <%- include("nav") -%>
-    <h1>Épreuve des Jeux Olympiques</h1>
-    <h2> Apparition et dissparition</h2>
+    <h1>Épreuves & Nombre de médailles des Jeux Olympiques</h1>
+    <h2>Information cartographique</h2>
     <div id="carte"></div>
-    <h2> Exo 2 - Carte thématique </h2>
-    <div id="USAMap"></div>
-    <h2> Exo 3 - Carte geoserver</h2>
-    <div id="geomap"></div>
-    <h2> Exo 4 - Chartes graphiques</h2>
+    <h2>Information graphique</h2>
     <canvas id="myChart" width="400" height="400"></canvas>
-    <img src="img/logo.png" height="40" alt="image pas chargee">
     <%- include("footer") -%>
-
   </div>
 
 <!--chercher exoleaflet.js sur folder js(ordre est important. FA)-->
-
-
-<script src="js/us-states.js"></script>
-<script src="js/exoleaflet.js"></script>
+<!-- <script src="js/us-states.js"></script>
+<script src="js/exoleaflet.js"></script> -->
 <script src="js/mychat.js"></script>
 <script src="js/epreuve.js"></script>
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

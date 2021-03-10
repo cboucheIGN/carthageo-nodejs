@@ -1,8 +1,6 @@
 // Les tous les années de cartes sont crées
 var mymap = L.map('carte').setView([28.859, 2.347], 2);
 
-
-
 // importation des cartes leaflet(on doit changer notre propre Token créé sur mapbox)
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -13,28 +11,103 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     // mon propre token // mapbox//username : Takikov
     accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
 }).addTo(mymap);
-var marker = L.marker([48.861918, 2.354164]).addTo(mymap);
-var circle = L.circle([48.859, 2.347], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    weight:0,
-    radius: 4000
-}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>Lacalisation de ma maison</b><br> Maison avec moisissures et bruits.").openPopup();
-// circle.bindPopup("<b style='color:red'>1km de rayon pour possibilité de courses pendant le confinement</b><br>Paris, on habite dans le pays de la guerre? Liverté de déplacement! nous sommes pas d'oiseau dans un cage!!!").openPopup();
-const coords = [48.859, 2.347];
-for (var i=0; i < 200; i++){
-    let newCoords = [48.859 + i * 0.1, 2.347+ i * 0.1]
-    let style  = {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        weight:0,
-        radius: 4000
-    }
-    L.circle(newCoords, style).addTo(mymap);
-}
+
+var myIcon = L.icon({iconUrl: 'summer.png',iconSize: [50, 50]});
+
+var marker = L.marker([37.985096, 23.727036], {icon: myIcon}).addTo(mymap);
+marker.bindPopup("<b style='color:red'>1896 : Athènes</b><br><img id=logo src=img/1896.jpg> /n Premier jeux Olympiques.").openPopup();
+var marker = L.marker([48.859, 2.347]).addTo(mymap);
+marker.bindPopup("<b style='color:red'>1900 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1904 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1906 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1908 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1912 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1916 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1920 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1924 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1928 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1928 Hiver : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// marker.bindPopup("<b style='color:red'>1896 : Paris</b><br><img id=logo src=img/1900.jpg> /n Exo et JO.").openPopup();
+// var marker = L.marker([48.859, 2.347]).addTo(mymap);
+// var circle = L.circle([48.859, 2.347], {
+//     color: 'red',
+//     fillColor: '#f03',
+//     fillOpacity: 0.5,
+//     weight:21,
+//     radius: 4000
+// }).addTo(mymap);
+
+
+// marker.bindPopup("<b style='color:red'>Lacalisation de ma maison</b><br> Maison avec moisissures et bruitsssss.").openPopup();
+// // circle.bindPopup("<b style='color:red'>1km de rayon pour possibilité de courses pendant le confinement</b><br>Paris, on habite dans le pays de la guerre? Liverté de déplacement! nous sommes pas d'oiseau dans un cage!!!").openPopup();
+// const coords = [48.859, 2.347];
+// for (var i=0; i < 200; i++){
+//     let newCoords = [48.859 + i * 0.1, 2.347+ i * 0.1]
+//     let style  = {
+//         color: 'red',
+//         fillColor: '#f03',
+//         fillOpacity: 0.5,
+//         weight:0,
+//         radius: 4000
+//     }
+//     L.circle(newCoords, style).addTo(mymap);
+// }
 //je prepare une nouvellepopup que j'appelle 'popup'
 var popup = L.popup();
 // je définie une fonctionne que je veux jouer au click sur la carte
@@ -72,6 +145,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     id: 'mapbox/light-v9',
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     tileSize: 512,
+
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
 }).addTo(map);
@@ -217,17 +291,17 @@ legend.addTo(map);
 
 // Exo 3 carte Geoserver
 
-
-var geomap = L.map('geomap').setView([51.505,-0.09], 4);
-
-//Données geoserver depuis directement chargé
+//
+// var geomap = L.map('geomap').setView([51.505,-0.09], 4);
+//
+// Données geoserver depuis directement chargé
 // var wmsLayer = L.tileLayer.wms(
 //     'http://localhost:8080/geoserver/infrastructure/wms?',
 //     {
 //         layers: 'infrastructure_agregation'
 //     }
 // ).addTo(geomap);
-
+//
 
 
 // Données geoserver via postgreGIS
