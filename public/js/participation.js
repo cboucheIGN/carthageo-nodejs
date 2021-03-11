@@ -13,8 +13,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var form = document.getElementById("formdate");
 var date = form.elements["valuedate"].value;
 form.elements["valuedate"].addEventListener("change", roulant);
+var listpays = [];
 
 function roulant(e){
+  var listpays = [];
   console.log(form.elements["valuedate"].value);
   var datechoisi = form.elements["valuedate"].value;
   var choix = {c:datechoisi}
@@ -25,29 +27,11 @@ function roulant(e){
   })
   .then(req => req.json())
   .then((r) => {
-    const result = document.getElementById('result');
-    var output = '<ul>'
     for (var i = 0; i<r.features.length; i++){
-      output += '<li>'+ r.features[i].propertie.name + '</em></li>'
+      pays = r.features[i].propertie.name;
+      listpays.push(pays);
     }
-    output += '</ul>';
-    result.innerHTML = output;
+    console.log(listpays)
+
   })
 }
-
-// fetch("/api/bdd/searchcountry",{
-//   method: 'post',
-//   body: JSON.stringify(date),
-//   headers: {'Content-Type': 'application/json'}
-// })
-//     .then((response) => response.json())
-//     .then((json) => {
-//       console.log(date);
-      // const result = document.getElementById('result');
-      // var output = '<ul>'
-      // for (var i = 0; i<json.features.length; i++){
-      //   output += '<li>'+ json.features[i].propertie.name + '</em></li>'
-      // }
-      // output += '</ul>';
-      // result.innerHTML = output;
-    // })

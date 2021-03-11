@@ -21,10 +21,12 @@ var sprite_knight_walking = ['/img/knight_walk_animation.png'];
 var sprite_coffre = ['/img/Coffre.png'];
 
 
+var text = "Utiliser les flèches pour vous déplacer"
 // fonction de phrase :
-// sentence = function(x, y, text, couleur, taille){
-//     div
-// }
+sentence = function(x, y, text, couleur, taille){
+    document.getElementById("textuto").innerHTML = <p  left=x right =y color=couleur size=taille>text</p>
+}
+sentence(0,0)
 
 //
 // def sens_bat(x, depart_bat_x, sens):
