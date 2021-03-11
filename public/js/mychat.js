@@ -2,10 +2,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Gold', 'Silver', 'Bronze'],
+        labels: [],
         datasets: [{
             label: 'Type de médailles',
-            data: [12, 19, 3],
+            data: [],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

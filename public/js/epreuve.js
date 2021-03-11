@@ -363,7 +363,6 @@ legend.addTo(map);
 // ).addTo(geomap);
 //
 
-
 // Données geoserver via postgreGIS
 var wmsLayer = L.tileLayer.wms(
     'http://localhost:8080/geoserver/infrastructure/wms?',
@@ -371,8 +370,6 @@ var wmsLayer = L.tileLayer.wms(
         layers: 'countries'
     }
 ).addTo(geomap);
-
-
 
 // construction de chemin de url
 const url = "http://localhost:8080/geoserver/infrastructure/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infrastructure%3Acountries&maxFeatures=50&outputFormat=application%2Fjson"
@@ -389,7 +386,6 @@ const newStyle = function(feature) {
         fillColor: newColorFunction(feature)
     }
 }
-
 //importation depuis fiche xml
 fetch(url)
     .then((response)=> response.json())
