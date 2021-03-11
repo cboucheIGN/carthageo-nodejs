@@ -13,7 +13,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 fetch("/api/bdd/country")
     .then((response) => response.json())
     .then((json) => {
-      console.log(json.features)
+      const formdate = document.getElementById("formdate");
+      console.log(json.features);
+      console.log(formdate);
+      console.log(formdate.elements["valuedate"].value);
       const result = document.getElementById('result');
       var output = '<ul>'
       for (var i = 0; i<json.features.length; i++){

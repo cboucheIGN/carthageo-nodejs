@@ -3,8 +3,7 @@
 const config = require('../../config');
 const pgp = require('pg-promise')({});
 const db = pgp(config.database_olympics);
-const date = 1896
-
+const date = 1932;
 
 exports.list = function (req, res){
   const table = req.params.table;
