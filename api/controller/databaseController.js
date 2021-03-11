@@ -2,25 +2,30 @@
 
 const config = require('../../config');
 const pgp = require('pg-promise')({});
-const db = pgp(config.database);
+const db = pgp(config.database_olympics);
 const date = 1896
 
 
 exports.list = function (req, res){
   const table = req.params.table;
+  console.log(req.params)
   // // checking error Function
   //check(req, res);
   if(table == 'country'){
-    return country(req, res);
+    console.log(req.params);
+    return premiereparticipation(req, res);
   }
 }
 
 const premiereparticipation = function(req, res){
-  let sql = "SELECT * FROM country WHERE (first_participation <= " + date + " AND last_participation > " + date + ");"
+  console.log(req.params)
+  let sql = "SELECT * FROM country WHERE (first_participation <= " + date + " AND last_participation >= " + date + ") ORDER BY name;";
+  console.log(sql)
+    db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
         return {
-          type : 'Feature',
+          type : 'feature',
           propertie : {
             id: item.id,
             name: item.name,
@@ -30,45 +35,7 @@ const premiereparticipation = function(req, res){
         }
       });
       res.json({
-        type:'FeatureCollection',
-        features: result
-      });
-    })
-    .catch((error) => {
-      res.send(error);
-    })
-}
-
-const premiereparticipation = function(date){
-
-
-}
-
-
-exports.list = function (req, res){
-  const table = req.params.table;
-  // // checking error Function
-  //check(req, res);
-  if(table == 'country'){
-    return listPays(req, res);
-  }
-}
-
-const listPays = function(req, res){
-  let sql_pays = 'SELECT id, name FROM country';
-    db.any(sql_pays)
-    .then((data) => {
-      const result = data.map((item) => {
-        return {
-          type : 'Feature',
-          propertie : {
-            id: item.id,
-            name: item.name,
-          }
-        }
-      });
-      res.json({
-        type:'FeatureCollection',
+        type:'featureatureCollection',
         features: result
       });
     })

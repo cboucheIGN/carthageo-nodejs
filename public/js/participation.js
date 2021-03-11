@@ -10,17 +10,15 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1
 }).addTo(carte);
 
-fetch()
+fetch("/api/bdd/country")
     .then((response) => response.json())
     .then((json) => {
-      console.log('réponse', json.features);
-      // const result = document.getElementById('result');
-      // var output = '<ul>'
-      // for (var i = 0; i<json.features.length; i++){
-      //   output += '<li>'+ json.features[i].propertie.name + '</em></li>'
-      // }
-      // output += '</ul>';
-      // result.innerHTML = output;
-    });
-    }
-}
+      console.log(json.features)
+      const result = document.getElementById('result');
+      var output = '<ul>'
+      for (var i = 0; i<json.features.length; i++){
+        output += '<li>'+ json.features[i].propertie.name + '</em></li>'
+      }
+      output += '</ul>';
+      result.innerHTML = output;
+    })
