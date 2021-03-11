@@ -3,21 +3,20 @@
 const config = require('../../config');
 const pgp = require('pg-promise')({});
 const db = pgp(config.database);
-
+const date = 1896
 
 
 exports.list = function (req, res){
   const table = req.params.table;
   // // checking error Function
   //check(req, res);
-  if(table == 'atheles'){
-    return listAtheles(req, res);
+  if(table == 'country'){
+    return country(req, res);
   }
 }
 
-const listAtheles = function(req, res){
-  let sql_athlete = 'SELECT id, name, gender, country_id FROM athele';
-    db.any(sql_athlete)
+const premiereparticipation = function(req, res){
+  let sql = "SELECT * FROM country WHERE (first_participation <= " + date + " AND last_participation > " + date + ");"
     .then((data) => {
       const result = data.map((item) => {
         return {
@@ -25,7 +24,8 @@ const listAtheles = function(req, res){
           propertie : {
             id: item.id,
             name: item.name,
-            gender: item.gender
+            first_participation: item.first_participation,
+            last_participation: item.last_participation
           }
         }
       });
@@ -37,6 +37,11 @@ const listAtheles = function(req, res){
     .catch((error) => {
       res.send(error);
     })
+}
+
+const premiereparticipation = function(date){
+
+
 }
 
 
