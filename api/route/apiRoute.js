@@ -15,4 +15,8 @@ module.exports = function(app) {
   app.route('/api/bdd/:table')
     .get(databaseController.list);
 
+  app.route('/api/bdd/searchcountry')
+    .post(databaseController.listcountry);
+
+
 };

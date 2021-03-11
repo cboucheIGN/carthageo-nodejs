@@ -10,18 +10,45 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1
 }).addTo(carte);
 
-fetch("/api/bdd/country")
-    .then((response) => response.json())
-    .then((json) => {
-      const formdate = document.getElementById("formdate");
-      console.log(json.features);
-      console.log(formdate);
-      console.log(formdate.elements["valuedate"].value);
-      const result = document.getElementById('result');
-      var output = '<ul>'
-      for (var i = 0; i<json.features.length; i++){
-        output += '<li>'+ json.features[i].propertie.name + '</em></li>'
-      }
-      output += '</ul>';
-      result.innerHTML = output;
-    })
+var form = document.getElementById("formdate");
+var select = document.getElementById("date");
+var date = form.elements["valuedate"].value;
+form.elements["valuedate"].addEventListener("change", roulant);
+
+function roulant(e){
+  console.log(form.elements["valuedate"].value);
+  var datechoisi = form.elements["valuedate"].value;
+  var choix = {c:datechoisi}
+  fetch("/api/bdd/searchcountry",{
+    method: 'post',
+    body: JSON.stringify(choix),
+    headers: {'Content-Type': 'application/json'}
+  })
+  .then(req => req.json())
+  .then((r) => {
+    const result = document.getElementById('result');
+    var output = '<ul>'
+    for (var i = 0; i<r.features.length; i++){
+      output += '<li>'+ r.features[i].propertie.name + '</em></li>'
+    }
+    output += '</ul>';
+    result.innerHTML = output;
+  })
+}
+
+// fetch("/api/bdd/searchcountry",{
+//   method: 'post',
+//   body: JSON.stringify(date),
+//   headers: {'Content-Type': 'application/json'}
+// })
+//     .then((response) => response.json())
+//     .then((json) => {
+//       console.log(date);
+      // const result = document.getElementById('result');
+      // var output = '<ul>'
+      // for (var i = 0; i<json.features.length; i++){
+      //   output += '<li>'+ json.features[i].propertie.name + '</em></li>'
+      // }
+      // output += '</ul>';
+      // result.innerHTML = output;
+    // })
