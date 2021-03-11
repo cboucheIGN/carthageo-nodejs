@@ -41,6 +41,7 @@ window.onload = function () {
         e.preventDefault();
         var saisie = formu.elements["ville"].value;
         url = 'http://api-adresse.data.gouv.fr/search/?q=' + saisie;
+        
 
         // console.log(url);
 
