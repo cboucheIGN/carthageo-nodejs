@@ -54,7 +54,6 @@ const premiereparticipation = function(req, res){
 
 
 
-
 // import des données de medaller pour création de table/
 
 
