@@ -342,6 +342,16 @@ legend.addTo(map);
 
 
 
+// //commende cmenu selection
+// var forme = document.getElementById("forme_date");
+// var date = forme.elements["olym_date"].value;
+// forme.elements["olym_date"].addEventListener("change",deroulant);
+//
+// deroulant = function(e) {
+//   console.log(forme.elements["olym_date"].value)
+// }
+
+
 
 
 

@@ -1,4 +1,41 @@
-var ctx = document.getElementById('myChart').getContext('2d');
+
+
+
+
+
+var forme = document.getElementById("forme_date");
+
+
+
+
+var jsonfile =
+
+var labels = jsonfile.medaller_country.map(function(e) {
+   return e.;
+});
+
+var data = jsonfile.medaller_country.map(function(e) {
+   return e.;
+});;
+
+var ctx = canvas.getContext('2d');
+var config = {
+   type: 'line',
+   data: {
+      labels: labels,
+      datasets: [{
+         label: 'Graph Line',
+         data: data,
+         backgroundColor: 'rgba(0, 119, 204, 0.3)'
+      }]
+   }
+};
+
+var chart = new Chart(ctx, config);
+
+
+
+
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -31,3 +68,33 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+
+
+
+
+
+
+
+// forme.elements["olym_date"].addEventListener("change", medaller);
+
+function medaller(e){
+  console.log(forme.elements["olym_date"].value);
+  var olym_date = forme.elements["olym_date"].value;
+  var choix = {c:olym_date}
+  fetch("/api/bdd/medal_track",{
+    method: 'post',
+    body: JSON.stringify(choix),
+    headers: {'Content-Type': 'application/json'}
+  })
+  .then(req => req.json())
+  .then((r) => {
+    const result = document.getElementById('result');
+    var output = '<ul>'
+    for (var i = 0; i<r.features.length; i++){
+      output += '<li>'+ r.features[i].propertie.name + '</em></li>'
+    }
+    output += '</ul>';
+    result.innerHTML = output;
+  })
+}

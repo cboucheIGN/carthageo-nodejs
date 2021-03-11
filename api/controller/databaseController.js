@@ -74,36 +74,38 @@ const premiereparticipation = function(req, res){
 
 
 
-exports.medal_track = function (req, res){
-  console.log(req.body.c)
-  let sql = "SELECT * FROM country WHERE (first_participation <= " + req.body.c + " AND last_participation >= " + req.body.c + ") ORDER BY name;";
-  console.log(sql)
-    db.any(sql)
-    .then((data) => {
-      const result = data.map((item) => {
-        return {
-          type : 'feature',
-          propertie : {
-            id: item.id,
-            name: item.name,
-            first_participation: item.first_participation,
-            last_participation: item.last_participation
-          }
-        }
-      });
-      res.json({
-        type:'featureatureCollection',
-        features: result
-      });
-    })
-    .catch((error) => {
-      res.send(error);
-    })
-}
 
 
-const medaller = function(req, res){
-  console.log(req.params)
+// exports.listcountry = function (req, res){
+//   console.log(req.body.c)
+//   let sql = "SELECT * FROM country WHERE (first_participation <= " + req.body.c + " AND last_participation >= " + req.body.c + ") ORDER BY name;";
+//   console.log(sql)
+//     db.any(sql)
+//     .then((data) => {
+//       const result = data.map((item) => {
+//         return {
+//           type : 'feature',
+//           propertie : {
+//             id: item.id,
+//             name: item.name,
+//             first_participation: item.first_participation,
+//             last_participation: item.last_participation
+//           }
+//         }
+//       });
+//       res.json({
+//         type:'featureatureCollection',
+//         features: result
+//       });
+//     })
+//     .catch((error) => {
+//       res.send(error);
+//     })
+// }
+
+
+exports.medal_track = function(req, res){
+  console.log(req.param)
   let sql = "SELECT * FROM medaller_country";
   console.log(sql)
     db.any(sql)
