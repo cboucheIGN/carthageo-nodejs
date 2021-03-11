@@ -43,3 +43,57 @@ const premiereparticipation = function(req, res){
       res.send(error);
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import des données de medaller pour création de table/
+
+exports.list_medal = function (req, res){
+  const table = req.params.table;
+  console.log(req.params)
+  // // checking error Function
+  //check(req, res);
+  if(table == 'medaller'){
+    console.log(req.params);
+    return medaller(req, res);
+  }
+}
+
+const medaller = function(req, res){
+  console.log(req.params)
+  let sql = "SELECT * FROM medaller_country";
+  console.log(sql)
+    db.any(sql)
+    .then((data) => {
+      const result = data.map((item) => {
+        return {
+          type : 'feature',
+          propertie : {
+            olympiad: item.olympiad_id,
+            country_id: item.country_id,
+            country: item.name,
+            gold: item.gold,
+            silver: item.silver,
+            bronze: item.bronze,
+          }
+        }
+      });
+      res.json({
+        type:'featureatureCollection',
+        features: result
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}

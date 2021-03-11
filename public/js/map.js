@@ -28,6 +28,12 @@ window.onload = function () {
     //
       // })
 
+  // fetch('/api/bdd/search',{
+  //   method: 'post',
+  //   boby : JSON.stringify(data)
+  //   headers
+  // })
+
       var formu = document.getElementById('formu');
       formu.addEventListener('submit',valide);
 

@@ -15,10 +15,20 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var summer = L.icon({iconUrl: scr='img/summer.png',iconSize: [10, 10]});
 var winter = L.icon({iconUrl: scr='img/winter.png',iconSize: [10, 10]});
 
+
+
+
+
+// var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
+// marker.bindPopup("<form action="#" method="get" id="Date"><fieldset><select name="date"><option class="date" type="option" id="1"><b style='color:red'>1896 : Athènes</b><br><img id=logo src=img/1896.jpg></select></fieldset></form></option>").openPopup();
+
+
 var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1896 : Athènes</b><br><img id=logo src=img/1896.jpg>").openPopup();
+marker.bindPopup("<b style='color:red'>1896 : Athènes</b><br><img id=logo src=img/1896.jpg><a href='http://osm.org/copyright'>OpenStreetMap</a> ").openPopup();
+var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>1906 : Athènes</b><br><img id=logo src=img/1906.jpg>").openPopup();
-marker.bindPopup("<b style='color:red'>2004 : Athènes</b><br><img id=logo src=img/2004.png>").openPopup();
+var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
+marker.bindPopup("<b style='color:red'>2004 : Athènes</b><br><a href='participation'><img id=logo src=img/2004.png></a>").openPopup();
 
 
 var marker = L.marker([48.859, 2.347], {icon: summer}).addTo(mymap);
@@ -133,7 +143,7 @@ var marker = L.marker([-22.88655, -43.2174689],{icon: summer}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2016 : Rio de Janeiro </b><br><img id=logo src=img/2016.png>").openPopup();
 var marker = L.marker([37.373486, 128.388119],{icon: winter}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2018: Pyeongchang</b><br><img id=logo src=img/2018.png>").openPopup();
-
+marker.on('click', function(ev) {alert(ev.latlng);});
 
 // var circle = L.circle([48.859, 2.347], {
 //     color: 'red',
