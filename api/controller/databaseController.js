@@ -74,26 +74,33 @@ const premiereparticipation = function(req, res){
 
 
 
-
-
-
-
-
-
-
-
-// import des données de medaller pour création de table/
-
 exports.medal_track = function (req, res){
-  const table = req.params.table;
-  console.log(req.params)
-  // // checking error Function
-  //check(req, res);
-  if(table == 'medaller'){
-    console.log(req.params);
-    return medaller(req, res);
-  }
+  console.log(req.body.c)
+  let sql = "SELECT * FROM country WHERE (first_participation <= " + req.body.c + " AND last_participation >= " + req.body.c + ") ORDER BY name;";
+  console.log(sql)
+    db.any(sql)
+    .then((data) => {
+      const result = data.map((item) => {
+        return {
+          type : 'feature',
+          propertie : {
+            id: item.id,
+            name: item.name,
+            first_participation: item.first_participation,
+            last_participation: item.last_participation
+          }
+        }
+      });
+      res.json({
+        type:'featureatureCollection',
+        features: result
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    })
 }
+
 
 const medaller = function(req, res){
   console.log(req.params)
