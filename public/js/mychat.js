@@ -1,37 +1,50 @@
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+  type: 'bar',
+  data: {
+    labels: ["<  1","1 - 2","3 - 4","5 - 9","10 - 14","15 - 19","20 - 24","25 - 29","> - 29"],
+    datasets: [{
+      label: 'Employee',
+      backgroundColor: "#caf270",
+      data: [12, 59, 5, 56, 58,12, 59, 87, 45],
+    }, {
+      label: 'Engineer',
+      backgroundColor: "#45c490",
+      data: [12, 59, 5, 56, 58,12, 59, 85, 23],
+    }, {
+      label: 'Government',
+      backgroundColor: "#008d93",
+      data: [12, 59, 5, 56, 58,12, 59, 65, 51],
+    }, {
+      label: 'Political parties',
+      backgroundColor: "#2e5468",
+      data: [12, 59, 5, 56, 58, 12, 59, 12, 74],
+    }],
+  },
+options: {
+    tooltips: {
+      displayColors: true,
+      callbacks:{
+        mode: 'x',
+      },
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+    scales: {
+      xAxes: [{
+        stacked: true,
+        gridLines: {
+          display: false,
         }
-    }
+      }],
+      yAxes: [{
+        stacked: true,
+        ticks: {
+          beginAtZero: true,
+        },
+        type: 'linear',
+      }]
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    legend: { position: 'bottom' },
+  }
 });

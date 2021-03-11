@@ -196,4 +196,131 @@ CREATE TABLE jomedgeojson AS (
 		ST_AsGeoJSON(geometry)::json AS geometry
 	FROM jomedgeom)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DROP TABLE public.countrysoc
+CREATE TABLE public.countrysoc (
+    cod char(3) NOT NULL PRIMARY KEY,
+    soc boolean,
+	boy80 boolean,
+	boy84 boolean
+);
+
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('URS', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('GDR', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('POL', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CZE', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('HUN', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BUL', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('EUN', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ROU', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('YUG', true, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('MGL', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('VIE', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('LAO', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('AFG', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CUB', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('PRK', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ANG', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ALB', false, true, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ETH', false, false, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('IRI', false, true, true);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('LBA', false, false, true);
+
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ANT', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ARG', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BAH', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BRN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BAN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BAR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BIZ', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BER', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('BOL', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CAN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CAY', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CAF', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CHA', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CHI', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CHN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('EGY', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ESA', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('FIJ', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('GAB', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('GAM', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('GHA', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('HAI', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('HON', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('HKG', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('INA', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('ISR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('CIV', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('JPN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('KEN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('KOR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('LBR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('LIE', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('MAW', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('MAS', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('MTN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('MRI', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('MON', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('MAR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('AHO', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('NIG', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('NOR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('PAK', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('PNG', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('PHI', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('QAT', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('SIN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('SOM', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('SUD', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('SUR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('TPE', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('SWZ', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('THA', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('TOG', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('TUN', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('TUR', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('UAE', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('USA', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('URU', false, true, false);
+INSERT INTO public.countrysoc (cod, soc, boy80, boy84) VALUES ('FRG', false, true, false);
+
+
+DROP TABLE test
+CREATE TABLE test AS (
+	SELECT countryjson.code, year, season, mall, mg, ms, mb FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code WHERE year = 1980 AND season LIKE 'Summer' 
+); 
+
+SELECT * FROM test RIGHT JOIN countrysoc ON test.code = countrysoc.cod
+
+
+SELECT DISTINCT code, name FROM country ORDER BY name ASC
+
+
+
+
+--med + countrysoc
+SELECT * FROM jomedgeom RIGHT JOIN countrysoc ON jomedgeom.code = countrysoc.cod AND year = 1980 AND season LIKE 'Summer' INNER JOIN countryjson ON countrysoc.cod = countryjson.code --AND sport LIKE 'Boxing'
+
+--med inner countrysoc
+SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code  AND year = 1980 AND season LIKE 'Summer' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod  --AND sport LIKE 'Boxing'
+
+
+SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code  AND year = 1984 AND season LIKE 'Summer' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod  --AND sport LIKE 'Boxing
 ```

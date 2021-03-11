@@ -4,6 +4,7 @@
 var mapboxAccessToken = 'pk.eyJ1IjoiY2JvdWNoZWlnbiIsImEiOiJja2x1b3BsMTQwMmk1MnZvNmppdHF1NjUyIn0';
 var mymap = L.map('mapid').setView([37.8, -96], 4);
 
+
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     id: 'mapbox/dark-v10',
     attribution: '...',
@@ -13,34 +14,162 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 }).addTo(mymap);
 
+var med = "ms"
+
+function  colSoc (soc) {
+    if (soc === 'true') {
+        return '#ff0000';
+    }
+}
+
+// function(feature) {
+//     const soc = feature.properties.soc;
+//     if (soc == 'true') {
+//         return {color:'#ff0000'};
+//     }
+//     else {return {color: '#ffffff'}
+// }
+
+
+const newColorFunction = function(feature) {
+    const soc = feature.properties.soc;
+    if (soc === 'true') {
+        return '#ff0000';
+    }
+}
+
+const newStyle = function(feature) {
+    const soc = feature.properties.soc;
+    if (soc) {
+        return {
+            fillColor: '#ff0000',
+            fillOpacity: 0.5,
+            weight: 1
+        };
+    } 
+    else {
+        return {
+            fillColor: '#0000ff',
+            fillOpacity: 0.5,
+            stroke: false
+        }
+    }
+}
+
+
 fetch('/api/bdd/jomedgeom')
     .then((r) => r.json())
     .then((r) => {
-      L.geoJSON(r).addTo(mymap);
+      L.geoJSON(r,{style: newStyle
+      }).addTo(mymap);
+
       L.geoJson(r,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
         var centroid = turf.centroid(feature); 
         var lon = centroid.geometry.coordinates[0]; 
         var lat = centroid.geometry.coordinates[1];
-        L.circleMarker([lat,lon], {radius : 0.2*feature.properties.mall}).addTo(mymap);
+
+        var cProp = L.circleMarker([lat,lon], {radius : 1*feature.properties[med]}).addTo(mymap);
+
+        cProp.on({
+            mouseover: highlightFeature,
+            mouseout: function(e){;
+                e.target.setStyle({fill: "red"})},
+            click: zoomToFeature
+        });
         }});
     });
 
-// function deuxmille() {
-
-// L.geoJson(medal_summer_or,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
-// var centroid = turf.centroid(feature); 
-// var lon = centroid.geometry.coordinates[0]; 
-// var lat = centroid.geometry.coordinates[1];
-// L.circleMarker([lat,lon], {color : getColor(feature.properties.or), radius : 0.2*feature.properties.or}).addTo(map_home);
-// }});
 
 
 
 
+tabMed = "gold"
+
+fetch('/api/bdd/jomedgeom')
+.then((r) => r.json())
+.then((r) => {
+    var medals = []
+    for (i=0; i<r.features.length; i++) {
+        medals.push(r.features[i].properties.mg)
+    }
+    var code = []
+    for (i=0; i<r.features.length; i++) {
+        code.push(r.features[i].properties.code)
+    }
+        
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: code,
+            datasets: [{
+                label: 'Number of ' +tabMed+ ' medals',
+                data: medals,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 
 
-// object.addEventListener("click", deuxmille); 
+});
 
+
+
+
+// fetch('/api/bdd/json')
+//     .then((r) => r.json())
+//     .then((r) => {
+//        function Medal(event) {
+//        L.geoJson(r).addTo(map);
+//        console.log(r)
+//         L.geoJson(r,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
+//         var centroid = turf.centroid(feature); 
+//         var lon = centroid.geometry.coordinates[0]; 
+//         var lat = centroid.geometry.coordinates[1];
+//         L.circleMarker([lat,lon], {color: 'red', radius : 0.5*feature.properties[event.target.id]}).addTo(map);
+//         }})
+        
+//     }
+//     var bronze = document.getElementById("cnt_bronze")
+//     bronze.addEventListener("click", Medal)
+//     }
+    
+
+//     );
+
+
+// const colMed = function(feature) {
+//     const name = feature.properties.name_fr;
+//     if (name === 'Finlande') {
+//         return 'red';
+//     }
+// }
 
 
 // L.geoJson(statesData).addTo(mymap);
@@ -69,35 +198,37 @@ fetch('/api/bdd/jomedgeom')
 
 // L.geoJson(statesData, {style: style}).addTo(mymap);
 
-// function highlightFeature(e) {
-//     var layer = e.target;
+function highlightFeature(e) {
+    var layer = e.target;
 
-//     layer.setStyle({
-//         weight: 5,
-//         color: '#666',
-//         dashArray: '',
-//         fillOpacity: 0.7
-//     });
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
 
-//     info.update(e.target);
+    // info.update(e.target);
 
-//     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-//         layer.bringToFront();
-//     }
-// }
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
 
-// function resetHighlight(e) {
-//     geojson.resetStyle(e.target);
-//     info.update();
-// }
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    // info.update();
+}
+
+function zoomToFeature(e) {
+    mymap.fitBounds(e.target.getBounds());
+}
 
 // // var geojson;
 // // // ... our listeners
 // // geojson = L.geoJson(...);
 
-// function zoomToFeature(e) {
-//     mymap.fitBounds(e.target.getBounds());
-// }
+
 
 // function onEachFeature(feature, layer) {
 //     layer.on({
@@ -166,18 +297,7 @@ fetch('/api/bdd/jomedgeom')
 
 // const urlPays = 'http://localhost:8080/geoserver/infra/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infra%3Ane_110m_admin_0_countries&maxFeatures=250&outputFormat=application%2Fjson'
 
-// const newColorFunction = function(feature) {
-//     const name = feature.properties.name_fr;
-//     if (name === 'Finlande') {
-//         return 'red';
-//     }
-// }
 
-// const newStyle = function(feature) {
-//     return {
-//         fillColor: newColorFunction(feature)
-//     }
-// }
 
 // fetch(urlPays)
 //     .then((response) => response.json())

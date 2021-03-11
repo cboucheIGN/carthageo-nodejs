@@ -15,13 +15,13 @@ exports.list = function(req, res){
   }
 }
 
-var annee = 1952
+var annee = 1980
 var saison = "'Summer'"
 var sport = "'Boxing'"
 
 
 const joMed = function(req, res){
-  let sql = "SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code WHERE year =" + annee + "AND season LIKE " + saison;
+  let sql = "SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code  AND year = 1980 AND season LIKE 'Summer' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod  --AND sport LIKE 'Boxing'  "  ;
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
@@ -34,7 +34,10 @@ const joMed = function(req, res){
             mall: item.mall,
             mg: item.mg,
             ms: item.ms,
-            mb: item.mb
+            mb: item.mb,
+            soc: item.soc,
+            boy80: item.boy80,
+            boy84: item.boy84
           },
           geometry: item.geometry
         }
