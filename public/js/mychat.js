@@ -72,7 +72,15 @@ var myChart = new Chart(ctx, {
 
 
 
+//commende cmenu selection
+var forme = document.getElementById("forme_date");
+var date = forme.elements["olym_date"].value;
+forme.elements["olym_date"].addEventListener("change",date_selected);
 
+
+date_selected = function(e) {
+  console.log(forme.elements["olym_date"].value)
+}
 
 
 
