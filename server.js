@@ -23,8 +23,6 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 // api routes
 const apiRoutes = require('./api/route/apiRoute');
 apiRoutes(app);

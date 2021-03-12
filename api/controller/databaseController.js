@@ -102,13 +102,9 @@ const premiereparticipation = function(req, res){
 //       res.send(error);
 //     })
 // }
-
-
 exports.medal_track = function(req, res){
-  console.log(req.param)
-  let sql = "SELECT * FROM medaller_country";
-  console.log(sql)
-    db.any(sql)
+  let sql = "SELECT * FROM medaller_country WHERE olympiad_id = "+ req.body.hello +"";
+  db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
         return {
@@ -120,6 +116,7 @@ exports.medal_track = function(req, res){
             gold: item.gold,
             silver: item.silver,
             bronze: item.bronze,
+            geometry:  item.geometry
           }
         }
       });

@@ -84,69 +84,85 @@
     <h2>Information graphique</h2>
     <form action="#" method="get" id="forme_date">
       <fieldset>
-      <legend>Date : </legend>
-      <select name="olym_date">
-        <option class="date" type="option" id="1">1896</a></option>
-        <option class="date" type="option" id="2">1900</a></option>
-        <option class="date" type="option" id="3">1904</a></option>
+      <span>Date : </span>
+      <select name="olym_date" id="year">
+        <option class="date" type="option" value="1">1896</a></option>
+        <option class="date" type="option" value="2">1900</a></option>
+        <option class="date" type="option" value="3">1904</a></option>
         <!-- <option class="date" type="option" id="A">1906</a></option> -->
-        <option class="date" type="option" id="4">1908</a></option>
-        <option class="date" type="option" id="5">1912</a></option>
-        <option class="date" type="option" id="6">1920</a></option>
-        <option class="date" type="option" id="7">1924</a></option>
-        <option class="date" type="option" id="8">1924W</a></option>
-        <option class="date" type="option" id="9">1928</a></option>
-        <option class="date" type="option" id="10">1928W</a></option>
-        <option class="date" type="option" id="11">1932</a></option>
-        <option class="date" type="option" id="12">1932W</a></option>
-        <option class="date" type="option" id="13">1936</a></option>
-        <option class="date" type="option" id="14">1936W</a></option>
-        <option class="date" type="option" id="15">1948</a></option>
-        <option class="date" type="option" id="16">1948W</a></option>
-        <option class="date" type="option" id="17">1952</a></option>
-        <option class="date" type="option" id="18">1952W</a></option>
-        <option class="date" type="option" id="19">1956</a></option>
-        <option class="date" type="option" id="20">1956W</a></option>
-        <option class="date" type="option" id="21">1960</a></option>
-        <option class="date" type="option" id="22">1960W</a></option>
-        <option class="date" type="option" id="23">1964</a></option>
-        <option class="date" type="option" id="24">1964W</a></option>
-        <option class="date" type="option" id="25">1968</a></option>
-        <option class="date" type="option" id="26">1968W</a></option>
-        <option class="date" type="option" id="27">1972</a></option>
-        <option class="date" type="option" id="28">1972W</a></option>
-        <option class="date" type="option" id="29">1976</a></option>
-        <option class="date" type="option" id="30">1976W</a></option>
-        <option class="date" type="option" id="31">1980</a></option>
-        <option class="date" type="option" id="32">1980W</a></option>
-        <option class="date" type="option" id="33">1984</a></option>
-        <option class="date" type="option" id="34">1984W</a></option>
-        <option class="date" type="option" id="35">1988</a></option>
-        <option class="date" type="option" id="36">1988W</a></option>
-        <option class="date" type="option" id="37">1992</a></option>
-        <option class="date" type="option" id="38">1992W</a></option>
-        <option class="date" type="option" id="39">1994</a></option>
-        <option class="date" type="option" id="40">1996</a></option>
-        <option class="date" type="option" id="41">1998</a></option>
-        <option class="date" type="option" id="42">2000</a></option>
-        <option class="date" type="option" id="43">2002</a></option>
-        <option class="date" type="option" id="44">2004</a></option>
-        <option class="date" type="option" id="45">2006</a></option>
-        <option class="date" type="option" id="46">2008</a></option>
-        <option class="date" type="option" id="47">2010</a></option>
-        <option class="date" type="option" id="48">2012</a></option>
-        <option class="date" type="option" id="49">2014</a></option>
+        <option class="date" type="option" value="4">1908</a></option>
+        <option class="date" type="option" value="5">1912</a></option>
+        <option class="date" type="option" value="6">1920</a></option>
+        <option class="date" type="option" value="7">1924</a></option>
+        <option class="date" type="option" value="8">1924W</a></option>
+        <option class="date" type="option" value="9">1928</a></option>
+        <option class="date" type="option" value="10">1928W</a></option>
+        <option class="date" type="option" value="11">1932</a></option>
+        <option class="date" type="option" value="12">1932W</a></option>
+        <option class="date" type="option" value="13">1936</a></option>
+        <option class="date" type="option" value="14">1936W</a></option>
+        <option class="date" type="option" value="15">1948</a></option>
+        <option class="date" type="option" value="16">1948W</a></option>
+        <option class="date" type="option" value="17">1952</a></option>
+        <option class="date" type="option" value="18">1952W</a></option>
+        <option class="date" type="option" value="19">1956</a></option>
+        <option class="date" type="option" value="20">1956W</a></option>
+        <option class="date" type="option" value="21">1960</a></option>
+        <option class="date" type="option" value="22">1960W</a></option>
+        <option class="date" type="option" value="23">1964</a></option>
+        <option class="date" type="option" value="24">1964W</a></option>
+        <option class="date" type="option" value="25">1968</a></option>
+        <option class="date" type="option" value="26">1968W</a></option>
+        <option class="date" type="option" value="27">1972</a></option>
+        <option class="date" type="option" value="28">1972W</a></option>
+        <option class="date" type="option" value="29">1976</a></option>
+        <option class="date" type="option" value="30">1976W</a></option>
+        <option class="date" type="option" value="31">1980</a></option>
+        <option class="date" type="option" value="32">1980W</a></option>
+        <option class="date" type="option" value="33">1984</a></option>
+        <option class="date" type="option" value="34">1984W</a></option>
+        <option class="date" type="option" value="35">1988</a></option>
+        <option class="date" type="option" value="36">1988W</a></option>
+        <option class="date" type="option" value="37">1992</a></option>
+        <option class="date" type="option" value="38">1992W</a></option>
+        <option class="date" type="option" value="39">1994</a></option>
+        <option class="date" type="option" value="40">1996</a></option>
+        <option class="date" type="option" value="41">1998</a></option>
+        <option class="date" type="option" value="42">2000</a></option>
+        <option class="date" type="option" value="43">2002</a></option>
+        <option class="date" type="option" value="44">2004</a></option>
+        <option class="date" type="option" value="45">2006</a></option>
+        <option class="date" type="option" value="46">2008</a></option>
+        <option class="date" type="option" value="47">2010</a></option>
+        <option class="date" type="option" value="48">2012</a></option>
+        <option class="date" type="option" value="49">2014</a></option>
         <!-- <option class="date" type="option" id="50">2016</a></option>
         <option class="date" type="option" id="51">2018</a></option>
         <option class="date" type="option" id="52">2020</a></option> -->
       </fieldset>
       </select>
     </form>
+    <form action="#" method="get" id="forme_type_medal">
+      <fieldset>
+      <span>Type : </span>
+      <select name="type_medal" id="type">
+        <option class="type" type="option" value="gold">gold</a></option>
+        <option class="type" type="option" value="silver">silver</a></option>
+        <option class="type" type="option" value="bronze">bronze</a></option>
+      </fieldset>
+      </select>
+
+
+
     <canvas id="myChart" width="400" height="400"></canvas>
 
+    <div id="result">
+    </div>
 
     <%- include("footer") -%>
   </div>
+
+
 
 
 <!--chercher exoleaflet.js sur folder js(ordre est important. FA)-->

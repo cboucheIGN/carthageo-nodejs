@@ -14,6 +14,6 @@ module.exports = function(app) {
     .get(databaseController.list);
   app.route('/api/bdd/searchcountry')
     .post(databaseController.listcountry);
-  app.route('/api/bdd/medal_track')
+  app.route('/api/bdd/track')
     .post(databaseController.medal_track);
   };
