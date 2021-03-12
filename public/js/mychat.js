@@ -42,15 +42,31 @@ function valide(e){
   // var golds = jsonfile.r.map(function(e){
   //   return e.golds;4
   //
-
-
+  var labels = []
+  for (i=0; i<r.features.length; i++){
+    labels.push (r.features[i].propertie.country)
+  }
+  var golds = []
+  for (i=0; i<r.features.length; i++){
+    golds.push (r.features[i].propertie.gold)
+  }
+  var silvers = []
+  for (i=0; i<r.features.length; i++){
+    silvers.push (r.features[i].propertie.silver)
+  }
+  var bronzes = []
+  for (i=0; i<r.features.length; i++){
+    bronzes.push (r.features[i].propertie.bronze)
+  }
+// [r.features[0].propertie.country,r.features[1].propertie.country,r.features[2].propertie.country,r.features[3].propertie.country,r.features[4].propertie.country,r.features[5].propertie.country,r.features[6].propertie.country,r.features[7].propertie.country,r.features[8].propertie.country,r.features[9].propertie.country,r.features[10].propertie.country,r.features[11].propertie.country,r.features[12].propertie.country,r.features[13].propertie.country]
+// [r.features[0].propertie.gold,r.features[1].propertie.gold,r.features[2].propertie.gold,r.features[3].propertie.gold,r.features[4].propertie.gold,r.features[5].propertie.gold,r.features[6].propertie.gold,r.features[7].propertie.gold,r.features[8].propertie.gold,r.features[9].propertie.gold,r.features[10].propertie.gold,r.features[11].propertie.gold,r.features[12].propertie.gold,r.features[13].propertie.gold]
   var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels:[r.features[0].propertie.country,r.features[1].propertie.country,r.features[2].propertie.country,r.features[3].propertie.country,r.features[4].propertie.country,r.features[5].propertie.country,r.features[6].propertie.country,r.features[7].propertie.country,r.features[8].propertie.country,r.features[9].propertie.country,r.features[10].propertie.country,r.features[11].propertie.country,r.features[12].propertie.country,r.features[13].propertie.country],
+            labels:labels,
             datasets: [{
                 label: "Nombre de médaillles d'or",
-                data:[r.features[0].propertie.gold,r.features[1].propertie.gold,r.features[2].propertie.gold,r.features[3].propertie.gold,r.features[4].propertie.gold,r.features[5].propertie.gold,r.features[6].propertie.gold,r.features[7].propertie.gold,r.features[8].propertie.gold,r.features[9].propertie.gold,r.features[10].propertie.gold,r.features[11].propertie.gold,r.features[12].propertie.gold,r.features[13].propertie.gold],
+                data: bronzes,
                 borderWidth: 1
             }]
         },
@@ -64,8 +80,6 @@ function valide(e){
             }
         }
     });
-    // console.log(r.features.propertie.country);
-    // console.log(r.features.propertie.gold);
   })
 
 }
