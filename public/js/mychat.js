@@ -33,9 +33,89 @@ function valide(e){
   .then((r) => {
     console.log(r);
 
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  // var labels = jsonfile.r.map(function(e){
+  //   return e.country;
+  // });
+  // var golds = jsonfile.r.map(function(e){
+  //   return e.golds;4
+  //
+
+
+  var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels:[r.features[0].propertie.country,r.features[1].propertie.country,r.features[2].propertie.country,r.features[3].propertie.country,r.features[4].propertie.country,r.features[5].propertie.country,r.features[6].propertie.country,r.features[7].propertie.country,r.features[8].propertie.country,r.features[9].propertie.country,r.features[10].propertie.country,r.features[11].propertie.country,r.features[12].propertie.country,r.features[13].propertie.country],
+            datasets: [{
+                label: "Nombre de médaillles d'or",
+                data:[r.features[0].propertie.gold,r.features[1].propertie.gold,r.features[2].propertie.gold,r.features[3].propertie.gold,r.features[4].propertie.gold,r.features[5].propertie.gold,r.features[6].propertie.gold,r.features[7].propertie.gold,r.features[8].propertie.gold,r.features[9].propertie.gold,r.features[10].propertie.gold,r.features[11].propertie.gold,r.features[12].propertie.gold,r.features[13].propertie.gold],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    // console.log(r.features.propertie.country);
+    // console.log(r.features.propertie.gold);
   })
 
 }
+
+
+
+
+
+
+
+
+
+
+// var ctx = document.getElementById('myChart').getContext('2d');
+// var myChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: {r.features.propertie.country,
+//         datasets: [{
+//             label: 'Type de médailles',
+//             data: r.features.propertie.gold,
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 1)',
+//                 'rgba(54, 162, 235, 1)',
+//                 'rgba(255, 206, 86, 1)',
+//
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     }
+// });
+//
+
+
+
+
 
 // var forme = document.getElementById("forme_date");
 //
@@ -70,38 +150,7 @@ function valide(e){
 //
 //
 //
-// var myChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//         labels: [],
-//         datasets: [{
-//             label: 'Type de médailles',
-//             data: [],
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     }
-// });
+
 //
 //
 //
