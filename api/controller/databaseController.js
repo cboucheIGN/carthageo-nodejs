@@ -18,19 +18,20 @@ exports.list = function (req, res){
 
 exports.listcountry = function (req, res){
   console.log(req.body.c)
-  let sql = "SELECT * FROM country WHERE (first_participation <= " + req.body.c + " AND last_participation >= " + req.body.c + ") ORDER BY name;";
+  let sql = "SELECT id, name, first_participation, last_participation, ST_AsGeoJSON(country.geometry)::json As geometry FROM country WHERE (first_participation <= " + req.body.c + " AND last_participation >= " + req.body.c + ") ORDER BY name;";
   console.log(sql)
     db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
         return {
-          type : 'feature',
-          propertie : {
+          type : 'Feature',
+          properties : {
             id: item.id,
             name: item.name,
             first_participation: item.first_participation,
             last_participation: item.last_participation
-          }
+          },
+          geometry: item.geometry
         }
       });
       res.json({
