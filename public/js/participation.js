@@ -14,7 +14,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // Je récupère la variable du menu déroulant pour sortir la liste des pays dans une
 var form = document.getElementById("formdate");
-var date = form.elements["valuedate"].value;
 form.elements["valuedate"].addEventListener("change", roulant);
 var listpays = [];
 var LayerGroup = new L.LayerGroup();
