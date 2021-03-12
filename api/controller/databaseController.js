@@ -15,13 +15,46 @@ exports.list = function(req, res){
   }
 }
 
+exports.listPost = function(req, res){
+  console.log(req.body.anneeNouv)
+  let sql = "SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code  AND year = " + req.body.anneeNouv + " AND season LIKE '" + req.body.saisNouv + "' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod ORDER BY "+ req.body.medNouv + " DESC --AND sport LIKE 'Boxing'  "  ;
+  db.any(sql)
+    .then((data) => {
+      const result = data.map((item) => {
+        return {
+          type : 'Feature',
+          properties : {
+            code: item.code,
+            year: item.year,
+            season: item.season,
+            mall: item.mall,
+            mg: item.mg,
+            ms: item.ms,
+            mb: item.mb,
+            soc: item.soc,
+            boy80: item.boy80,
+            boy84: item.boy84
+          },
+          geometry: item.geometry
+        }
+      });
+      res.json({
+        type: 'FeatureCollection',
+        features: result
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
+
 var annee = 1980
 var saison = "'Summer'"
 var sport = "'Boxing'"
 
 
 const joMed = function(req, res){
-  let sql = "SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code  AND year = 1980 AND season LIKE 'Summer' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod  --AND sport LIKE 'Boxing'  "  ;
+  let sql = "SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code  AND year =  AND season LIKE 'Summer' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod  --AND sport LIKE 'Boxing'  "  ;
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {

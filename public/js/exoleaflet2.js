@@ -1,12 +1,9 @@
-// alert('exLeaflet.js est bien chargé.')
-
-   
+//récupération du WMS Mapbox
 var mapboxAccessToken = 'pk.eyJ1IjoiY2JvdWNoZWlnbiIsImEiOiJja2x1b3BsMTQwMmk1MnZvNmppdHF1NjUyIn0';
 var mymap = L.map('mapid').setView([37.8, -96], 4);
 
-
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    id: 'mapbox/dark-v10',
+    id: 'mapbox/light-v10',
     attribution: '...',
     tileSize: 512,
     zoomOffset: -1,
@@ -14,176 +11,258 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 }).addTo(mymap);
 
-var med = "ms"
-
-function  colSoc (soc) {
-    if (soc === 'true') {
-        return '#ff0000';
-    }
-}
-
-// function(feature) {
-//     const soc = feature.properties.soc;
-//     if (soc == 'true') {
-//         return {color:'#ff0000'};
-//     }
-//     else {return {color: '#ffffff'}
-// }
 
 
-const newColorFunction = function(feature) {
-    const soc = feature.properties.soc;
-    if (soc === 'true') {
-        return '#ff0000';
-    }
-}
+var annee = document.getElementById("annee");
+var saison = document.getElementById("season");
+var medaille = document.getElementById("medal")
+var jo = document.getElementById("jo");
+console.log(annee)
 
-const newStyle = function(feature) {
+
+//Colorisation pays socialistes
+const styleSoc = function(feature) {
+    console.log("hello2")
     const soc = feature.properties.soc;
     if (soc) {
         return {
             fillColor: '#ff0000',
-            fillOpacity: 0.5,
+            color: '#ff0000',
+            fillOpacity: 0.3,
             weight: 1
         };
     } 
     else {
         return {
             fillColor: '#0000ff',
-            fillOpacity: 0.5,
+            fillOpacity: 0.3,
             stroke: false
         }
     }
 }
 
+//Colorisation cercles médailles
+const styleMed = function(feature, med) {
+    console.log("hello")
+    if (med === "ms") {
+        return {
+            color: '#C0C0C0',
+            radius : 10000*feature.properties.ms
+        }
+    } 
+    else if (med === "mg") {
+        return {
+            color: '#FFD700',
+            radius : 10000*feature.properties.mg
+        }
+    }
+    else if (med === "mb") {
+        return {
+            color: '#614E1A',
+            radius : 10000*feature.properties.mb
+        }
+    }
+    else if (med === "mall") {
+        return {
+            color: '#0000ff',
+            radius : 10000*feature.properties.mall
+        }
+    }
+}
 
-fetch('/api/bdd/jomedgeom')
-    .then((r) => r.json())
+//Légende
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+legend.addTo(mymap);
+
+//Ecoute de soumission du formulaire année/saison/médaille
+jo.addEventListener('submit', joMed)
+
+function joMed (e){
+    e.preventDefault();
+
+    //récupération des éléments du formulaire
+    var anneeSel = annee.options[annee.selectedIndex].text
+    var saisSel = season.options[season.selectedIndex].text
+    var medSel = medal.options[medal.selectedIndex].value
+
+    var data = {
+        anneeNouv: anneeSel, saisNouv: saisSel, medNouv: medSel
+    }
+
+    fetch('/api/bdd/search', {
+        method: 'post', 
+        body: JSON.stringify(data),
+        headers: {'Content-Type': 'application/json'}
+    })
+    .then(r => r.json())
     .then((r) => {
-      L.geoJSON(r,{style: newStyle
-      }).addTo(mymap);
-
-      L.geoJson(r,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
-        var centroid = turf.centroid(feature); 
-        var lon = centroid.geometry.coordinates[0]; 
-        var lat = centroid.geometry.coordinates[1];
-
-        var cProp = L.circleMarker([lat,lon], {radius : 1*feature.properties[med]}).addTo(mymap);
-
-        cProp.on({
-            mouseover: highlightFeature,
-            mouseout: function(e){;
-                e.target.setStyle({fill: "red"})},
-            click: zoomToFeature
-        });
-        }});
-    });
+        console.log(r)
+    
+    
 
 
+    // var layerGroup = new L.LayerGroup();
+    // var jsonGeo = L.geoJSON(r, {style: styleSoc})
+    // layerGroup.addLayer(jsonGeo);
+
+    // layerGroup.addTo(mymap);
+
+    // buttonAfter.addEventListener('click', function(e){
+    // layerGroup.removeLayer(jsonGeo);
+    
+    // buttonBefore.addEventListener('click', function(e){
+    // layerGroup.removeLayer(jsonGeo);
+    // L.geoJson(response).addTo(map);
+    // console.log(response)
 
 
+    //création des polygones pays
+    // draw.deleteAll().getAll();
+    L.geoJSON(r,{style: styleSoc
+    }).addTo(mymap);
 
-tabMed = "gold"
+    //création des cercles prop
+    L.geoJson(r,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
+    var centroid = turf.centroid(feature); 
+    var lon = centroid.geometry.coordinates[0]; 
+    var lat = centroid.geometry.coordinates[1];
 
-fetch('/api/bdd/jomedgeom')
-.then((r) => r.json())
-.then((r) => {
-    var medals = []
+    var colMed = styleMed(feature, medSel)
+    L.circle([lat,lon], {color: colMed.color, fillOpacity: 0.5, stroke: true, weight: 0.8, radius: colMed.radius}).addTo(mymap);
+
+    // cProp.on({
+    //     mouseover: highlightFeature,
+    //     mouseout: function(e){;
+    //         e.target.setStyle({fill: "red"})},
+    //     click: zoomToFeature
+    // });
+    }});
+    
+    //Graphique: récupération des données de médailles
+    var mall = []
+    var mg = []
+    var ms = []
+    var mb = []
     for (i=0; i<r.features.length; i++) {
-        medals.push(r.features[i].properties.mg)
+        mall.push(r.features[i].properties.mall),
+        mg.push(r.features[i].properties.mg),
+        ms.push(r.features[i].properties.ms),
+        mb.push(r.features[i].properties.mb)
     }
     var code = []
     for (i=0; i<r.features.length; i++) {
         code.push(r.features[i].properties.code)
     }
         
-    var ctx = document.getElementById('myChart').getContext('2d');
 
-    var myChart = new Chart(ctx, {
+    //Je sais pas à quoi ça sert mais ça marche pas sans...
+    var numberWithCommas = function(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+     };
+
+     // Réinitialiser le contenu de la div graphique pour éviter l'accumulation : 
+    var pieChartContent = document.getElementById('graphMed');
+    pieChartContent.innerHTML = '&nbsp;';
+    $('#graphMed').append('<canvas id="my_chart" width="400" height="200"></canvas>');
+    
+    var ctx = $("#my_chart").get(0).getContext("2d");
+
+     //(re)création du graphique
+    var bar_chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: code,
-            datasets: [{
-                label: 'Number of ' +tabMed+ ' medals',
-                data: medals,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
+            datasets: [
+            {
+                label: 'Gold medals',
+                data: mg,
+                backgroundColor:'#FFD700'
+            },
+            {
+                label: 'Silver medals',
+                data: ms,
+                backgroundColor: '#C0C0C0'
+            },            
+            {
+                label: 'Bronze medals',
+                data: mb,
+                backgroundColor: '#614E1A'
+            },
+            ]
         },
         options: {
+            // maintainAspectRatio: false,
+            scaleShowValues: true,
             scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+                xAxes: [{
+                ticks: {
+                    autoSkip: false
+                }
                 }]
+            },
+            animation: {
+                duration: 10,
+            },
+            tooltips: {
+                mode: 'label',
+                callbacks: {
+                label: function(tooltipItem, data) {
+                    return data.datasets[tooltipItem.datasetIndex].label + ": " + numberWithCommas(tooltipItem.yLabel);
+                }
+                }
+            },
+            scales: {
+                xAxes: [{
+                stacked: true,
+                gridLines: {
+                    display: false
+                },
+                }],
+                yAxes: [{
+                stacked: true,
+                ticks: {
+                    callback: function(value) {
+                    return numberWithCommas(value);
+                    },
+                },
+                }],
+            },
+            legend: {
+                display: true
             }
-        }
+        },
     });
-
-
-});
-
+    })    
+}
 
 
 
-// fetch('/api/bdd/json')
-//     .then((r) => r.json())
-//     .then((r) => {
-//        function Medal(event) {
-//        L.geoJson(r).addTo(map);
-//        console.log(r)
-//         L.geoJson(r,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
-//         var centroid = turf.centroid(feature); 
-//         var lon = centroid.geometry.coordinates[0]; 
-//         var lat = centroid.geometry.coordinates[1];
-//         L.circleMarker([lat,lon], {color: 'red', radius : 0.5*feature.properties[event.target.id]}).addTo(map);
-//         }})
-        
-//     }
-//     var bronze = document.getElementById("cnt_bronze")
-//     bronze.addEventListener("click", Medal)
-//     }
-    
-
-//     );
-
-
-// const colMed = function(feature) {
-//     const name = feature.properties.name_fr;
-//     if (name === 'Finlande') {
-//         return 'red';
-//     }
-// }
-
-
-// L.geoJson(statesData).addTo(mymap);
-
-// function getColor(d) {
-//     return d > 1000 ? '#800026' :
-//            d > 500  ? '#BD0026' :
-//            d > 200  ? '#E31A1C' :
-//            d > 100  ? '#FC4E2A' :
-//            d > 50   ? '#FD8D3C' :
-//            d > 20   ? '#FEB24C' :
-//            d > 10   ? '#FED976' :
-//                       '#FFEDA0';
-// }
+function getColor(d) {
+    return d > 1000 ? '#800026' :
+           d > 500  ? '#BD0026' :
+           d > 200  ? '#E31A1C' :
+           d > 100  ? '#FC4E2A' :
+           d > 50   ? '#FD8D3C' :
+           d > 20   ? '#FEB24C' :
+           d > 10   ? '#FED976' :
+                      '#FFEDA0';
+}
 
 // function style(feature) {
 //     return {
