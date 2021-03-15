@@ -1,6 +1,6 @@
 //récupération du WMS Mapbox
 var mapboxAccessToken = 'pk.eyJ1IjoiY2JvdWNoZWlnbiIsImEiOiJja2x1b3BsMTQwMmk1MnZvNmppdHF1NjUyIn0';
-var mymap = L.map('mapid').setView([37.8, -96], 4);
+var mymap = L.map('mapMed').setView([40, 10], 2);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     id: 'mapbox/light-v10',
@@ -12,7 +12,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
 
-
 var annee = document.getElementById("annee");
 var saison = document.getElementById("season");
 var medaille = document.getElementById("medal")
@@ -22,8 +21,8 @@ console.log(annee)
 
 //Colorisation pays socialistes
 const styleSoc = function(feature) {
-    console.log("hello2")
     const soc = feature.properties.soc;
+    // const boy80 = feature.properies.boy80;
     if (soc) {
         return {
             fillColor: '#ff0000',
@@ -32,42 +31,68 @@ const styleSoc = function(feature) {
             weight: 1
         };
     } 
-    else {
-        return {
-            fillColor: '#0000ff',
-            fillOpacity: 0.3,
-            stroke: false
-        }
+    return {
+        fillColor: '#0000ff',
+        fillOpacity: 0.3,
+        weight: 1
     }
 }
 
 //Colorisation cercles médailles
 const styleMed = function(feature, med) {
-    console.log("hello")
+    // console.log("hello")
     if (med === "ms") {
         return {
             color: '#C0C0C0',
-            radius : 10000*feature.properties.ms
+            radius : 0.5*feature.properties.ms
         }
     } 
     else if (med === "mg") {
         return {
             color: '#FFD700',
-            radius : 10000*feature.properties.mg
+            radius : 0.5*feature.properties.mg
         }
     }
     else if (med === "mb") {
         return {
             color: '#614E1A',
-            radius : 10000*feature.properties.mb
+            radius : 0.5*feature.properties.mb
         }
     }
     else if (med === "mall") {
         return {
             color: '#0000ff',
-            radius : 10000*feature.properties.mall
+            radius : 0.5*feature.properties.mall
         }
     }
+}
+
+function highlightFeature(e, features) {
+    var layer = e.target;
+    layer.setStyle({
+        weight: 2,
+        opacity: 1,
+        color: 'black',
+        dashArray: '4',
+        fillOpacity: 0.5
+    });
+}
+
+function resetHighlight(e) {
+    paysMed.resetStyle(e.target);
+    // info.update();
+}
+
+function zoomToFeature(e) {
+    mymap.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
 }
 
 //Légende
@@ -88,10 +113,17 @@ legend.onAdd = function (map) {
 
     return div;
 };
+
 legend.addTo(mymap);
 
+//Initialisation couches
+var couche = new L.layerGroup().addTo(mymap);
+
 //Ecoute de soumission du formulaire année/saison/médaille
-jo.addEventListener('submit', joMed)
+jo.addEventListener('submit', joMed);
+
+// paysMed est declaré 'globale'
+var paysMed;
 
 function joMed (e){
     e.preventDefault();
@@ -105,53 +137,79 @@ function joMed (e){
         anneeNouv: anneeSel, saisNouv: saisSel, medNouv: medSel
     }
 
-    fetch('/api/bdd/search', {
+    fetch('/api/bdd/joMedAll', {
         method: 'post', 
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json'}
     })
     .then(r => r.json())
     .then((r) => {
-        console.log(r)
-    
-    
-
-
-    // var layerGroup = new L.LayerGroup();
-    // var jsonGeo = L.geoJSON(r, {style: styleSoc})
-    // layerGroup.addLayer(jsonGeo);
-
-    // layerGroup.addTo(mymap);
-
-    // buttonAfter.addEventListener('click', function(e){
-    // layerGroup.removeLayer(jsonGeo);
-    
-    // buttonBefore.addEventListener('click', function(e){
-    // layerGroup.removeLayer(jsonGeo);
-    // L.geoJson(response).addTo(map);
-    // console.log(response)
-
 
     //création des polygones pays
-    // draw.deleteAll().getAll();
-    L.geoJSON(r,{style: styleSoc
-    }).addTo(mymap);
+    paysMed = L.geoJSON(r, {
+        style: styleSoc,
+        onEachFeature: paysOnEachFeature
+    });
+
+    function paysOnEachFeature(feature, layer) {
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+        })};
+
+    //Suppression des couches précédentes
+    couche.clearLayers();
+    couche.addLayer(paysMed);//.addTo(mymap);
 
     //création des cercles prop
-    L.geoJson(r,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
-    var centroid = turf.centroid(feature); 
-    var lon = centroid.geometry.coordinates[0]; 
-    var lat = centroid.geometry.coordinates[1];
+    
+    L.geoJson(r, {
+        onEachFeature: function(feature, layer) {
+            var listArea = [];
+            for (var i = 0; i < feature.geometry.coordinates.length; i++) {
+                var polygon = turf.polygon(feature.geometry.coordinates[i]);
+                var area = turf.area(polygon);
+                listArea.push(area);
+            }
+        var index = listArea.findIndex((area) => area === Math.max(...listArea));
+        var polygon = turf.polygon(feature.geometry.coordinates[index]);
 
-    var colMed = styleMed(feature, medSel)
-    L.circle([lat,lon], {color: colMed.color, fillOpacity: 0.5, stroke: true, weight: 0.8, radius: colMed.radius}).addTo(mymap);
+        var centroid = turf.centroid(polygon);
+        var lat = centroid.geometry.coordinates[1];
+        var lon = centroid.geometry.coordinates[0];
 
-    // cProp.on({
-    //     mouseover: highlightFeature,
-    //     mouseout: function(e){;
-    //         e.target.setStyle({fill: "red"})},
+        var colMed = styleMed(feature, medSel)
+        var cProp = L.circleMarker([lat, lon], {
+            color: colMed.color,
+            fillOpacity: 0.5,
+            radius : colMed.radius
+        });
+
+
+
+
+
+
+
+    // L.geoJson(r,{onEachFeature:function(feature,layer){feature.geometry.type ==='MultiPolygon'; 
+    // var centroid = turf.centroid(feature); 
+    // var lon = centroid.geometry.coordinates[0]; 
+    // var lat = centroid.geometry.coordinates[1];
+
+    // var colMed = styleMed(feature, medSel)
+    // var cProp = L.circle([lat,lon], {color: colMed.color, fillOpacity: 0.5, stroke: true, weight: 0.8, radius: colMed.radius});
+
+    // paysMed.on({
+    //     mouseover: function (e){highlightFeature(e,feature)},
+    //     // function() { onClick(param) })
+    //     mouseout: function(e){console.log(e.target);
+    //                         e.target.setStyle({color: colMed.color,
+    //                         })},
     //     click: zoomToFeature
     // });
+
+    cProp.addTo(couche);
     }});
     
     //Graphique: récupération des données de médailles
@@ -167,7 +225,7 @@ function joMed (e){
     }
     var code = []
     for (i=0; i<r.features.length; i++) {
-        code.push(r.features[i].properties.code)
+        code.push(r.features[i].properties.name)
     }
         
 
@@ -208,6 +266,7 @@ function joMed (e){
         },
         options: {
             // maintainAspectRatio: false,
+            responsive: true,
             scaleShowValues: true,
             scales: {
                 xAxes: [{
@@ -217,7 +276,7 @@ function joMed (e){
                 }]
             },
             animation: {
-                duration: 10,
+                duration: 100,
             },
             tooltips: {
                 mode: 'label',
@@ -276,36 +335,6 @@ function getColor(d) {
 // }
 
 // L.geoJson(statesData, {style: style}).addTo(mymap);
-
-function highlightFeature(e) {
-    var layer = e.target;
-
-    layer.setStyle({
-        weight: 5,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-    });
-
-    // info.update(e.target);
-
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-    }
-}
-
-function resetHighlight(e) {
-    geojson.resetStyle(e.target);
-    // info.update();
-}
-
-function zoomToFeature(e) {
-    mymap.fitBounds(e.target.getBounds());
-}
-
-// // var geojson;
-// // // ... our listeners
-// // geojson = L.geoJson(...);
 
 
 

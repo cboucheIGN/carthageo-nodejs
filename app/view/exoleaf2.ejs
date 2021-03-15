@@ -24,8 +24,10 @@
   <script src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
+  <link rel="stylesheet" href="css/design.css">
+
   <style>
-  #mapid { height: 750px; }
+  #mapMed { height: 650px; }
   .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
@@ -59,12 +61,10 @@
     <h1>Carte thématique</h1>
     <h4>Menu de navigation</h4>
 
-
-
-
     <form id="jo" method="post" action="" name="AnneeChoix" >
 
       <select id="annee" name="Année" style="width: 10%">
+        <option>Select a year</option>
         <option value="1952">1952</option>
         <option value="1956">1956</option>
         <option value="1960">1960</option>
@@ -94,28 +94,70 @@
 
     </form>
 
+    <select id="" name="pratique" style="width: 10%">
+      <option value="Aquatics">Aquatics</option>
+      <option value="Archery">Archery</option>
+      <option value="Athletics">Athletics</option>
+      <option value="Badminton">Badminton</option>
+      <option value="Baseball">Baseball</option>
+      <option value="Basketball">Basketball</option>
+      <option value="Basque Pelota">Basque Pelota</option>
+      <option value="Biathlon">Biathlon</option>
+      <option value="Bobsleigh">Bobsleigh</option>
+      <option value="Boxing">Boxing</option>
+      <option value="Canoe">Canoe</option>
+      <option value="Canoe / Kayak">Canoe / Kayak</option>
+      <option value="Cricket">Cricket</option>
+      <option value="Croquet">Croquet</option>
+      <option value="Curling">Curling</option>
+      <option value="Cycling">Cycling</option>
+      <option value="Equestrian">Equestrian</option>
+      <option value="Fencing">Fencing</option>
+      <option value="Football">Football</option>
+      <option value="Golf">Golf</option>
+      <option value="Gymnastics">Gymnastics</option>
+      <option value="Handball">Handball</option>
+      <option value="Hockey">Hockey</option>
+      <option value="Ice Hockey">Ice Hockey</option>
+      <option value="Jeu de paume">Jeu de paume</option>
+      <option value="Judo">Judo</option>
+      <option value="Lacrosse">Lacrosse</option>
+      <option value="Luge">Luge</option>
+      <option value="Modern Pentathlon">Modern Pentathlon</option>
+      <option value="Polo">Polo</option>
+      <option value="Rackets">Rackets</option>
+      <option value="Roque">Roque</option>
+      <option value="Rowing">Rowing</option>
+      <option value="Rugby">Rugby</option>
+      <option value="Sailing">Sailing</option>
+      <option value="Shooting">Shooting</option>
+      <option value="Skating">Skating</option>
+      <option value="Skiing">Skiing</option>
+      <option value="Softball">Softball</option>
+      <option value="Table Tennis">Table Tennis</option>
+      <option value="Taekwondo">Taekwondo</option>
+      <option value="Tennis">Tennis</option>
+      <option value="Triathlon">Triathlon</option>
+      <option value="Tug of War">Tug of War</option>
+      <option value="Volleyball">Volleyball</option>
+      <option value="Water Motorsports">Water Motorsports</option>
+      <option value="Weightlifting">Weightlifting</option>
+      <option value="Wrestling">Wrestling</option>
+      </select>
 
-
-    <div id="mapid"></div>
-
-
+    <div id="mapMed"></div>
 
     <div id="graphMed">
       <canvas id="myChart" style="height: 200px"></canvas>
     </div>
 
-
-
-  
     <!-- <img src="img/logo.png" alt="image pas chargee"> -->
 
     <%- include("footer") -%>
 
   </div>
 
-<script src='js/us-states.js'></script>
 <script src='js/exoleaflet2.js'></script>
-<script src="js/mychat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
 </body>
 </html>

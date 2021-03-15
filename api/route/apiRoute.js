@@ -15,8 +15,8 @@ module.exports = function(app) {
     .get(databaseController.list);
 
     //Ici pour exécuter du fetch en mode POST (envoie de donnée du client vers le serveur). Notez le mot clé 'post', et aussi qu'on appelle une nouvelle fonction dans databaseController
-  app.route('/api/bdd/search')
-    .post(databaseController.listPost);
+  app.route('/api/bdd/joMedAll')
+    .post(databaseController.joMedAll);
 
 };
 

@@ -15,9 +15,9 @@ exports.list = function(req, res){
   }
 }
 
-exports.listPost = function(req, res){
+exports.joMedAll = function(req, res){
   console.log(req.body.anneeNouv)
-  let sql = "SELECT * FROM jomedgeom INNER JOIN countryjson ON jomedgeom.code = countryjson.code  AND year = " + req.body.anneeNouv + " AND season LIKE '" + req.body.saisNouv + "' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod ORDER BY "+ req.body.medNouv + " DESC --AND sport LIKE 'Boxing'  "  ;
+  let sql = "SELECT * FROM jomedgeom INNER JOIN countryjsonid ON jomedgeom.code = countryjsonid.code  AND year = " + req.body.anneeNouv + " AND season LIKE '" + req.body.saisNouv + "' LEFT JOIN countrysoc ON jomedgeom.code = countrysoc.cod ORDER BY "+ req.body.medNouv + " DESC --AND sport LIKE 'Boxing'  "  ;
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
@@ -25,6 +25,7 @@ exports.listPost = function(req, res){
           type : 'Feature',
           properties : {
             code: item.code,
+            name: item.name,
             year: item.year,
             season: item.season,
             mall: item.mall,
