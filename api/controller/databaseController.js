@@ -74,6 +74,32 @@ const premiereparticipation = function(req, res){
 
 
 
+const searchdate = function(req, res){
+  console.log(req.params)
+  let sql = "SELECT * FROM country WHERE (first_participation <= " + date + " AND last_participation >= " + date + ") ORDER BY name;";
+  console.log(sql)
+    db.any(sql)
+    .then((data) => {
+      const result = data.map((item) => {
+        return {
+          type : 'feature',
+          propertie : {
+            id: item.id,
+            name: item.name,
+            first_participation: item.first_participation,
+            last_participation: item.last_participation
+          }
+        }
+      });
+      res.json({
+        type:'featureatureCollection',
+        features: result
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
 
 
 
@@ -118,6 +144,31 @@ exports.medal_track = function(req, res){
             silver: item.silver,
             bronze: item.bronze,
             geometry:  item.geometry
+          }
+        }
+      });
+      res.json({
+        type:'featureatureCollection',
+        features: result
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
+
+exports.searchdate = function(req, res){
+  let sql = "SELECT olympiad.year, olympiad.city, olympiad.season, country.name FROM olympiad JOIN country ON olympiad.country_id = country.id";
+  db.any(sql)
+    .then((data) => {
+      const result = data.map((item) => {
+        return {
+          type : 'feature',
+          propertie : {
+            year: item.year,
+            city: item.city,
+            season: item.season,
+            country: item.name
           }
         }
       });
