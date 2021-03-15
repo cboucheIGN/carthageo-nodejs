@@ -5,12 +5,6 @@ var select_date = document.getElementById('year');
 select_date.onchange = function(){
   alert(this.value)
 }
-//selection de date(en utilisant le olympiad_id)
-// var select_type = document.getElementById('type')
-//
-// select_type.onchange = function(){
-//   alert(this.value)
-// }
 
 document.getElementById('year').addEventListener('change',valide)
 
@@ -36,12 +30,7 @@ function valide(e){
 
   var ctx = document.getElementById('myChart').getContext('2d');
 
-  // var labels = jsonfile.r.map(function(e){
-  //   return e.country;
-  // });
-  // var golds = jsonfile.r.map(function(e){
-  //   return e.golds;4
-  //
+
   var labels = []
   for (i=0; i<r.features.length; i++){
     labels.push (r.features[i].propertie.country)
@@ -58,6 +47,11 @@ function valide(e){
   for (i=0; i<r.features.length; i++){
     bronzes.push (r.features[i].propertie.bronze)
   }
+
+
+
+
+
 // [r.features[0].propertie.country,r.features[1].propertie.country,r.features[2].propertie.country,r.features[3].propertie.country,r.features[4].propertie.country,r.features[5].propertie.country,r.features[6].propertie.country,r.features[7].propertie.country,r.features[8].propertie.country,r.features[9].propertie.country,r.features[10].propertie.country,r.features[11].propertie.country,r.features[12].propertie.country,r.features[13].propertie.country]
 // [r.features[0].propertie.gold,r.features[1].propertie.gold,r.features[2].propertie.gold,r.features[3].propertie.gold,r.features[4].propertie.gold,r.features[5].propertie.gold,r.features[6].propertie.gold,r.features[7].propertie.gold,r.features[8].propertie.gold,r.features[9].propertie.gold,r.features[10].propertie.gold,r.features[11].propertie.gold,r.features[12].propertie.gold,r.features[13].propertie.gold]
 
@@ -101,8 +95,27 @@ function valide(e){
 
 
 
-
-
+function pays(){
+  var formepays = document.getElementById('forme_pays').elements["olym_pays"];
+  var countrys = [];
+  fetch('/api/bdd/track',{
+    method : 'post',
+    body: JSON.stringify({ hello: "9"}),
+    headers: {'Content-Type': 'application/json'}
+  })
+    .then(req => req.json())
+    .then((req) => {
+      console.log(req);
+      for (var i =0; i < req.features.length;i++){
+        countrys += req.features[i].propertie.country;
+        var option = document.createElement('option');
+        option.innerHTML = req.features[i].propertie.country;
+        formepays.appendChild(option);
+      }
+    console.log(countrys);
+  })
+}
+pays();
 
 
 

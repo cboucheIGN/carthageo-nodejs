@@ -143,7 +143,7 @@ var marker = L.marker([-22.88655, -43.2174689],{icon: summer}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2016 : Rio de Janeiro </b><br><img id=logo src=img/2016.png>").openPopup();
 var marker = L.marker([37.373486, 128.388119],{icon: winter}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2018: Pyeongchang</b><br><img id=logo src=img/2018.png>").openPopup();
-marker.on('click', function(ev) {alert(ev.latlng);});
+// marker.on('click', function(ev) {alert(ev.latlng);});
 
 // var circle = L.circle([48.859, 2.347], {
 //     color: 'red',
