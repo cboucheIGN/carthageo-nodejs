@@ -39,7 +39,7 @@
   </style>
   <!-- <style>#USMap { height: 500px; background-color: aqua; }</style> -->
   <!-- <style>#geomap { height: 500px; background-color: pink; }</style> -->
-  <style>#logo { width:150px; background-color: white; }
+  <style>#logo { height:auto ;width:200px; background-color: white; }
   .leaflet-control.info{
     background-color: antiquewhite;
   }
@@ -177,33 +177,10 @@
 
 
 
-
 <!--chercher exoleaflet.js sur folder js(ordre est important. FA)-->
 <!-- <script src="js/us-states.js"></script>
 <script src="js/exoleaflet.js"></script> -->
-<script>
-function pays(){
-  var formepays = document.getElementById('forme_pays').elements["olym_pays"];
-  var countrys = [];
-  fetch('/api/bdd/track',{
-    method : 'post',
-    body: JSON.stringify({ hello: "9"}),
-    headers: {'Content-Type': 'application/json'}
-  })
-    .then(req => req.json())
-    .then((req) => {
-      console.log(req);
-      for (var i =0; i < req.features.length;i++){
-        countrys += req.features[i].propertie.country;
-        var option = document.createElement('option');
-        option.innerHTML = req.features[i].propertie.country;
-        formepays.appendChild(option);
-      }
-    console.log(countrys);
-  })
-}
-pays();
-</script>
+<script src="js/mychat_pays.js"></script>
 <script src="js/mychat.js"></script>
 <script src="js/epreuve.js"></script>
 </body>

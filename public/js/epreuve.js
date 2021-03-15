@@ -23,47 +23,180 @@ var winter = L.icon({iconUrl: scr='img/winter.png',iconSize: [10, 10]});
 // marker.bindPopup("<form action="#" method="get" id="Date"><fieldset><select name="date"><option class="date" type="option" id="1"><b style='color:red'>1896 : Athènes</b><br><img id=logo src=img/1896.jpg></select></fieldset></form></option>").openPopup();
 
 
-var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1896 : Athènes</b><br><img id=logo src=img/1896.jpg><a href='http://osm.org/copyright'>OpenStreetMap</a> ").openPopup();
-var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1906 : Athènes</b><br><img id=logo src=img/1906.jpg>").openPopup();
-var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2004 : Athènes</b><br><a href='participation'><img id=logo src=img/2004.png></a>").openPopup();
 
+// <b style='color:red'>
+//   1896 : Athènes
+// </b>
+// <br>
+// <img id=logo src=img/1896.jpg><a href='http://osm.org/copyright'>OpenStreetMap</a>
+
+
+
+var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
+marker.bindPopup(`
+  <div class="container"><b style='color:red'>Athènes</b></div>
+    <div id="exTab1" class="container">
+      <ul  class="nav nav-pills">
+  			<li class="active">
+          <a  href="#1a" data-toggle="tab">1896</a>
+  			</li>
+  			<li><a href="#2a" data-toggle="tab">1906</a>
+  			</li>
+  			<li><a href="#3a" data-toggle="tab">2004</a>
+  			</li>
+  		</ul>
+  	<div class="tab-content clearfix">
+  		<div class="tab-pane active" id="1a">
+        <img id=logo src=img/1896.jpg>
+  		</div>
+  		<div class="tab-pane" id="2a">
+        <img id=logo src=img/1906.jpg>
+  		</div>
+      <div class="tab-pane" id="3a">
+        <img id=logo src=img/2004.png>
+  		</div>
+  	</div>
+  </div>
+`).openPopup();
 
 var marker = L.marker([48.859, 2.347], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1900 : Paris</b><br><img id=logo src=img/1900.jpg>").openPopup();
-var marker = L.marker([48.859, 2.347], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1924 : Paris</b><br><img id=logo src=img/1924.png>").openPopup();
-
+marker.bindPopup(`
+  <div class="container"><b style='color:red'>Paris</b></div>
+    <div id="exTab1" class="container">
+      <ul  class="nav nav-pills">
+  			<li class="active">
+          <a  href="#1a" data-toggle="tab">1900</a>
+  			</li>
+  			<li><a href="#2a" data-toggle="tab">1924</a>
+  			</li>
+  		</ul>
+  	<div class="tab-content clearfix">
+  		<div class="tab-pane active" id="1a">
+        <img id=logo src=img/1900.jpg>
+  		</div>
+  		<div class="tab-pane" id="2a">
+        <img id=logo src=img/1924.png>
+  		</div>
+  	</div>
+  </div>
+`).openPopup();
 
 var marker = L.marker([51.503272, -0.142822], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1908 : Londres</b><br><img id=logo src=img/1908.jpg>").openPopup();
-var marker = L.marker([51.503272, -0.142822],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1948 : Londres</b><br><img id=logo src=img/1948.png>").openPopup();
-var marker = L.marker([51.503272, -0.142822],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2012 : Londres</b><br><img id=logo src=img/2012.png>").openPopup();
+marker.bindPopup(`
+  <div class="container"><b style='color:red'>Athènes</b></div>
+    <div id="exTab1" class="container">
+      <ul  class="nav nav-pills">
+  			<li class="active">
+          <a  href="#1a" data-toggle="tab">1908</a>
+  			</li>
+  			<li><a href="#2a" data-toggle="tab">1948</a>
+  			</li>
+  			<li><a href="#3a" data-toggle="tab">2012</a>
+  			</li>
+  		</ul>
+  	<div class="tab-content clearfix">
+  		<div class="tab-pane active" id="1a">
+        <img id=logo src=img/1908.jpg>
+  		</div>
+  		<div class="tab-pane" id="2a">
+        <img id=logo src=img/1948.png>
+  		</div>
+      <div class="tab-pane" id="3a">
+        <img id=logo src=img/2012.png>
+  		</div>
+  	</div>
+  </div>
+`).openPopup();
 
-var marker = L.marker([35.682287, 139.704895],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1964 : Tokyo</b><br><img id=logo src=img/1964.png>").openPopup();
-var marker = L.marker([35.682287, 139.704895],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2020 : Tokyo</b><br><img id=logo src=img/2020.png>").openPopup();
+var marker = L.marker([35.682287, 139.704895], {icon: summer}).addTo(mymap);
+marker.bindPopup(`
+  <div class="container"><b style='color:red'>Tokyo</b></div>
+    <div id="exTab1" class="container">
+      <ul  class="nav nav-pills">
+  			<li class="active">
+          <a  href="#1a" data-toggle="tab">1964</a>
+  			</li>
+  			<li><a href="#2a" data-toggle="tab">2020</a>
+  			</li>
+  		</ul>
+  	<div class="tab-content clearfix">
+  		<div class="tab-pane active" id="1a">
+        <img id=logo src=img/1964.png>
+  		</div>
+  		<div class="tab-pane" id="2a">
+        <img id=logo src=img/2020.png>
+  		</div>
+  	</div>
+  </div>
+`).openPopup();
 
+var marker = L.marker([47.265159, 11.394711], {icon: winter}).addTo(mymap);
+marker.bindPopup(`
+  <div class="container"><b style='color:red'>Innsbruck</b></div>
+    <div id="exTab1" class="container">
+      <ul  class="nav nav-pills">
+  			<li class="active">
+          <a  href="#1a" data-toggle="tab">1964 Hiver</a>
+  			</li>
+  			<li><a href="#2a" data-toggle="tab">1976 Hiver</a>
+  			</li>
+  		</ul>
+  	<div class="tab-content clearfix">
+  		<div class="tab-pane active" id="1a">
+        <img id=logo src=img/1964W.png>
+  		</div>
+  		<div class="tab-pane" id="2a">
+        <img id=logo src=img/1976W.png>
+  		</div>
+  	</div>
+  </div>
+`).openPopup();
 
-var marker = L.marker([47.265159, 11.394711],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1964 Hiver : Innsbruck</b><br><img id=logo src=img/1964W.png>").openPopup();
-var marker = L.marker([47.265159, 11.394711],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1976 Hiver : Innsbruck</b><br><img id=logo src=img/1976W.png>").openPopup();
-
-var marker = L.marker([44.279228, -73.981247], {icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1932 Hiver : Lake Placid</b><br><img id=logo src=img/1932.png>").openPopup();
-var marker = L.marker([44.279228, -73.981247],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1980 Hiver : Lake Placid</b><br><img id=logo src=img/1980W.png>").openPopup();
+var marker = L.marker([44.278785, -73.981075], {icon: winter}).addTo(mymap);
+marker.bindPopup(`
+  <div class="container"><b style='color:red'>Lake Placid</b></div>
+    <div id="exTab1" class="container">
+      <ul  class="nav nav-pills">
+  			<li class="active">
+          <a  href="#1a" data-toggle="tab">1932 Hiver</a>
+  			</li>
+  			<li><a href="#2a" data-toggle="tab">1980 Hiver</a>
+  			</li>
+  		</ul>
+  	<div class="tab-content clearfix">
+  		<div class="tab-pane active" id="1a">
+        <img id=logo src=img/1932W.png>
+  		</div>
+  		<div class="tab-pane" id="2a">
+        <img id=logo src=img/1980W.png>
+  		</div>
+  	</div>
+  </div>
+`).openPopup();
 
 var marker = L.marker([46.497069, 9.836197], {icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1928 Hiver : St-Moritz</b><br><img id=logo src=img/1928W.jpg>").openPopup();
-var marker = L.marker([46.497069, 9.836197],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1948 Hiver : St-Moritz</b><br><img id=logo src=img/1948W.png>").openPopup();
+marker.bindPopup(`
+  <div class="container"><b style='color:red'>St-Moritz</b></div>
+    <div id="exTab1" class="container">
+      <ul  class="nav nav-pills">
+  			<li class="active">
+          <a  href="#1a" data-toggle="tab">1928 Hiver</a>
+  			</li>
+  			<li><a href="#2a" data-toggle="tab">1948 Hiver</a>
+  			</li>
+  		</ul>
+  	<div class="tab-content clearfix">
+  		<div class="tab-pane active" id="1a">
+        <img id=logo src=img/1928W.jpg>
+  		</div>
+  		<div class="tab-pane" id="2a">
+        <img id=logo src=img/1948W.png>
+  		</div>
+  	</div>
+  </div>
+`).openPopup();
+
+
 
 
 
@@ -143,6 +276,18 @@ var marker = L.marker([-22.88655, -43.2174689],{icon: summer}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2016 : Rio de Janeiro </b><br><img id=logo src=img/2016.png>").openPopup();
 var marker = L.marker([37.373486, 128.388119],{icon: winter}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2018: Pyeongchang</b><br><img id=logo src=img/2018.png>").openPopup();
+
+
+
+
+
+
+
+
+
+
+
+
 // marker.on('click', function(ev) {alert(ev.latlng);});
 
 // var circle = L.circle([48.859, 2.347], {
@@ -193,207 +338,3 @@ function createCanard(e){
    marker.addTo(mymap);
 }
 mymap.on('click',createCanard);
-
-// // Exo 2 ! USA Dansity Map !
-// //Création de Token of mapbox
-//
-// var mapboxAccessToken = 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ';
-//
-// var map = L.map('USAMap').setView([37.8, -96], 4);
-//
-// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-//     id: 'mapbox/light-v9',
-//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//     tileSize: 512,
-//
-//     zoomOffset: -1,
-//     accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
-// }).addTo(map);
-//
-//
-// L.geoJson(statesData).addTo(map);
-// function getColor(d) {
-//     return d > 1000 ? '#800026' :
-//            d > 500  ? '#BD0026' :
-//            d > 200  ? '#E31A1C' :
-//            d > 100  ? '#FC4E2A' :
-//            d > 50   ? '#FD8D3C' :
-//            d > 20   ? '#FEB24C' :
-//            d > 10   ? '#FED976' :
-//                       '#FFEDA0';
-// }
-//
-//
-//
-//
-// function style(feature) {
-//     return {
-//         fillColor: getColor(feature.properties.density),
-//         weight: 2,
-//         opacity: 1,
-//         color: 'white',
-//         dashArray: '3',
-//         fillOpacity: 0.7
-//     };
-// }
-//
-//
-//
-// L.geoJson(statesData, {style: style}).addTo(map);
-//
-// function highlightFeature(e) {
-//     var layer = e.target;
-//     layer.setStyle({
-//         weight: 5,
-//         color: '#666',
-//         dashArray: '',
-//         fillOpacity: 0.7
-//     });
-//
-//     /*if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-//         layer.bringToFront();
-//     }*/
-//     info.update(e.target)
-// }
-//
-// function resetHighlight(e) {
-//     geojson.resetStyle(e.target);
-// }
-// function zoomToFeature(e) {
-//     map.fitBounds(e.target.getBounds());
-// }
-// function onEachFeature(feature, layer) {
-//     layer.on({
-//         //Condition de position de souris
-//         mouseover: highlightFeature,
-//         mouseout: resetHighlight,
-//         click: zoomToFeature
-//     });
-// }
-//
-//
-//
-//
-//
-// geojson = L.geoJson(statesData, {
-//     style: style,
-//     onEachFeature: onEachFeature
-// }).addTo(map);
-//
-// // nouveau control vierge
-// var info = L.control();
-//
-//
-// info.onAdd = function (map) {
-//     this._div = L.DomUtil.create('div', 'info');
-//     this.update();
-//     return this._div;
-// };
-//
-//
-//
-// info.update = function(target) {
-//     //console.log(target);
-//     if(!target){
-//         return this._div.innerHTML = `
-//         <h4>Mon nouveau control</h4>
-//         `;
-//     }
-//     // this._div.innerHTML = `
-//     //     <h4>Densités de population</h4>
-//     //     <p>Etat : ${target.feature.properties.name}</p>
-//     //     <img src="img/canard.png">
-//     //     `;
-//     this._div.innerHTML = '<h4>US Population Density</h4>' +  (props ?
-//         '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-//         : 'Hover over a state');
-// }
-// info.addTo(map);
-//
-// /*
-// // method that we will use to update the control based on feature properties passed
-// info.update = function (props) {
-//     this._div.innerHTML = '<h4>US Population Density</h4>' +  (props ?
-//         '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-//         : 'Hover over a state');
-// };
-//
-// info.addTo(map);
-// */
-//
-// var legend = L.control({position: 'bottomright'});
-//
-// legend.onAdd = function (map) {
-//     var div = L.DomUtil.create('div', 'info legend'),
-//         grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-//         labels = []
-//     // loop through our density intervals and generate a label with a colored square for each interval
-//     for (var i = 0; i < grades.length; i++) {
-//         div.innerHTML +=
-//             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-//             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-//         }
-//
-//     return div;
-// };
-// legend.addTo(map);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// // Exo 3 carte Geoserver
-//
-// //
-// // var geomap = L.map('geomap').setView([51.505,-0.09], 4);
-// //
-// // Données geoserver depuis directement chargé
-// // var wmsLayer = L.tileLayer.wms(
-// //     'http://localhost:8080/geoserver/infrastructure/wms?',
-// //     {
-// //         layers: 'infrastructure_agregation'
-// //     }
-// // ).addTo(geomap);
-// //
-//
-// // Données geoserver via postgreGIS
-// var wmsLayer = L.tileLayer.wms(
-//     'http://localhost:8080/geoserver/infrastructure/wms?',
-//     {
-//         layers: 'countries'
-//     }
-// ).addTo(geomap);
-//
-// // construction de chemin de url
-// const url = "http://localhost:8080/geoserver/infrastructure/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infrastructure%3Acountries&maxFeatures=50&outputFormat=application%2Fjson"
-//
-// const newColorFunction = function(feature){
-//     const name = feature.properties.name_fr;
-//     if (name === 'France'){
-//         return 'red';
-//     }
-// }
-//
-// const newStyle = function(feature) {
-//     return{
-//         fillColor: newColorFunction(feature)
-//     }
-// }
-// //importation depuis fiche xml
-// fetch(url)
-//     .then((response)=> response.json())
-//     .then((json) => {
-//         console.log(json);
-//         L.geoJson(json, {
-//             style: newStyle
-//         }).addTo(geomap);
-//     });
