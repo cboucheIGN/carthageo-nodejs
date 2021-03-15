@@ -19,6 +19,7 @@ var listpays = [];
 var LayerGroup = new L.LayerGroup();
 var bool = true;
 var PaysJSON;
+form.elements["valuedate"].value = 1896
 
 // fonction qui va se déclancher au moment de la séléction de la date
 function roulant(e){
