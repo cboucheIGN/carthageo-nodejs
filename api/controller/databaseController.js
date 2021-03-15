@@ -104,7 +104,7 @@ const premiereparticipation = function(req, res){
 //     })
 // }
 exports.medal_track = function(req, res){
-  let sql = "SELECT * FROM medaller_country WHERE olympiad_id = "+ req.body.hello +"";
+  let sql = "SELECT * FROM medaller_country WHERE olympiad_id = "+ req.body.hello +" ORDER BY gold DESC,silver DESC, bronze DESC";
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {

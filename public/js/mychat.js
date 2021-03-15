@@ -6,11 +6,11 @@ select_date.onchange = function(){
   alert(this.value)
 }
 //selection de date(en utilisant le olympiad_id)
-var select_type = document.getElementById('type')
-
-select_type.onchange = function(){
-  alert(this.value)
-}
+// var select_type = document.getElementById('type')
+//
+// select_type.onchange = function(){
+//   alert(this.value)
+// }
 
 document.getElementById('year').addEventListener('change',valide)
 
@@ -42,30 +42,96 @@ function valide(e){
   // var golds = jsonfile.r.map(function(e){
   //   return e.golds;4
   //
+  var labels = []
+  for (i=0; i<r.features.length; i++){
+    labels.push (r.features[i].propertie.country)
+  }
+  var golds = []
+  for (i=0; i<r.features.length; i++){
+    golds.push (r.features[i].propertie.gold)
+  }
+  var silvers = []
+  for (i=0; i<r.features.length; i++){
+    silvers.push (r.features[i].propertie.silver)
+  }
+  var bronzes = []
+  for (i=0; i<r.features.length; i++){
+    bronzes.push (r.features[i].propertie.bronze)
+  }
+// [r.features[0].propertie.country,r.features[1].propertie.country,r.features[2].propertie.country,r.features[3].propertie.country,r.features[4].propertie.country,r.features[5].propertie.country,r.features[6].propertie.country,r.features[7].propertie.country,r.features[8].propertie.country,r.features[9].propertie.country,r.features[10].propertie.country,r.features[11].propertie.country,r.features[12].propertie.country,r.features[13].propertie.country]
+// [r.features[0].propertie.gold,r.features[1].propertie.gold,r.features[2].propertie.gold,r.features[3].propertie.gold,r.features[4].propertie.gold,r.features[5].propertie.gold,r.features[6].propertie.gold,r.features[7].propertie.gold,r.features[8].propertie.gold,r.features[9].propertie.gold,r.features[10].propertie.gold,r.features[11].propertie.gold,r.features[12].propertie.gold,r.features[13].propertie.gold]
 
-
-  var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels:[r.features[0].propertie.country,r.features[1].propertie.country,r.features[2].propertie.country,r.features[3].propertie.country,r.features[4].propertie.country,r.features[5].propertie.country,r.features[6].propertie.country,r.features[7].propertie.country,r.features[8].propertie.country,r.features[9].propertie.country,r.features[10].propertie.country,r.features[11].propertie.country,r.features[12].propertie.country,r.features[13].propertie.country],
-            datasets: [{
-                label: "Nombre de médaillles d'or",
-                data:[r.features[0].propertie.gold,r.features[1].propertie.gold,r.features[2].propertie.gold,r.features[3].propertie.gold,r.features[4].propertie.gold,r.features[5].propertie.gold,r.features[6].propertie.gold,r.features[7].propertie.gold,r.features[8].propertie.gold,r.features[9].propertie.gold,r.features[10].propertie.gold,r.features[11].propertie.gold,r.features[12].propertie.gold,r.features[13].propertie.gold],
-                borderWidth: 1
-            }]
+  var dataens = {
+    labels: labels,
+    datasets: [
+        {
+            label: "gold",
+            backgroundColor: "#FFD700",
+            data: golds
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
+        {
+            label: "silver",
+            backgroundColor: "#C0C0C0",
+            data: silvers
+        },
+        {
+            label: "bronze",
+            backgroundColor: "#CD7F32",
+            data: bronzes
         }
-    });
-    // console.log(r.features.propertie.country);
-    // console.log(r.features.propertie.gold);
+    ]
+  };
+
+  var myBarChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: dataens,
+    options: {
+        barValueSpacing: 20,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 0,
+                }
+            }]
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // var myChart = new Chart(ctx, {
+  //       type: 'horizontalBar',
+  //       data: {
+  //           labels:labels,
+  //           datasets: [{
+  //               label: "Nombre de médaillles",
+  //               data: golds,
+  //               borderWidth: 1
+  //           }]
+  //       },
+  //       options: {
+  //           scales: {
+  //               yAxes: [{
+  //                   ticks: {
+  //                       beginAtZero: true
+  //                   }
+  //               }]
+  //           }
+  //       }
+  //   });
   })
 
 }
