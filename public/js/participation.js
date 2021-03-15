@@ -107,9 +107,6 @@ function style(feature) {
 function displayInfos(event) {
   console.log(event)
   console.log("Tu as cliqué sur le pays : " + event.target.feature.properties.name + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation)
-  L.popup().setLatLng(event.latlng).openOn(carte)
+  L.popup().setLatLng(event.latlng).openOn(carte);
+  L.popup().setContent("Les coordonnées géographiques d'ici sont... : " + event.latlng.toString()).openOn(carte);
 }
-
-
-// sur la map 'mymap' je lie l'action 'click' à la méthode 'onMapClick'
-carte.on('click', displayInfos);
