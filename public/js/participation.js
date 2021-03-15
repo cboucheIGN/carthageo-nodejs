@@ -69,15 +69,13 @@ function onEachFeature(feature, layer) {
     });
 }
 
-function getColor(d) {
-    return d = 1896 ? '#800026' :
-           d < 1905  ? '#BD0026' :
-           d < 1935  ? '#E31A1C' :
-           d < 1945  ? '#FC4E2A' :
-           d < 1991   ? '#FD8D3C' :
-           d < 2000   ? '#FEB24C' :
-           d < 2010   ? '#FED976' :
-                      '#FFEDA0';
+function getColor(first, last) {
+  d = last - first;
+    return d <= 4 ? '#ffffcc' :
+           d <= 16 ? '#c2e699' :
+           d <= 32 ? '#78c679' :
+           d <= 64 ? '#31a354' :
+          '#006837';
 }
 function highlightFeature(e) {
     var layer = e.target;
@@ -95,7 +93,7 @@ function resetHighlight(e) {
 
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.first_participation),
+        fillColor: getColor(feature.properties.first_participation, form.elements["valuedate"].value),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -104,9 +102,11 @@ function style(feature) {
     };
 }
 
+var popup = L.popup()
 function displayInfos(event) {
-  console.log(event)
-  console.log("Tu as cliqué sur le pays : " + event.target.feature.properties.name + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation)
-  L.popup().setLatLng(event.latlng).openOn(carte);
-  L.popup().setContent("Les coordonnées géographiques d'ici sont... : " + event.latlng.toString()).openOn(carte);
+  console.log(event);
+  console.log("Tu as cliqué sur le pays : " + event.target.feature.properties.name + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation);
+  popup
+    .setLatLng(event.latlng)
+    .setContent("<br>Pays : " + event.target.feature.properties.name + "</br><br>Première participation : " + event.target.feature.properties.first_participation + "</br><br>Dernière participation : " + event.target.feature.properties.last_participation + "</br><br>Durée : " + (event.target.feature.properties.last_participation - event.target.feature.properties.first_participation) + " années</br>" + "<br>En " + form.elements["valuedate"].value + "</br><br>Durée : " + (form.elements["valuedate"].value - event.target.feature.properties.first_participation) + " ans </br>").openOn(carte);
 }
