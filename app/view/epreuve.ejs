@@ -86,6 +86,7 @@
       <fieldset>
       <span>Date : </span>
       <select name="olym_date" id="year">
+        <option class="date" type="option" value="0"><b>Séléctionnez une date</b></a></option>
         <option class="date" type="option" value="1">1896</a></option>
         <option class="date" type="option" value="2">1900</a></option>
         <option class="date" type="option" value="3">1904</a></option>
@@ -93,38 +94,38 @@
         <option class="date" type="option" value="4">1908</a></option>
         <option class="date" type="option" value="5">1912</a></option>
         <option class="date" type="option" value="6">1920</a></option>
-        <option class="date" type="option" value="7">1924</a></option>
-        <option class="date" type="option" value="8">1924W</a></option>
-        <option class="date" type="option" value="9">1928</a></option>
-        <option class="date" type="option" value="10">1928W</a></option>
-        <option class="date" type="option" value="11">1932</a></option>
-        <option class="date" type="option" value="12">1932W</a></option>
-        <option class="date" type="option" value="13">1936</a></option>
-        <option class="date" type="option" value="14">1936W</a></option>
-        <option class="date" type="option" value="15">1948</a></option>
-        <option class="date" type="option" value="16">1948W</a></option>
-        <option class="date" type="option" value="17">1952</a></option>
-        <option class="date" type="option" value="18">1952W</a></option>
-        <option class="date" type="option" value="19">1956</a></option>
-        <option class="date" type="option" value="20">1956W</a></option>
-        <option class="date" type="option" value="21">1960</a></option>
-        <option class="date" type="option" value="22">1960W</a></option>
-        <option class="date" type="option" value="23">1964</a></option>
+        <option class="date" type="option" value="7">1924 Été</a></option>
+        <option class="date" type="option" value="8">1924 Hiver</a></option>
+        <option class="date" type="option" value="9">1928 Été</a></option>
+        <option class="date" type="option" value="10">1928 Hiver</a></option>
+        <option class="date" type="option" value="11">1932 Été</a></option>
+        <option class="date" type="option" value="12">1932 Hiver</a></option>
+        <option class="date" type="option" value="13">1936 Été</a></option>
+        <option class="date" type="option" value="14">1936 Hiver</a></option>
+        <option class="date" type="option" value="15">1948 Été</a></option>
+        <option class="date" type="option" value="16">1948 Hiver</a></option>
+        <option class="date" type="option" value="17">1952 Été</a></option>
+        <option class="date" type="option" value="18">1952 Hiver</a></option>
+        <option class="date" type="option" value="19">1956 Été</a></option>
+        <option class="date" type="option" value="20">1956 Hiver</a></option>
+        <option class="date" type="option" value="21">1960 Été</a></option>
+        <option class="date" type="option" value="22">1960 Hiver</a></option>
+        <option class="date" type="option" value="23">1964 Été</a></option>
         <option class="date" type="option" value="24">1964W</a></option>
-        <option class="date" type="option" value="25">1968</a></option>
-        <option class="date" type="option" value="26">1968W</a></option>
-        <option class="date" type="option" value="27">1972</a></option>
-        <option class="date" type="option" value="28">1972W</a></option>
-        <option class="date" type="option" value="29">1976</a></option>
-        <option class="date" type="option" value="30">1976W</a></option>
-        <option class="date" type="option" value="31">1980</a></option>
-        <option class="date" type="option" value="32">1980W</a></option>
-        <option class="date" type="option" value="33">1984</a></option>
-        <option class="date" type="option" value="34">1984W</a></option>
-        <option class="date" type="option" value="35">1988</a></option>
-        <option class="date" type="option" value="36">1988W</a></option>
-        <option class="date" type="option" value="37">1992</a></option>
-        <option class="date" type="option" value="38">1992W</a></option>
+        <option class="date" type="option" value="25">1968 Été</a></option>
+        <option class="date" type="option" value="26">1968 Hiver</a></option>
+        <option class="date" type="option" value="27">1972 Été</a></option>
+        <option class="date" type="option" value="28">1972 Hiver</a></option>
+        <option class="date" type="option" value="29">1976 Été</a></option>
+        <option class="date" type="option" value="30">1976 Hiver</a></option>
+        <option class="date" type="option" value="31">1980 Été</a></option>
+        <option class="date" type="option" value="32">1980 Hiver</a></option>
+        <option class="date" type="option" value="33">1984 Été</a></option>
+        <option class="date" type="option" value="34">1984 Hiver</a></option>
+        <option class="date" type="option" value="35">1988 Été</a></option>
+        <option class="date" type="option" value="36">1988 Hiver</a></option>
+        <option class="date" type="option" value="37">1992 Été</a></option>
+        <option class="date" type="option" value="38">1992 Hiver</a></option>
         <option class="date" type="option" value="39">1994</a></option>
         <option class="date" type="option" value="40">1996</a></option>
         <option class="date" type="option" value="41">1998</a></option>
@@ -142,7 +143,9 @@
       </fieldset>
       </select>
     </form>
-    <form action="#" method="get" id="forme_type_medal">
+
+
+    <!-- <form action="#" method="get" id="forme_type_medal">
       <fieldset>
       <span>Type : </span>
       <select name="type_medal" id="type">
@@ -151,6 +154,7 @@
         <option class="type" type="option" value="bronze">bronze</a></option>
       </fieldset>
       </select>
+    </form> -->
 
 
 
