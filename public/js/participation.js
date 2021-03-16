@@ -137,12 +137,23 @@ function style(feature) {
 var popup = L.popup()
 function displayInfos(event) {
   reponse = form.elements["valuedate"].value;
+  nompays = event.target.feature.properties.name.replace(" ","_");
+  nompays = nompays.replace("*","");
+  nompays = nompays.replace("Korea,_North","North_Korea");
+  nompays = nompays.replace("Congo,_Dem Rep","Democratic_Republic_of_the_Congo");
+  nompays = nompays.replace("Korea,_South","South_Korea");
+  nompays = nompays.replace("East_Timor (Timor-Leste)","East_Timor");
+  console.log(nompays);
+  console.log(event.target.feature.properties);
+  url = "https://en.wikipedia.org/wiki/" + nompays + "_at_the_Olympics";
+  console.log(url);
   datechoisi = reponse.substring(0, 4);
   console.log(event);
-  console.log("Tu as cliqué sur le pays : " + event.target.feature.properties.name + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation);
+  console.log(event.target.feature.properties.img);
+  console.log("Tu as cliqué sur le pays : " + nompays + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation);
   popup
     .setLatLng(event.latlng)
-    .setContent("<p id=\"popup\"><br>Pays : " + event.target.feature.properties.name + "</br><br>Première participation : " + event.target.feature.properties.first_participation + "</br><br>Dernière participation : " + event.target.feature.properties.last_participation + "</br><br>Durée : " + (event.target.feature.properties.last_participation - event.target.feature.properties.first_participation) + " années</br>" + "<br>En " + datechoisi + ",</br><br>Durée : " + (datechoisi - event.target.feature.properties.first_participation) + " ans </br></p>").openOn(carte);
+    .setContent("<p id=\"popup\"><br>Pays : " + nompays + "</br><br>Première participation : " + event.target.feature.properties.first_participation + "</br><br>Dernière participation : " + event.target.feature.properties.last_participation + "</br><br>Durée : " + (event.target.feature.properties.last_participation - event.target.feature.properties.first_participation) + " années</br>" + "<br>En " + datechoisi + "</br><br>Durée : " + (datechoisi - event.target.feature.properties.first_participation) + " ans </br><br><img src=\'" + event.target.feature.properties.img + "\' height= 50px><a href=\'" + url + "\'>Lien Wikipedia</a></br></p>").openOn(carte);
 }
 
 var legend = L.control({position: 'bottomright'});

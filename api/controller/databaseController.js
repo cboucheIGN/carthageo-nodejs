@@ -16,9 +16,11 @@ exports.list = function (req, res){
   }
 }
 
+const baseurl = "https://stillmedab.olympic.org/media/Images/OlympicOrg/Countries";
+
 exports.listcountry = function (req, res){
   console.log(req.body.c)
-  let sql = "SELECT id, name, first_participation, last_participation, ST_AsGeoJSON(country.geometry)::json As geometry FROM country WHERE (first_participation <= " + req.body.c + " AND last_participation >= " + req.body.c + ") ORDER BY name;";
+  let sql = "SELECT id, name, first_participation, last_participation, code, ST_AsGeoJSON(country.geometry)::json As geometry FROM country WHERE (first_participation <= " + req.body.c + " AND last_participation >= " + req.body.c + ") ORDER BY name;";
   console.log(sql)
     db.any(sql)
     .then((data) => {
@@ -28,6 +30,8 @@ exports.listcountry = function (req, res){
           properties : {
             id: item.id,
             name: item.name,
+            code: item.code,
+            img: `${baseurl}/${item.name.substring(0, 1)}/${encodeURI(item.name)}/CNO-${item.code}.jpg`,
             first_participation: item.first_participation,
             last_participation: item.last_participation
           },
@@ -56,6 +60,7 @@ const premiereparticipation = function(req, res){
           propertie : {
             id: item.id,
             name: item.name,
+            code: item.code,
             first_participation: item.first_participation,
             last_participation: item.last_participation
           }
