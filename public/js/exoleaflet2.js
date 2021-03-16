@@ -84,6 +84,8 @@ function resetHighlight(e) {
 }
 
 function zoomToFeature(e) {
+    var paysClick = e.target.feature.properties.code
+    console.log(e.target.feature.properties.code)
     mymap.fitBounds(e.target.getBounds());
 }
 

@@ -34,7 +34,8 @@ exports.joMedAll = function(req, res){
             mb: item.mb,
             soc: item.soc,
             boy80: item.boy80,
-            boy84: item.boy84
+            boy84: item.boy84,
+            exbloc: item.exbloc
           },
           geometry: item.geometry
         }
