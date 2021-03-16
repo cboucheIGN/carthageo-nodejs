@@ -35,7 +35,7 @@ var winter = L.icon({iconUrl: scr='img/winter.png',iconSize: [10, 10]});
 var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
 marker.bindPopup(`
   <div class="container"><b style='color:red'>Athènes</b></div>
-    <div id="exTab1" class="container">
+    <div id="exTab1">
       <ul  class="nav nav-pills">
   			<li class="active">
           <a  href="#1a" data-toggle="tab">1896</a>
@@ -62,7 +62,7 @@ marker.bindPopup(`
 var marker = L.marker([48.859, 2.347], {icon: summer}).addTo(mymap);
 marker.bindPopup(`
   <div class="container"><b style='color:red'>Paris</b></div>
-    <div id="exTab1" class="container">
+    <div id="exTab1">
       <ul  class="nav nav-pills">
   			<li class="active">
           <a  href="#1a" data-toggle="tab">1900</a>
@@ -84,7 +84,7 @@ marker.bindPopup(`
 var marker = L.marker([51.503272, -0.142822], {icon: summer}).addTo(mymap);
 marker.bindPopup(`
   <div class="container"><b style='color:red'>Athènes</b></div>
-    <div id="exTab1" class="container">
+    <div id="exTab1" >
       <ul  class="nav nav-pills">
   			<li class="active">
           <a  href="#1a" data-toggle="tab">1908</a>
@@ -111,7 +111,7 @@ marker.bindPopup(`
 var marker = L.marker([35.682287, 139.704895], {icon: summer}).addTo(mymap);
 marker.bindPopup(`
   <div class="container"><b style='color:red'>Tokyo</b></div>
-    <div id="exTab1" class="container">
+    <div id="exTab1" >
       <ul  class="nav nav-pills">
   			<li class="active">
           <a  href="#1a" data-toggle="tab">1964</a>
@@ -133,7 +133,7 @@ marker.bindPopup(`
 var marker = L.marker([47.265159, 11.394711], {icon: winter}).addTo(mymap);
 marker.bindPopup(`
   <div class="container"><b style='color:red'>Innsbruck</b></div>
-    <div id="exTab1" class="container">
+    <div id="exTab1">
       <ul  class="nav nav-pills">
   			<li class="active">
           <a  href="#1a" data-toggle="tab">1964 Hiver</a>
@@ -155,7 +155,7 @@ marker.bindPopup(`
 var marker = L.marker([44.278785, -73.981075], {icon: winter}).addTo(mymap);
 marker.bindPopup(`
   <div class="container"><b style='color:red'>Lake Placid</b></div>
-    <div id="exTab1" class="container">
+    <div id="exTab1">
       <ul  class="nav nav-pills">
   			<li class="active">
           <a  href="#1a" data-toggle="tab">1932 Hiver</a>
@@ -177,7 +177,7 @@ marker.bindPopup(`
 var marker = L.marker([46.497069, 9.836197], {icon: winter}).addTo(mymap);
 marker.bindPopup(`
   <div class="container"><b style='color:red'>St-Moritz</b></div>
-    <div id="exTab1" class="container">
+    <div id="exTab1">
       <ul  class="nav nav-pills">
   			<li class="active">
           <a  href="#1a" data-toggle="tab">1928 Hiver</a>
