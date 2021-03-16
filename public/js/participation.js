@@ -23,7 +23,7 @@ var PaysJSON;
 // fonction qui va se déclancher au moment de la séléction de la date
 function roulant(e){
   reponse = form.elements["valuedate"].value;
-  datechoisi = reponse[0] + reponse[1] + reponse[2] + reponse[3];
+  datechoisi = reponse.substring(0, 4);
   console.log(reponse);
   console.log(datechoisi);
   var listpays = [];
@@ -83,7 +83,7 @@ function getColor(first, last,d) {
 }
 function highlightFeature(e) {
     reponse = form.elements["valuedate"].value;
-    datechoisi = reponse[0] + reponse[1] + reponse[2] + reponse[3];
+    datechoisi = reponse.substring(0, 4);
     var layer = e.target;
     layer.setStyle({
         weight: 5,
@@ -121,7 +121,7 @@ function resetHighlight(e) {
 
 function style(feature) {
   reponse = form.elements["valuedate"].value;
-  datechoisi = reponse[0] + reponse[1] + reponse[2] + reponse[3];
+  datechoisi = reponse.substring(0, 4);
     return {
       fillColor: getColor(feature.properties.first_participation, datechoisi),
       weight: 2,
@@ -135,7 +135,7 @@ function style(feature) {
 var popup = L.popup()
 function displayInfos(event) {
   reponse = form.elements["valuedate"].value;
-  datechoisi = reponse[0] + reponse[1] + reponse[2] + reponse[3];
+  datechoisi = reponse.substring(0, 4);
   console.log(event);
   console.log("Tu as cliqué sur le pays : " + event.target.feature.properties.name + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation);
   popup
