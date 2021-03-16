@@ -75,6 +75,7 @@ function valide(e){
     data: dataens,
     options: {
         barValueSpacing: 20,
+        responsive : true,
         scales: {
             yAxes: [{
                 ticks: {
