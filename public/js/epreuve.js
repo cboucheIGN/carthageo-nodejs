@@ -12,6 +12,30 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoidGFraWtvdiIsImEiOiJja2x1cTk0Y3AwOWhmMm9wbHk1cGlwbmdhIn0.4IZ_FJBkcBndgp2fdCWaIQ'
 }).addTo(mymap);
 
+
+
+
+/*Legend specific*/
+// var legend = L.control({ position: "bottomleft" });
+//
+// legend.onAdd = function(mymap) {
+//   var div = L.DomUtil.create("div", "legend");
+//   div.innerHTML += "<h4>Légende</h4>";
+//   div.innerHTML += '<img scr='img/summer.png'><span>Winter</span><br>';
+//   div.innerHTML += '<img scr='img/winter.png'><span>Summer</span><br>';
+//     return div;
+//   };
+//
+//   legend.addTo(mymap);
+
+
+
+
+
+
+
+
+
 var summer = L.icon({iconUrl: scr='img/summer.png',iconSize: [10, 10]});
 var winter = L.icon({iconUrl: scr='img/winter.png',iconSize: [10, 10]});
 

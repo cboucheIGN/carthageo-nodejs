@@ -1,8 +1,3 @@
-/*
-	Autonomy by TEMPLATED
-    templated.co @templatedco
-    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
-*/
 
 /*********************************************************************************/
 /* Header                                                                        */
@@ -16,7 +11,8 @@
 		#header .container
 		{
 			position: relative;
-			padding: 6em 0em;
+			padding: 2em 0em;
+			background-color: scr='img/imgJO.jpg';
 		}
 
 /*********************************************************************************/
@@ -29,12 +25,12 @@
 		left: 0em;
 		top: 4.5em;
 	}
-	
+
 		#logo h1
 		{
 			color: #FFF;
 		}
-	
+
 		#logo a
 		{
 			display: block;
@@ -59,7 +55,7 @@
 		{
 			float: left;
 		}
-		
+
 			#nav > ul > li:last-child
 			{
 				padding-right: 0;
@@ -112,7 +108,7 @@
 	{
 		padding: 6em 0em;
 	}
-	
+
 /*********************************************************************************/
 /* Featured                                                                      */
 /*********************************************************************************/
@@ -130,13 +126,12 @@
 	{
 		padding: 6em 0em;
 	}
-	
+
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
-	
+
 	#copyright
 	{
 		padding: 3em 0em;
 	}
-	

@@ -37,6 +37,9 @@
     background-color: antiquewhite;
   }
   </style>
+
+
+
   <!-- <style>#USMap { height: 500px; background-color: aqua; }</style> -->
   <!-- <style>#geomap { height: 500px; background-color: pink; }</style> -->
   <style>#logo { height:auto ;width:200px; background-color: white; }
@@ -75,21 +78,17 @@
   }</style>
 
 </head>
+
+
+
 <body>
   <div class="container">
     <%- include("nav") -%>
     <h1>Épreuves & Nombre de médailles des Jeux Olympiques</h1>
     <h2>Information cartographique</h2>
     <div id="carte"></div>
+
     <h2>Information graphique</h2>
-
-
-
-
-
-
-
-
     <form action="#" method="get" id="forme_date">
       <fieldset>
       <label>Date : </label>
@@ -153,6 +152,7 @@
 
     </form>
 
+
     <!-- <form action="#" method="get" id="forme_type_medal">
       <fieldset>
       <span>Type : </span>
@@ -167,13 +167,16 @@
 
 
     <canvas id="myChart" width="400" height="400"></canvas>
-
     <form action="#" method="get" id="forme_pays">
-      <fieldset>
-      <span>Pays : </span>
-      <select name="olym_pays" id="pays">
-      </select>
-      </fieldset>
+    <h2>Information cartographique</h2>
+  
+
+
+    <fieldset>
+    <span>Pays : </span>
+    <select name="olym_pays" id="pays">
+    </select>
+    </fieldset>
 
     </form>
     <canvas id="myChartPays" width="400" height="400"></canvas>
@@ -184,6 +187,8 @@
 
     <%- include("footer") -%>
   </div>
+
+
 
 
 

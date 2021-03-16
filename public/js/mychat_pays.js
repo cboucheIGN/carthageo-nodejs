@@ -75,8 +75,6 @@ function valide2(e){
     bronzes.push (r.features[i].propertie.bronze)
   }
 
-
-
     var dataensp = {
       labels: labels,
       datasets: [
@@ -102,6 +100,14 @@ function valide2(e){
   var myLineChart = new Chart(ctx, {
       type: 'line',
       data: dataensp,
+      options: {
+        responsive : true,
+        scales: {
+          yAxes: [{
+            stacked: true
+          }]
+        }
+      }
   });
 
   })
