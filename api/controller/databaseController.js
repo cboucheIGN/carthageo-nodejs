@@ -130,7 +130,37 @@ const searchdate = function(req, res){
 //     })
 // }
 exports.medal_track = function(req, res){
-  let sql = "SELECT * FROM medaller_country WHERE olympiad_id = "+ req.body.hello +" ORDER BY gold DESC,silver DESC, bronze DESC";
+  let sql = "SELECT * FROM medaller_country WHERE olympiad_id ="+ req.body.hello+" ORDER BY gold DESC,silver DESC, bronze DESC";
+  db.any(sql)
+    .then((data) => {
+      const result = data.map((item) => {
+        return {
+          type : 'feature',
+          propertie : {
+            olympiad: item.olympiad_id,
+            country_id: item.country_id,
+            country: item.name,
+            gold: item.gold,
+            silver: item.silver,
+            bronze: item.bronze,
+            geometry:  item.geometry
+          }
+        }
+      });
+      res.json({
+        type:'featureatureCollection',
+        features: result
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
+
+exports.medal_track2 = function(req, res){
+  console.log("il est passé par ici !")
+  let sql = "SELECT * FROM medaller_country WHERE medaller_country.name = '"+ req.body.hola +"' ORDER BY olympiad_id";
+  console.log(sql);
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
