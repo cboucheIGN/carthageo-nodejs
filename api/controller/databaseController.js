@@ -188,7 +188,7 @@ exports.medal_track2 = function(req, res){
 }
 
 exports.searchdate = function(req, res){
-  let sql = "SELECT olympiad.year, olympiad.city, olympiad.season, country.name FROM olympiad JOIN country ON olympiad.country_id = country.id";
+  let sql = "SELECT olympiad.year, olympiad.city, olympiad.season, country.name FROM olympiad JOIN country ON olympiad.country_id = country.id ORDER BY olympiad.year";
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
