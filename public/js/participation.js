@@ -132,6 +132,8 @@ function style(feature) {
     };
 }
 
+
+
 var popup = L.popup()
 function displayInfos(event) {
   reponse = form.elements["valuedate"].value;
