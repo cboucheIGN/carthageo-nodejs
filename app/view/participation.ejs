@@ -25,6 +25,23 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
+  <!-- page const -->
+  <title>Autonomy by TEMPLATED</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+  <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/skel-panels.min.js"></script>
+  <script src="js/init.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="css/skel-noscript.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-desktop.css" />
+  </noscript>
+
   <!-- leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -42,47 +59,31 @@
   #popup {font-family: 'Cormorant Unicase', serif;
     font-family: 'Lora', serif;
   font-size: 15px;}
+  .container {color: white;}
+  #selectannee {color:black;}
   </style>
+  <%- include("nav") -%>
 
 </head>
 
-<body>
+<body class"secondary">
   <!-- Header -->
   <div id="header">
     <div class="container">
-
-      <!-- Logo -->
-      <div id="logo">
-        <h1><a href="#">Autonomy</a></h1>
-      </div>
-
-      <!-- Nav -->
-      <nav id="nav">
-        <ul>
-          <li><a href="index.html">L'histoire des premières participation aux Jeux-Olympiques</a></li>
-          <li class="active"><a href="twocolumn1.html">Comment les frontières ont fait évolué les particpations aux JO ?</a></li>
-          <li><a href="onecolumn.html">No Sidebar</a></li>
-        </ul>
-      </nav>
-
-			</div>
-		</div>
-
   <div class="container">
-    <%- include("nav") -%>
     <p>A travers, l'histoire les frontières ont changés et on a pu remarqué que les participations aux JO y sont liés. Vous pouvez le voir sur cette carte interactive :
     </p>
     <p>Sélectionnez la date des JO dont vous voulez connaitre les participants :</p>
     <form action="#" method="get" id="formdate">
         <fieldset>
           <label>Année :
-        <select name="valuedate">
+        <select name="valuedate" id="selectannee">
       </select>
       </fieldset>
     </label>
     </label></p>
     </form>
-
+  </div>
     <div id="result">
     </div>
 
@@ -90,10 +91,13 @@
   <div class="carte" id="carte">
   <p>Ici la carte</p>
 </div>
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 61a96c5fe851038f74230285733c696f3c9dd230
 <%- include("footer") -%>
 
 
