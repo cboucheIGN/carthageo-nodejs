@@ -291,7 +291,7 @@ marker.bindPopup("<b style='color:red'>2010 : Vancouver</b><br><div id='vancouve
 var marker = L.marker([43.584768, 39.714203],{icon: winter}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2014 : Sochi</b><br><div id='sochi-2014' onclick='myAlert(this)'><img id=logo src=img/2014.png></div>").openPopup();
 var marker = L.marker([-22.88655, -43.2174689],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2016 : Rio de Janeiro </b><br><div id='rio-de-janeiro-2016' onclick='myAlert(this)'><img id=logo src=img/2016.png></div>").openPopup();
+marker.bindPopup("<b style='color:red'>2016 : Rio de Janeiro </b><br><div id='rio-2016' onclick='myAlert(this)'><img id=logo src=img/2016.png></div>").openPopup();
 var marker = L.marker([37.373486, 128.388119],{icon: winter}).addTo(mymap);
 marker.bindPopup("<b style='color:red'>2018: Pyeongchang</b><br><div id='pyeongchang-2018' onclick='myAlert(this)'><img id=logo src=img/2018.png></div>").openPopup();
 
