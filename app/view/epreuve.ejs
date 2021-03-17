@@ -24,13 +24,6 @@
 
 
 
-
-
-
-
-
-
-
 <!-- def #carte is my map on the page epreuve -->
   <style>#carte { height: 650px; background-color: aqua; }
   .leaflet-control.info{
@@ -48,7 +41,8 @@
   }
   </style>
 
-  <style> .info {
+  <style>
+  .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
     background: white;
@@ -59,36 +53,42 @@
     .info img{
       height: 50px;
     }
-    </style>
+  </style>
 
   <style>.info h4 {
     margin: 0 0 5px;
     color: #777;
    }</style>
-  <style>.legend {
-  line-height: 18px;
-  color: #555;
-  }</style>
-  <style>.legend i {
+
+  <style>
+  .legend {
+    line-height: 18px;
+    color: 'black';
+   }
+  .legend i {
     width: 18px;
     height: 18px;
     float: left;
     margin-right: 8px;
     opacity: 0.7;
-  }</style>
+    }
+  .legend img {
+    width: 40px;
+  }
+ </style>
 
 </head>
-
-
 
 <body>
   <div class="container">
     <%- include("nav") -%>
     <h1>Épreuves & Nombre de médailles des Jeux Olympiques</h1>
     <h2>Information cartographique</h2>
+
     <div id="carte"></div>
 
     <h2>Information graphique</h2>
+    <h3>Statistiques de nombres de médailles de tous les Jeux Olympiques</h3>
     <form action="#" method="get" id="forme_date">
       <fieldset>
       <label>Date : </label>
@@ -168,10 +168,10 @@
 
     <canvas id="myChart" width="400" height="400"></canvas>
     <form action="#" method="get" id="forme_pays">
-    <h2>Information cartographique</h2>
-  
 
 
+
+  <h3>Statistiques de changements de nombres de médailles de chaque pays</h3>
     <fieldset>
     <span>Pays : </span>
     <select name="olym_pays" id="pays">
@@ -182,7 +182,7 @@
     <canvas id="myChartPays" width="400" height="400"></canvas>
 
 
-
+    </div>
 
 
     <%- include("footer") -%>
