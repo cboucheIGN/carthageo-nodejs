@@ -153,7 +153,7 @@ function displayInfos(event) {
   console.log("Tu as cliqué sur le pays : " + nompays + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation);
   popup
     .setLatLng(event.latlng)
-    .setContent("<p id=\"popup\"><br>Pays : " + nompays + "</br><br>Première participation : " + event.target.feature.properties.first_participation + "</br><br>Dernière participation : " + event.target.feature.properties.last_participation + "</br><br>Durée : " + (event.target.feature.properties.last_participation - event.target.feature.properties.first_participation) + " années</br>" + "<br>En " + datechoisi + "</br><br>Durée : " + (datechoisi - event.target.feature.properties.first_participation) + " ans </br><br><img src=\'" + event.target.feature.properties.img + "\' width=70px><a href=\'" + url + "\'>Lien Wikipedia</a></br></p>").openOn(carte);
+    .setContent("<p id=\"popup\"><br>Pays : " + nompays + "</br><br>Première participation : " + event.target.feature.properties.first_participation + "</br><br>Dernière participation : " + event.target.feature.properties.last_participation + "</br><br>Durée : " + (event.target.feature.properties.last_participation - event.target.feature.properties.first_participation) + " années</br>" + "<br>En " + datechoisi + "</br><br>Durée : " + (datechoisi - event.target.feature.properties.first_participation) + " ans </br><br><a href=\'" + url + "\'target=\"_blank\"><img src=\'" + event.target.feature.properties.img + "\' height=70px></a></br></p>").openOn(carte);
 }
 
 var legend = L.control({position: 'bottomright'});
