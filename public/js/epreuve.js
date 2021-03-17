@@ -56,13 +56,13 @@ marker.bindPopup(`
   		</ul>
   	<div class="tab-content clearfix">
   		<div class="tab-pane active" id="1a">
-        <img id=logo src=img/1896.jpg>
+        <div id='athenes-1896' onclick='myAlert(this)'><img id=logo src=img/1896.jpg></div>
   		</div>
   		<div class="tab-pane" id="2a">
-        <img id=logo src=img/1906.jpg>
+        <div id='athenes-1906' onclick='myAlert(this)'><img id=logo src=img/1906.jpg></div>
   		</div>
       <div class="tab-pane" id="3a">
-        <img id=logo src=img/2004.png>
+        <div id='athenes-2004' onclick='myAlert(this)'><img id=logo src=img/2004.png></div>
   		</div>
   	</div>
   </div>
@@ -81,10 +81,10 @@ marker.bindPopup(`
   		</ul>
   	<div class="tab-content clearfix">
   		<div class="tab-pane active" id="1a">
-        <img id=logo src=img/1900.jpg>
+        <div id='paris-1900' onclick='myAlert(this)'><img id=logo src=img/1900.jpg></div>
   		</div>
   		<div class="tab-pane" id="2a">
-        <img id=logo src=img/1924.png>
+        <div id='paris-1924' onclick='myAlert(this)'><img id=logo src=img/1924.png></div>
   		</div>
   	</div>
   </div>
@@ -92,7 +92,7 @@ marker.bindPopup(`
 
 var marker = L.marker([51.503272, -0.142822], {icon: summer}).addTo(mymap);
 marker.bindPopup(`
-  <div class="container"><b style='color:red'>Athènes</b></div>
+  <div class="container"><b style='color:red'>Londres</b></div>
     <div id="exTab1" >
       <ul  class="nav nav-pills">
   			<li class="active">
@@ -105,13 +105,13 @@ marker.bindPopup(`
   		</ul>
   	<div class="tab-content clearfix">
   		<div class="tab-pane active" id="1a">
-        <img id=logo src=img/1908.jpg>
+        <div id='londres-1908' onclick='myAlert(this)'><img id=logo src=img/1908.jpg></div>
   		</div>
   		<div class="tab-pane" id="2a">
-        <img id=logo src=img/1948.png>
+        <div id='londres-1948' onclick='myAlert(this)'><img id=logo src=img/1948.png></div>
   		</div>
       <div class="tab-pane" id="3a">
-        <img id=logo src=img/2012.png>
+        <div id='londres-2012' onclick='myAlert(this)'><img id=logo src=img/2012.png></div>
   		</div>
   	</div>
   </div>
@@ -130,10 +130,10 @@ marker.bindPopup(`
   		</ul>
   	<div class="tab-content clearfix">
   		<div class="tab-pane active" id="1a">
-        <img id=logo src=img/1964.png>
+        <div id='tokyo-1964' onclick='myAlert(this)'><img id=logo src=img/1964.png></div>
   		</div>
   		<div class="tab-pane" id="2a">
-        <img id=logo src=img/2020.png>
+        <div id='tokyo-2020' onclick='myAlert(this)'><img id=logo src=img/2020.png></div>
   		</div>
   	</div>
   </div>
@@ -152,10 +152,10 @@ marker.bindPopup(`
   		</ul>
   	<div class="tab-content clearfix">
   		<div class="tab-pane active" id="1a">
-        <img id=logo src=img/1964W.png>
+        <div id='innsbruck-1964' onclick='myAlert(this)'><img id=logo src=img/1964W.png></div>
   		</div>
   		<div class="tab-pane" id="2a">
-        <img id=logo src=img/1976W.png>
+        <div id='innsbruck-1976' onclick='myAlert(this)'><img id=logo src=img/1976W.png></div>
   		</div>
   	</div>
   </div>
@@ -174,10 +174,10 @@ marker.bindPopup(`
   		</ul>
   	<div class="tab-content clearfix">
   		<div class="tab-pane active" id="1a">
-        <img id=logo src=img/1932W.png>
+        <div id='lake-placid-1932' onclick='myAlert(this)'><img id=logo src=img/1932W.png></div>
   		</div>
   		<div class="tab-pane" id="2a">
-        <img id=logo src=img/1980W.png>
+        <div id='lake-placid-1980' onclick='myAlert(this)'><img id=logo src=img/1980W.png></div>
   		</div>
   	</div>
   </div>
@@ -196,10 +196,10 @@ marker.bindPopup(`
   		</ul>
   	<div class="tab-content clearfix">
   		<div class="tab-pane active" id="1a">
-        <img id=logo src=img/1928W.jpg>
+        <div id='saint-moritz-1928' onclick='myAlert(this)'><img id=logo src=img/1928W.jpg></div>
   		</div>
   		<div class="tab-pane" id="2a">
-        <img id=logo src=img/1948W.png>
+        <div id='saint-moritz-1948' onclick='myAlert(this)'><img id=logo src=img/1948W.png></div>
   		</div>
   	</div>
   </div>
@@ -209,82 +209,91 @@ marker.bindPopup(`
 
 
 
+//
+// <div id="uuuuuu" onclick="myAlert(this)">clicker sur moi</div>
+// <script>
+//   function myAlert(element) {
+//     console.log(element);
+//     element.style.backgroundColor = 'red';
+//     alert('coucou' + element.id);
+//   }
+// </script>
 
 
 var marker = L.marker([38.631033, -90.211487], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1904 : St-Louis</b><br><img id=logo src=img/1904.jpg>").openPopup();
+marker.bindPopup("<b style='color:red'>1904 : St-Louis</b><br><div id='saint-louis-1904' onclick='myAlert(this)'><img id=logo src=img/1904.jpg></div>").openPopup();
 var marker = L.marker([59.325063, 18.07251], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1912 : Stockholm</b><br><img id=logo src=img/1912.jpg>").openPopup();
+marker.bindPopup("<b style='color:red'>1912 : Stockholm</b><br><div id='stockholm-1912' onclick='myAlert(this)'><img id=logo src=img/1912.jpg></div>").openPopup();
 // var marker = L.marker([], {icon: summer}).addTo(mymap);
 // marker.bindPopup("<b style='color:red'>1916 : Berlin</b><br><img id=logo src=img/1916.jpg> /n Exo et JO.").openPopup();
 var marker = L.marker([51.221594, 4.400711], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1920 : Anvers</b><br><img id=logo src=img/1920.jpg>").openPopup();
+marker.bindPopup("<b style='color:red'>1920 : Anvers</b><br><div id='anvers-1920' onclick='myAlert(this)'><img id=logo src=img/1920.jpg></div>").openPopup();
 var marker = L.marker([45.930904, 6.865425], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1924 Hiver: Chamonix</b><br><img id=logo src=img/1924W.jpg>").openPopup();
+marker.bindPopup("<b style='color:red'>1924 Hiver: Chamonix</b><br><div id='charmonix-1924' onclick='myAlert(this)'><img id=logo src=img/1924W.jpg></div>").openPopup();
 var marker = L.marker([52.371575, 4.884796], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1928 : Amsterdam</b><br><img id=logo src=img/1928.jpg>").openPopup();
+marker.bindPopup("<b style='color:red'>1928 : Amsterdam</b><br><div id='amsterdam-1928' onclick='myAlert(this)'><img id=logo src=img/1928.jpg></div>").openPopup();
 var marker = L.marker([34.076322, -118.273315], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1932 : Los Angeles</b><br><img id=logo src=img/1932.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1932 : Los Angeles</b><br><div id='los-angeles-1932' onclick='myAlert(this)'><img id=logo src=img/1932.png></div>").openPopup();
 var marker = L.marker([52.552308, 13.381348], {icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1936 : Berlin</b><br><img id=logo src=img/1936.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1936 : Berlin</b><br><div id='1912' onclick='myAlert(this)'><img id=logo src=img/1936.png></div>").openPopup();
 var marker = L.marker([47.492895, 11.100655],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1936 Hiver :  Garmisch-Partenkirchen </b><br><img id=logo src=img/1936W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1936 Hiver :  Garmisch-Partenkirchen </b><br><div id='garmisch-partenkirchen-1936' onclick='myAlert(this)'><img id=logo src=img/1936W.png></div>").openPopup();
 var marker = L.marker([60.178677, 24.936218],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1952 : Helsinki</b><br><img id=logo src=img/1952.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1952 : Helsinki</b><br><div id='helsinki-1952' onclick='myAlert(this)'><img id=logo src=img/1952.png></div>").openPopup();
 var marker = L.marker([59.914556, 10.743256],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1952 Hiver : Oslo</b><br><img id=logo src=img/1952W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1952 Hiver : Oslo</b><br><div id='oslo-1952' onclick='myAlert(this)'><img id=logo src=img/1952W.png></div>").openPopup();
 var marker = L.marker([-37.814992, 144.93576],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1956 : Melbourne</b><br><img id=logo src=img/1956.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1956 : Melbourne</b><br><div id='melborne-1956' onclick='myAlert(this)'><img id=logo src=img/1956.png></div>").openPopup();
 var marker = L.marker([46.53931, 12.136116],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1956 Hiver : Cortina d'Ampezzo </b><br><img id=logo src=img/1956W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1956 Hiver : Cortina d'Ampezzo </b><br><div id='cortina-d-ampezzo-1956' onclick='myAlert(this)'><img id=logo src=img/1956W.png></div>").openPopup();
 var marker = L.marker([41.893691, 12.479782],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1960 : Rome</b><br><img id=logo src=img/1960.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1960 : Rome</b><br><div id='rome-1960' onclick='myAlert(this)'><img id=logo src=img/1960.png></div>").openPopup();
 var marker = L.marker([39.197913, -120.232358],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1960 Hiver : Squaw Valley</b><br><img id=logo src=img/1960W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1960 Hiver : Squaw Valley</b><br><div id='squaw-valley-1960' onclick='myAlert(this)'><img id=logo src=img/1960W.png></div>").openPopup();
 var marker = L.marker([19.429298, -99.139252],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1968 : Mexico</b><br><img id=logo src=img/1968.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1968 : Mexico</b><br><div id='mexico-1968' onclick='myAlert(this)'><img id=logo src=img/1968.png></div>").openPopup();
 var marker = L.marker([45.178746, 5.72731],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1968 Hiver : Grenoble</b><br><img id=logo src=img/1968W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1968 Hiver : Grenoble</b><br><div id='grenoble-1968' onclick='myAlert(this)'><img id=logo src=img/1968W.png></div>").openPopup();
 var marker = L.marker([48.134567, 11.56929],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1972  : Munich</b><br><img id=logo src=img/1972.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1972  : Munich</b><br><div id='munich-1972' onclick='myAlert(this)'><img id=logo src=img/1972.png></div>").openPopup();
 var marker = L.marker([43.06969, 141.352844],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1972 Hiver : Sapporo</b><br><img id=logo src=img/1972W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1972 Hiver : Sapporo</b><br><div id='sapporo-1972' onclick='myAlert(this)'><img id=logo src=img/1972W.png></div>").openPopup();
 var marker = L.marker([45.497299, -73.609085],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1976 : Montréal</b><br><img id=logo src=img/1976.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1976 : Montréal</b><br><div id='montreal-1976' onclick='myAlert(this)'><img id=logo src=img/1976.png></div>").openPopup();
 var marker = L.marker([55.74814, 37.618561],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1980 : Moscou</b><br><img id=logo src=img/1980.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1980 : Moscou</b><br><div id='moscou-1980' onclick='myAlert(this)'><img id=logo src=img/1980.png></div>").openPopup();
 var marker = L.marker([34.076322, -118.273315],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1984 : Los Angeles</b><br><img id=logo src=img/1984.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1984 : Los Angeles</b><br><div id='los-angeles-1984' onclick='myAlert(this)'><img id=logo src=img/1984.png></div>").openPopup();
 var marker = L.marker([43.852949, 18.38356],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1984 Hiver : Sarajevo</b><br><img id=logo src=img/1984W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1984 Hiver : Sarajevo</b><br><div id='1912' onclick='myAlert(this)'><img id=logo src=img/1984W.png></div>").openPopup();
 var marker = L.marker([37.567222, 126.963501],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1988 : Séoul</b><br><img id=logo src=img/1988.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1988 : Séoul</b><br><div id='seoul-1988' onclick='myAlert(this)'><img id=logo src=img/1988.png></div>").openPopup();
 var marker = L.marker([51.190361, -114.038086],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1988 Hiver : Calgary</b><br><img id=logo src=img/1988W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1988 Hiver : Calgary</b><br><div id='calgary-1988' onclick='myAlert(this)'><img id=logo src=img/1988W.png></div>").openPopup();
 var marker = L.marker([41.394118, 2.172546],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1992 : Barcelone</b><br><img id=logo src=img/1992.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1992 : Barcelone</b><br><div id='barcelone-1992' onclick='myAlert(this)'><img id=logo src=img/1992.png></div>").openPopup();
 var marker = L.marker([45.670108, 6.38443],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1992 Hiver : Albertville</b><br><img id=logo src=img/1992W.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1992 Hiver : Albertville</b><br><div id='albertville-1992' onclick='myAlert(this)'><img id=logo src=img/1992W.png></div>").openPopup();
 var marker = L.marker([33.749693, -84.386673],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1996 : Atlanta</b><br><img id=logo src=img/1996.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1996 : Atlanta</b><br><div id='atlanta-1996' onclick='myAlert(this)'><img id=logo src=img/1996.png></div>").openPopup();
 var marker = L.marker([36.630738, 138.213329],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>1998 : Nagano</b><br><img id=logo src=img/1998.png>").openPopup();
+marker.bindPopup("<b style='color:red'>1998 : Nagano</b><br><div id='nagano-1998' onclick='myAlert(this)'><img id=logo src=img/1998.png></div>").openPopup();
 var marker = L.marker([-33.858556, 151.200714],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2000 : Sydney</b><br><img id=logo src=img/2000.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2000 : Sydney</b><br><div id='sydney-2000' onclick='myAlert(this)'><img id=logo src=img/2000.png></div>").openPopup();
 var marker = L.marker([40.764317, -111.921844],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2002 : Salt Lake City</b><br><img id=logo src=img/2002.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2002 : Salt Lake City</b><br><div id='salt-lake-city-2002' onclick='myAlert(this)'><img id=logo src=img/2002.png></div>").openPopup();
 var marker = L.marker([45.068865, 7.678757],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2006 : Turin</b><br><img id=logo src=img/2006.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2006 : Turin</b><br><div id='turin-2006' onclick='myAlert(this)'><img id=logo src=img/2006.png></div>").openPopup();
 var marker = L.marker([39.927431, 116.386414],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2008 : Pékin</b><br><img id=logo src=img/2008.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2008 : Pékin</b><br><div id='beijing-2008' onclick='myAlert(this)'><img id=logo src=img/2008.png></div>").openPopup();
 var marker = L.marker([49.257409, -123.11142],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2010 : Vancouver</b><br><img id=logo src=img/2010.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2010 : Vancouver</b><br><div id='vancouver-2010' onclick='myAlert(this)'><img id=logo src=img/2010.png></div>").openPopup();
 var marker = L.marker([43.584768, 39.714203],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2014 : Sotchi</b><br><img id=logo src=img/2014.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2014 : Sochi</b><br><div id='sochi-2014' onclick='myAlert(this)'><img id=logo src=img/2014.png></div>").openPopup();
 var marker = L.marker([-22.88655, -43.2174689],{icon: summer}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2016 : Rio de Janeiro </b><br><img id=logo src=img/2016.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2016 : Rio de Janeiro </b><br><div id='rio-de-janeiro-2016' onclick='myAlert(this)'><img id=logo src=img/2016.png></div>").openPopup();
 var marker = L.marker([37.373486, 128.388119],{icon: winter}).addTo(mymap);
-marker.bindPopup("<b style='color:red'>2018: Pyeongchang</b><br><img id=logo src=img/2018.png>").openPopup();
+marker.bindPopup("<b style='color:red'>2018: Pyeongchang</b><br><div id='pyeongchang-2018' onclick='myAlert(this)'><img id=logo src=img/2018.png></div>").openPopup();
 
 
 

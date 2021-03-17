@@ -79,6 +79,39 @@
   }
  </style>
 
+<style>#tabcontrol a {
+   display: inline-block;
+   border-width: 1px 1px 0px 1px;
+   border-style: solid;
+   border-color: black;
+   border-radius: 0.5em 0.5em 0 0;
+   padding: 0.75em 1em;
+   text-decoration: none;
+   color: black;
+   background-color: white;
+   font-weight: bold;
+   position: relative;
+}
+#tabcontrol a:hover {
+   text-decoration: underline;
+}
+#tabbody div {
+   border: 1px solid black;
+   margin-top: -1px;
+   padding: 1em;
+   background-color: white;
+   position: relative;
+   z-index: 0;
+}
+#tabcontrol a:nth-child(1), #tabbody div:nth-child(1) { background-color: #ffffdd; }
+#tabcontrol a:nth-child(2), #tabbody div:nth-child(2) { background-color: #ddffdd; }
+.chartjs-size-monitor {
+  display: none;
+}
+</style>
+
+
+
 </head>
 
 <body>
@@ -86,10 +119,17 @@
     <%- include("nav") -%>
     <h1>Épreuves & Nombre de médailles des Jeux Olympiques</h1>
     <h2>Information cartographique</h2>
-
     <div id="carte"></div>
 
     <h2>Information graphique</h2>
+ <!-- tab fabrication -->
+    <p id="tabcontrol">
+     <a href="#tabpage1">Date</a>
+     <a href="#tabpage2">Pays</a>
+   </p>
+
+ <div id="tabbody">
+    <div id="tabpage1">
     <h3>Statistiques de nombres de médailles de tous les Jeux Olympiques</h3>
     <form action="#" method="get" id="forme_date">
       <fieldset>
@@ -166,14 +206,15 @@
       </select>
     </form> -->
 
+      <canvas id="myChart" width="400" height="400"></canvas>
+
+    </div>
 
 
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <form action="#" method="get" id="forme_pays">
-
-
-
+<div id="tabpage2">
   <h3>Statistiques de changements de nombres de médailles de chaque pays</h3>
+
+  <form action="#" method="get" id="forme_pays">
     <fieldset>
     <span>Pays : </span>
     <select name="olym_pays" id="pays">
@@ -181,14 +222,70 @@
     </fieldset>
 
     </form>
+
+
     <canvas id="myChartPays" width="400" height="400"></canvas>
 
+  </div>
+ </div>
 
     </div>
 
 
     <%- include("footer") -%>
   </div>
+
+
+
+
+  <script type="text/javascript">
+
+  var tabs = document.getElementById('tabcontrol').getElementsByTagName('a');
+  var pages = document.getElementById('tabbody').getElementsByTagName('div');
+  function changeTab() {
+
+     var targetid = this.href.substring(this.href.indexOf('#')+1,this.href.length);
+
+     for(var i=0; i<pages.length; i++) {
+        if( pages[i].id != targetid ) {
+           pages[i].style.display = "none";
+        }
+        else {
+           pages[i].style.display = "block";
+        }
+     }
+
+
+     for(var i=0; i<tabs.length; i++) {
+        tabs[i].style.zIndex = "0";
+     }
+     this.style.zIndex = "10";
+     return false;
+  }
+  for(var i=0; i<tabs.length; i++) {
+     tabs[i].onclick = changeTab;
+  }
+  tabs[0].onclick();
+  </script>
+
+
+  <script>
+    function myAlert(element) {
+      console.log(element);
+      element.style.backgroundColor = 'green';
+      url = "http://www.nationalanthems.info/"+ element.id +".htm";
+      console.log(url);
+      window.open('https://www.olympic.org/fr/'+element.id+'');
+    }
+  </script>
+
+
+
+
+
+
+
+
 
 
 
