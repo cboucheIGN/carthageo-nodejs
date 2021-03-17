@@ -1,4 +1,13 @@
+
+#carte, #usMap, #geomap { height: 280px; }
+.leaflet-control.info {
+  background-color: antiquewhite;
+}
+.leaflet-control.info img { height: 70px;}
+
 .cthg-map-list {
   list-style: none;
   color: grey;
 }
+#map { height: 500px; }
+

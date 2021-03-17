@@ -14,7 +14,7 @@ let app = express();
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-// for parsing application/json
+// // for parsing application/json
 app.use(bodyParser.json());
 
 // je peux acceder par le navigateur a tous le fichier de mon
