@@ -16,6 +16,10 @@
     height: 70px;
     color: black;
   }
+  #events
+  {
+    width: 1000px;
+  }
   </style>
 
   <!-- page const -->
@@ -41,50 +45,197 @@
   <!-- <div id="header">
   <div class="container"> -->
   <%- include("nav") -%>
-  <!-- <div id="banner">&nbsp;</div> -->
+
   <div id="featured">
     <div class="container">
       <div class="row">
-
-        <div class="3u">
+        <button class="w3-button w3-display-left" onclick="plusDivs(-1)" id ="leftbutton">
+          <img src="https://www.direct-signaletique.com/I-Grande-12692-fleches-en-adhesif-mural-gamme-trend-h-140-x-l-170-mm.net.jpg" alt="&#10094;" width="20">
+        </button>
+        <button class="w3-button w3-display-right" onclick="plusDivs(+1)"id ="rightbutton">
+          <img src="https://www.direct-signaletique.com/I-Grande-12692-fleches-en-adhesif-mural-gamme-trend-h-140-x-l-170-mm.net.jpg" alt="&#10095;" width="20" class="rotation180">
+        </button>
+        <div class="Slide">
           <section>
-            <a href="#" class="image full"><img src="img/pics02.jpg" alt=""></a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Bundesarchiv_Bild_183-G00630%2C_Sommerolympiade%2C_Siegerehrung_Weitsprung.jpg?uselang=fr" alt="1936" id="events">
             <header>
-              <h2>Etiam posuere</h2>
+              <h2>1936, les jeux de la honte</h2>
             </header>
-            <p>Pellentesque viverra vulputate enim. Aliquam erat volutpat. Pellentesque tristique ante. Sed vel tellus.</p>
+            <p>Les Jeux olympiques étaient déjà attribués à l’Allemagne en 1916, mais ont été annulés à cause de la Première Guerre mondiale. Incriminée et tenue responsable pour le déclenchement du conflit mondial, l’Allemagne est suspendue des Jeux de 1920 et de 1924. Cependant, après un long processus de négociation, les autorités allemandes ont réussi à faire réintégrer leur pays pour les Jeux olympiques d'été de 1928 et postulent pour accueillir les Jeux d’été de 1936. Leur argument est que les Jeux ont déjà été attribués à l’Allemagne dans le passé — en 1916 — donc, les infrastructures sont déjà prêtes, et la candidature est présentée comme un moyen de redorer son blason.</p>
+
+            <p>Malgré les nombreuses confusions, l’événement sportif mondial est attribué au régime de Weimar, donc avant l'arrivée au pouvoir des nazis. En 1933, avec l’accession au pouvoir d’Adolf Hitler, la capacité d’organiser un tel événement est sérieusement remise en question, notamment en raison de l'idéologie raciste et discriminatoire du parti nazi. En fait, le régime nazi a aggravé la situation lorsqu’il suggéra l’exclusion des Juifs des Jeux de Berlin.</p>
+
+            <p>À la surprise générale, malgré ses propos houleux et haineux envers les Juifs, Hitler approuve la réception des Jeux et promet de tout faire pour la réussite de l’événement. Le dictateur allemand clame publiquement la promotion des relations entre les Nations et le développement du sport chez les jeunes ; cependant, son but ultime est la prospérité acquise des atouts politiques non négligeables de l’organisation des Jeux olympiques <a href="https://fr.wikipedia.org/wiki/Jeux_olympiques_d%27%C3%A9t%C3%A9_de_1936#Contexte_historique_des_JO_de_Berlin">[wikipedia]</a>.</p>
           </section>
         </div>
 
-        <div class="3u">
+        <div class="Slide">
           <section>
-            <a href="#" class="image full"><img src="img/pics03.jpg" alt=""></a>
+            <img src="https://img.fifa.com/image/upload/t_tc1/jyvs4loaulmve0vo7jyc.jpg" alt="1956" id="events">
             <header>
-              <h2>Fusce ultrices</h2>
+              <h2>1956, l'année des boycott</h2>
             </header>
-            <p>Pellentesque tristique ante. Sed vel tellus. Curabitur sem urna, consequat suscipit mattis placerat, nulla.</p>
+            <p>L'année 1956 est marquée par une multitude d'événements politiques majeurs tels l'affaire du Canal de Suez, le deuxième conflit entre l'Égypte et Israël, la violence en Afrique du Nord, et en particulier en Algérie, mais aussi par l'invasion de la Hongrie par les chars soviétiques.</p>
+            <p>Dans ce contexte politique chargé, les Jeux olympiques de Melbourne, à 20 000 km du continent européen, resteront dans l'histoire comme les premiers ayant occasionné le boycott de certains pays.</p>
+            <p>La révolution hongroise, l'invasion soviétique et la répression sanglante qui s'ensuit provoqua le boycott de trois pays européens : l'Espagne, les Pays-Bas et la Suisse. Sur ce conflit, Avery Brundage, président du CIO, lança un message d'apaisement pour dénoncer ces événements, et déclara que « les Jeux olympiques sont des compétitions entre individus, non entre nations ».</p>
+            <p>Autres types de boycott, l'Égypte, l'Irak et le Liban dénoncent la présence d'Israël aux Jeux olympiques en raison de la crise du canal de Suez. Par ailleurs, la République populaire de Chine décide de quitter Melbourne après que le drapeau de République de Chine (Taïwan) eut été hissé.</p>
+            <a href="https://fr.wikipedia.org/wiki/Jeux_olympiques_d%27%C3%A9t%C3%A9_de_1956#Contexte_historique_et_boycott">[wikipedia]</a>
           </section>
         </div>
 
-        <div class="3u">
+        <div class="Slide">
           <section>
-            <a href="#" class="image full"><img src="img/pics04.jpg" alt=""></a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/John_Carlos%2C_Tommie_Smith%2C_Peter_Norman_1968cr.jpg/220px-John_Carlos%2C_Tommie_Smith%2C_Peter_Norman_1968cr.jpg" alt="image non chargé (JO 68 poing levé)" id="events">
             <header>
-              <h2>Donec dictum</h2>
+              <h2>1968, Le poing levé des sympathisants</h2>
             </header>
-            <p>Pellentesque viverra vulputate enim. Aliquam erat volutpat. Curabitur sem urna, consequat mattis placerat, nulla.</p>
+            <p>Lors de ces Jeux de Mexico, les athlètes afro-américains, mais également une large majorité de leurs compatriotes blancs, portent sur leur veston un macaron portant l'inscription Olympic project for human rights (Projet olympique pour les droits humains). John Carlos déclare avant le début des Jeux que les athlètes noirs d'Amérique ne boycotteront ni saboteront les Jeux mais qu'ils réaffirmeront leur position contre l'injustice envers les Noirs.</p>
+
+            <p>Le 16 octobre 1968, une controverse éclate au terme de la finale masculine du 200 mètres. Les coureurs américains Tommie Smith et John Carlos, arrivés premier et troisième du 200 mètres, protestent sur le podium de la remise des médailles contre la ségrégation raciale aux États-Unis en baissant la tête et en pointant, lors de l'hymne américain, leur poing ganté de noir vers le ciel. Un autre geste qui a moins été remarqué lors de cet épisode est qu'ils ont posé sur le podium leur paire de Puma Suede, ne montrant que des chaussettes noires montantes, pour rappeler que les afro-américains n'avaient même pas le moyen de s'offrir ce type de chaussures.</p>
+
+            <p>Ce geste symbolique est interprété comme la marque de leur soutien au mouvement politique afro-américain des Black Panthers et du Black power (pouvoir noir aux États-Unis). Avery Brundage, président réactionnaire du Comité international olympique, juge ce geste scandaleux et demande aux officiels américains l'exclusion de Smith et Carlos. Doug Roby, président du Comité olympique des États-Unis, refuse dans un premier temps puis face à la menace du CIO de suspendre toute l'équipe américaine, décide de renvoyer les deux athlètes chez eux. Ces derniers seront par la suite exclus à vie des Jeux olympiques. Peter Norman qui a accepté par solidarité de porter le macaron "Olympic project for human rights" ne sera pas autorisé par le comité olympique australien à participer aux JO de 1972.</p>
+
+            <p>Après son geste, John Carlos déclare aux journalistes : « Après ma victoire, l'Amérique blanche dira que je suis Américain, mais si je n'avais pas été bon, elle m'aurait traité de Noir » (en anglais, negro signifie noir et n'a pas la connotation péjorative du français nègre qui est rendue par le terme nigger).</p>
+
+            <p>Quelques jours plus tard, les athlètes américains Lee Evans, Larry James et Ronald Freeman, ayant réalisé un triplé américain sur 400 mètres, montent sur le podium en portant le béret noir des Black Panthers pour dénoncer le racisme dans leur pays. Ils ne sont pas exclus.<a href="https://fr.wikipedia.org/wiki/Jeux_olympiques_d%27%C3%A9t%C3%A9_de_1968#Le_poing_lev%C3%A9_des_sympathisants">[wikipedia]</a></p>
           </section>
         </div>
 
-        <div class="3u">
+        <div class="Slide">
           <section>
-            <a href="#" class="image full"><img src="img/pics05.jpg" alt=""></a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/MunichMassacrePlaque.jpg/789px-MunichMassacrePlaque.jpg" alt="1972" id="events">
             <header>
-              <h2>Maecenas luctus</h2>
+              <h2>1972, Prise d'otages des Jeux olympiques de Munich</h2>
             </header>
-            <p>Pellentesque viverra vulputate enim. Aliquam erat volutpat. Curabitur sem urna, consequat mattis placerat, nulla.</p>
+            <p>La prise d'otages des Jeux olympiques de Munich (aussi appelée le massacre de Munich) a eu lieu au cours des Jeux olympiques d'été de 1972 à Munich en Allemagne de l'Ouest. Le 5 septembre 1972, des membres de l'équipe olympique d'Israël ont été pris en otage et assassinés par des membres de l'organisation palestinienne Septembre noir.</p>
+
+            <p>Le bilan de la prise d'otages est de onze membres de l'équipe olympique israélienne assassinés et d'un policier ouest-allemand tué. Cinq des huit terroristes ont été tués, les trois autres capturés. </p>
+
+            <p>Cet événement fait suite à la guerre des Six Jours et à la résolution no 242 de l'ONU de 1967, qui exige qu'Israël restitue les terres conquises lors de cette guerre aux différents pays arabes. En échange, ces États doivent reconnaître l'État d'Israël. Les Palestiniens sont alors placés sous occupation israélienne. L'organisation Septembre noir tire son nom des événements de septembre 1970, qui ont vu les Jordaniens et l'O.L.P. s'affronter très violemment.</p>
+
+            <p>Le 5 septembre 1972 à 4 h 30 du matin, tandis que les athlètes israéliens dorment, huit membres de l'organisation terroriste palestinienne Septembre Noir, vêtus de survêtements afin de se faire passer pour des sportifs et transportant des sacs chargés de fusils d'assaut, de pistolets et de grenades, franchissent grâce à l'aide d’athlètes canadiens (même si on a longtemps cru qu'ils étaient américains) qui les ont pris pour des homologues, une clôture grillagée afin de s'introduire dans le village olympique. Puis ils pénètrent dans l'immeuble au 31 Connollystraße, dans lequel se trouvent les deux appartements utilisés par la délégation israélienne, 21 sportifs et encadrants. Leurs infiltration est facilitée par le fait que les dispositifs de sécurité et de surveillance sont considérés comme légers, les organisateurs voulaient des lieux plus accueillants pour effacer le souvenir des très controversées olympiades de 1936 à Berlin.</p>
+
+            <p>Un membre de la délégation israélienne, Yossef Gutfreund, alerté par le bruit du commando qui vide ses sacs dans le hall de l'immeuble fait barrage avec son corps à la porte criblée de balles, tandis qu'il prévient ses camarades en criant « Attention, terroristes ! » La tentative de barrage de Gutfreund donne assez de temps à son compagnon de chambre, l'entraîneur d'haltérophilie Tuvia Sokolovsky, pour briser une fenêtre et se sauver. Moshe Weinberg, entraîneur de lutte, tente de s'interposer à son tour, mais les assaillants lui tirent une balle dans la joue, le forçant à leur indiquer où se trouvent ses autres camarades. Il les attaque de nouveau, permettant ainsi à l'athlète Gad Tsobari de s'échapper, et est aussitôt assassiné. Yossef Romano, un haltérophile, tente lui aussi de s'opposer aux terroristes avec un couteau à fruit ; il blesse l'un d'entre eux avant d'être abattu.</p>
+
+            <p>L'assaut des Palestiniens se solde par la prise d'otage de neuf membres de la délégation Israélienne. En plus de Yossef Gutfreund, les autres otages sont : l'entraîneur de tir sportif Kehat Shorr, l'entraîneur d'athlétisme Amitzur Shapira, l'entraîneur d'escrime André Spitzer, l'entraîneur d'haltérophilie Yacov Springer, les lutteurs Eliezer Halfin et Mark Slavin, et les haltérophiles David Mark Berger et Zeev Friedman. Les autres membres de la délégation réussissent à fuir en sautant des balcons ou en se cachant dans l'immeuble. À 4 h 47, une femme de ménage alertée par les coups de feu prévient le poste de sécurité du village olympique, qui envoie un garde non armé sur les lieux. Ce dernier aperçoit un homme encagoulé, arme à la main, derrière la vitre de l'immeuble. À 5 h 08, les terroristes font parvenir aux policiers leurs revendications, déclarant qu'à compter de 9 h, ils abattront un otage toutes les heures et jetteront son corps dans la rue si celles-ci ne sont pas acceptées.</p>
+
+            <p>À 8 h 15, une compétition de dressage hippique se déroule selon le programme.</p>
+
+            <a href="https://fr.wikipedia.org/wiki/Prise_d%27otages_des_Jeux_olympiques_de_Munich">[wikipedia]</a>
           </section>
         </div>
+
+        <div class="Slide">
+          <section>
+            <img src="https://historyoftheolympics.com/wp-content/uploads/2019/10/protest-sign-boycott-apartheid-sport.jpg" alt="1976" id="events">
+            <header>
+              <h2>1976, Boycott des pays africains contre l'Apartheid</h2>
+            </header>
+            <p>Ces Jeux olympiques sont marqués par le boycott de 22 nations africaines qui protestent contre la présence de la Nouvelle-Zélande. Elles reprochent à cette dernière d'avoir envoyé son équipe de rugby participer à une tournée en Afrique du Sud, pays pratiquant l'apartheid. </p>
+
+            <p>Vingt-deux pays africains décident de quitter les Jeux quelques heures avant la cérémonie d’ouverture. L'Égypte, le Cameroun et la Tunisie participeront au début des épreuves avant de s'aligner sur les autres nations africaines et de quitter les Jeux. Le Sénégal et la Côte d'Ivoire décident de ne pas s'associer à ce boycott.</p>
+
+            <p>Le Comité international olympique est surpris par ce boycott. Il le conteste car l'Afrique du Sud n'est plus invitée aux Jeux depuis plus de dix ans, et que le rugby à XV n'est plus un sport olympique.</p>
+
+            <p>Par ailleurs, le gouvernement du Canada refuse de laisser concourir les athlètes de Taïwan sous une autre bannière que celle de la République populaire de Chine. Taïwan refuse et ne participe donc pas aux Jeux./p>
+
+            <p>Ce boycott massif préfigure de nouvelles absences de nations pour motif politique aux Jeux de 1980 et de 1984</p>
+            <a href="https://fr.wikipedia.org/wiki/Jeux_olympiques_d'%C3%A9t%C3%A9_de_1976#Nations_boycottant_les_Jeux">[wikipedia]</a>
+          </section>
+        </div>
+
+        <div class="Slide">
+          <section>
+            <img src="https://static.dw.com/image/3515956_4.jpg" alt="1980" id="events">
+            <header>
+              <h2>1980, Les tensions de la guerre froide</h2>
+            </header>
+            <p>En décembre 1979, l'invasion de l'Afghanistan par l'Union Soviétique provoque, à l'initiative des États-Unis d'Amérique, un mouvement de protestation mondial, qui entrainera un boycott1 massif d'une cinquantaine de nations à ces Jeux de Moscou.</p>
+
+            <p>En cette période de guerre froide, les Américains utilisent le boycott comme moyen de pression. Le 4 janvier 1980, le président Jimmy Carter, en pleine campagne de réélection fragilisée par la crise des otages américains en Iran, prend unilatéralement des mesures d'embargo économique contre l'URSS. Puis il demande au président du CIO de surseoir à la tenue des Jeux si les troupes soviétiques ne se retirent pas d'Afghanistan. Le 20 janvier 1980, le président américain adresse un ultimatum au Kremlin : « Si dans un mois au plus tard, vos troupes n'ont pas évacué l'Afghanistan, l'équipe olympique américaine n'ira pas à Moscou et nous demanderons aux autres pays de s'abstenir aussi ».</p>
+
+            <p>Après plusieurs mois d'intenses négociations, et après une hypothétique solution de rechange en Grèce, le Comité international olympique présidé par Lord Killanin, annonce le 13 février, qu'il refuse, à l'unanimité le boycottage ou le transfert des Jeux olympiques de Moscou. Il obtient quelques concessions symboliques de la part de Léonid Brejnev, notamment le fait de défiler derrière le drapeau olympique. En revanche, Washington ne cède pas et le boycott américain a bien lieu.</p>
+
+            <p>Le 5 septembre 1972 à 4 h 30 du matin, tandis que les athlètes israéliens dorment, huit membres de l'organisation terroriste palestinienne Septembre Noir, vêtus de survêtements afin de se faire passer pour des sportifs et transportant des sacs chargés de fusils d'assaut, de pistolets et de grenades, franchissent grâce à l'aide d’athlètes canadiens (même si on a longtemps cru qu'ils étaient américains) qui les ont pris pour des homologues, une clôture grillagée afin de s'introduire dans le village olympique. Puis ils pénètrent dans l'immeuble au 31 Connollystraße, dans lequel se trouvent les deux appartements utilisés par la délégation israélienne, 21 sportifs et encadrants. Leurs infiltration est facilitée par le fait que les dispositifs de sécurité et de surveillance sont considérés comme légers, les organisateurs voulaient des lieux plus accueillants pour effacer le souvenir des très controversées olympiades de 1936 à Berlin.</p>
+
+            <p>Parmi les nations ne faisant pas le déplacement à Moscou, le Canada, le Japon, la Corée du Sud et l'Allemagne de l'Ouest s'alignent sur les positions américaines. Par ailleurs, 29 pays musulmans s'associent également à ce boycott considérant l'attaque contre l'Afghanistan comme une attaque contre l'Islam.</p>
+            <a href="https://fr.wikipedia.org/wiki/Jeux_olympiques_d'%C3%A9t%C3%A9_de_1980#Boycott_%C3%A0_la_suite_de_l'invasion_sovi%C3%A9tique_en_Afghanistan">[wikipedia]</a>
+          </section>
+        </div>
+
+        <div class="Slide">
+          <section>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/US_Olympics_Team_1984.JPEG/800px-US_Olympics_Team_1984.JPEG" alt="1984" id="events">
+            <header>
+              <h2>1984, c'est au tour du bloc sovietique de boycotter</h2>
+            </header>
+            <p>Après 1976 et 1980, ces Jeux olympiques de Los Angeles furent une nouvelle fois entachés par le boycott de nations, issues cette fois-ci, des pays communistes. Le 8 mai 1984, l'Union des républiques socialistes soviétiques (URSS) rend publique sa décision de ne pas envoyer de délégation aux Jeux olympiques d'été de 1984, aux États-Unis. Elle fut suivie par une majorité de pays du bloc soviétique, dont la RDA, et Cuba.</p>
+
+            <p>Officiellement, l'URSS refuse d'aller à Los Angeles pour des raisons de sécurité mais aussi pour l'utilisation politique que les États-Unis voudront faire de l'événement. Elle parla de "non-participation" dans la mesure où elle y envoya ses juges et ses arbitres dans le but de ne pas déstabiliser les jeux En réalité, cette annonce est perçue comme une réplique au boycott américain quatre ans plus tôt, et qui cherche à dégrader la qualité de ces jeux (60 % des médailles de Montréal en 1976 furent obtenues par les nations du bloc de l'Est), les commentateurs y perçoivent une vengeance et aussi les relations URSS-USA refroidies sous Ronald Reagan. Grigory Rodchenkov indique que le boycott vient du fait que les contrôles anti-dopage seraient renforcés et feraient échouer le dopage d'état soviétique.</p>
+
+            <p>Malgré les efforts du Comité international olympique, ce boycott eut bien lieu et concerna une quinzaine de pays. Des pays communistes tels que la Roumanie, la Yougoslavie ou la Chine ne s'alignèrent pas sur les positions moscovites. Afin de ne pas punir leurs athlètes, neuf pays socialistes non-participants (l'URSS, la RDA, la Tchécoslovaquie, la Pologne, la Bulgarie, la Hongrie, la Mongolie, Cuba, la Corée du Nord) organisèrent dans leurs capitales respectives, au moment même du déroulement des JO de Los Angeles, des contre-jeux « de l'Amitié » ouverts à toutes les délégations sportives des pays non-participants.</p>
+
+            <p>L'Iran et la Libye ne participèrent pas à ces jeux de Los Angeles, mais pour des raisons politiques autres que celles des 15 pays. Le capitaine Thomas Sankara, chef de la Haute Volta (devenu Burkina Faso le 4 août 1984), décida également de boycotter ces jeux.</p>
+            <a href="https://fr.wikipedia.org/wiki/Jeux_olympiques_d'%C3%A9t%C3%A9_de_1984#Boycott_des_pays_du_bloc_sovi%C3%A9tique">[wikipedia]</a>
+          </section>
+        </div>
+
+        <div class="Slide">
+          <section>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Atlanta_Olympic_Park_Bomb_Aftermath.png" alt="">
+            <header>
+              <h2>1996, la suprématie blanche tue</h2>
+            </header>
+            <p>Alors que l'Amérique est toujours sous le choc de l'explosion, inexpliquée à l'époque, du Vol 800 TWA au large de Long Island causant 230 morts, un attentat meurtrier25 survient durant les Jeux olympiques d'Atlanta avec l'explosion d'une bombe dans le parc du Centenaire, au beau milieu du village olympique.</p>
+
+            <p>Dans la nuit du vendredi au samedi 27 juillet 1996, à 1h20 heure locale, une explosion violente26 se produit au cœur du parc du Centenaire fréquenté alors par des étudiants et des touristes pour faire la fête. Le bilan est lourd : deux morts et 111 blessés. Dès les premières constatations, la police déclare que la bombe, d'origine artisanale, était composée d'un tube en métal contenant des clous et des vis. Très vite, le Comité international olympique condamna cet incident et affirma que ces Jeux d'Atlanta devaient se poursuivre, comme dans le passé à la suite de la prise d'otages sanglante de Munich en 1972. Ce samedi 27 juillet, une minute de silence fut observée sur tous les sites et les drapeaux olympiques mis en berne. Lors de la cérémonie de clôture, Juan Antonio Samaranch déclara qu'« Aucun acte de terrorisme n'a jamais détruit ni ne détruira jamais le Mouvement olympique27 ».</p>
+
+            <p>Quelques années plus tard, un suspect dénommé Eric Rudolph, proche des milices et mouvements religieux extrémistes hostiles au gouvernement fédéral, sera arrêté28 puis condamné à la prison à vie29.</p>
+            <a href="https://fr.wikipedia.org/wiki/Attentat_du_parc_du_Centenaire">[wikipedia]</a>
+          </section>
+        </div>
+
+        <div class="Slide">
+          <section>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Unification_flag_of_Korea_%28pre_2006%29.svg/1280px-Unification_flag_of_Korea_%28pre_2006%29.svg.png" alt="flag of Unified Korea" id="events">
+            <header>
+              <h2>2000, les 2 corées défilent ensemble</h2>
+            </header>
+            <p>Lors des Jeux asiatiques de 1990, des négociations ont lieu pour former une équipe unifiée pour les deux Corées. Elles n’aboutissent pas, mais le drapeau de l’unification est dessiné pour l’occasion. Il représente la péninsule coréenne, y compris l’île de Jeju, en bleu clair sur fond blanc.</p>
+
+            <p>La première utilisation du drapeau a lieu en 1991, lorsque les deux pays présentent une seule équipe aux championnats du monde de tennis de table à Chiba, au Japon ; ainsi qu’à la Coupe du monde de football des moins de 20 ans, qui se déroule au Portugal.</p>
+
+            <p>Pour les cérémonies d’ouverture des Jeux olympiques de Sydney en 2000, des Jeux asiatiques de 2002 à Busan, des Universiades d’été de Daegu en 20033, des JO d’Athènes en 2004, de ceux de Turin en 2006 et des Jeux asiatiques organisés au Qatar en 2006, les équipes sportives nationales des deux Corées défilent ensemble, mais concourent séparément.</p>
+
+            <p>En 2008, aux Jeux olympiques de Pékin, les deux délégations ne défilent pas ensemble et sont séparées par trois autres pays, contrairement à ce que prévoyait l’ordre alphabétique.</p>
+
+            <p>En 2018, les Jeux olympiques d'hiver se déroulent à Pyeongchang, en Corée du Sud, et les deux pays défilent à nouveau ensemble sous le drapeau unifié5. Une équipe unifiée de Corée est également composée pour l’épreuve de hockey sur glace féminin.</p>
+
+            <p>En 2018, lors des Championnats du monde de judo les deux équipes nationales de Corée sont réunies pour l'épreuve de compétition par équipe mixte et décrochent la médaille de bronze.</p>
+
+            <p>Le drapeau est arboré par l'équipe de Corée unifiée lors du championnat du monde masculin de handball 2019.</p>
+            <a href="https://fr.wikipedia.org/wiki/Drapeau_de_l%27unification_cor%C3%A9enne">[wikipedia]</a>
+          </section>
+        </div>
+
+
+        <div class="Slide">
+          <section>
+            <img src="https://specials-images.forbesimg.com/imageserve/1207652799/960x0.jpg?fit=scale" alt="2020" id="events">
+            <header>
+              <h2>2020, les jeux décalés à cause de la pandémie</h2>
+            </header>
+            <p>Le 5 février 2020, le comité d'organisation s'inquiète de la maladie à coronavirus 2019 dont l'épidémie prend de l'ampleur. Toshiro Muto déclare notamment : « Nous sommes extrêmement inquiets, dans le sens où l’avancée de l’épidémie pourrait tempérer l’intérêt et l’enthousiasme pour les Jeux ». Courant mars 2020, l'hypothèse d'une annulation des Jeux inquiète les athlètes, puis des fédérations nationales et internationales et des comités nationaux olympiques annoncent tour à tour leur intention de ne pas envoyer des athlètes à Tokyo aux dates prévues.</p>
+
+            <p>Le 22 mars 2020, face à ce qui est devenu une pandémie, le président du CIO, Thomas Bach, indique que « l’annulation [des J.O. de Tokyo] n'est pas à l'ordre du jour » mais reconnaît qu'il est envisagé « un scénario de report »11. La décision devant être prise d'ici fin avril 2020. Trois scénarios seraient étudiés s'il y avait un report : automne 2020, été 2021 ou été 202212. Le même jour, les comités olympique et paralympique canadiens décident qu'aucun athlète canadien ne sera envoyé aux JO de Tokyo si ces derniers ne sont pas reportés à une date ultérieure13. Le comité olympique australien annonce lui aussi de ne pas envoyer d'athlètes australiens aux JO14.</p>
+
+            <p>Le 24 mars 2020, en raison de la pandémie de Covid-19, le Premier ministre du Japon Shinzō Abe demande le report des Jeux d'un an, soit en 2021, aussitôt entériné par le CIO. Le nom des Jeux restera inchangé : « Jeux olympiques et paralympiques de Tokyo 2020 ». Les Jeux de 1916, 1940 et 1944 avaient été annulés durant les deux guerres mondiales, mais c'est la première fois qu'ils sont reportés.</p>
+            <a href="https://fr.wikipedia.org/wiki/Drapeau_de_l%27unification_cor%C3%A9enne">[wikipedia]</a>
+          </section>
+        </div>
+
+
+
 
       </div>
     </div>
