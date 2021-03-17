@@ -31,7 +31,7 @@ exports.listcountry = function (req, res){
             id: item.id,
             name: item.name,
             code: item.code,
-            img: `${baseurl}/${item.name.substring(0, 1)}/${encodeURI(item.name)}/CNO-${item.code}.jpg`,
+            img: `${baseurl}/${item.name.substring(0, 1)}/${item.name.replace(" ","_")}/CNO-${item.code}.jpg`,
             first_participation: item.first_participation,
             last_participation: item.last_participation
           },
