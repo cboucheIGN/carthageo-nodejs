@@ -18,6 +18,15 @@ module.exports = function(app) {
   app.route('/api/bdd/joMedAll')
     .post(databaseController.joMedAll);
 
+  app.route('/api/bdd/paysTop')
+    .post(databaseController.paysTop);
+
+  app.route('/api/bdd/paysGenre')
+    .post(databaseController.paysGenre);
+
+  app.route('/api/bdd/athTab')
+    .post(databaseController.athTab);
+
 };
 
 

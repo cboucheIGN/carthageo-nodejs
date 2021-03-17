@@ -8,8 +8,8 @@ exports.list = function(req, res){
   const table = req.params.table;
   // return joMedSports(req, res);
   // check(req, res);
-  if (table == 'jomedgeom') {
-    return joMed(req, res);
+  if (table == 'paystop') {
+    return paysTop(req, res);
   }else if (table == 'jomedsportgeom'){
     return joMedSports(req, res);
   }
@@ -50,9 +50,72 @@ exports.joMedAll = function(req, res){
     })
 }
 
-var annee = 1980
-var saison = "'Summer'"
-var sport = "'Boxing'"
+exports.paysTop = function(req, res){
+  
+  let sql = "SELECT sport, sum(med_sport) AS med FROM ath WHERE code LIKE '"+ req.body.paysClick +"' GROUP BY sport ORDER BY med DESC LIMIT 5";
+  
+  db.any(sql)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
+
+exports.athTab = function(req, res){
+  
+  let sql = "SELECT name, sum(med_sport) AS med, all_sport, all_country, year FROM ath WHERE code LIKE '"+ req.body.paysClick +"' AND gender ILIKE '%men' GROUP BY name, med_sport, all_sport, all_country, year ORDER BY med DESC LIMIT 10";
+  console.log(sql)
+  db.any(sql)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
+
+exports.paysGenre = function(req, res){
+  
+  let sql = "SELECT * FROM genre WHERE code LIKE '"+ req.body.paysClick +"'";
+  
+  db.any(sql)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
+
+
+
+
+const paysTop = function(req, res){
+  
+  let sql = "SELECT sport, sum(med_sport) AS med FROM ath WHERE code LIKE 'FIN' GROUP BY sport ORDER BY med DESC LIMIT 5";
+  
+  db.any(sql)
+    .then((data) => {
+      const result = data.map((item) => {
+        return {
+          type : 'Feature',
+          properties : {
+            sport: item.sport,
+            med: item.med
+          }
+        }
+      });
+      res.json({
+        type: 'FeatureCollection',
+        features: result
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+}
 
 
 const joMed = function(req, res){

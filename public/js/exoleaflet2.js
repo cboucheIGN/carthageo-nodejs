@@ -3,7 +3,7 @@ var mapboxAccessToken = 'pk.eyJ1IjoiY2JvdWNoZWlnbiIsImEiOiJja2x1b3BsMTQwMmk1MnZv
 var mymap = L.map('mapMed').setView([40, 10], 2);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    id: 'mapbox/light-v10',
+    id: 'mapbox/dark-v10',
     attribution: '...',
     tileSize: 512,
     zoomOffset: -1,
@@ -26,14 +26,16 @@ const styleSoc = function(feature) {
     if (soc) {
         return {
             fillColor: '#ff0000',
-            color: '#ff0000',
+            color: '#ffffff',
             fillOpacity: 0.3,
+            opacity: 0.1,
             weight: 1
         };
     } 
     return {
-        fillColor: '#0000ff',
+        fillColor: '#203354',
         fillOpacity: 0.3,
+        opacity: 0.1,
         weight: 1
     }
 }
@@ -55,13 +57,13 @@ const styleMed = function(feature, med) {
     }
     else if (med === "mb") {
         return {
-            color: '#614E1A',
+            color: '#cd7f32',
             radius : 0.5*feature.properties.mb
         }
     }
     else if (med === "mall") {
         return {
-            color: '#0000ff',
+            color: '#ffffff',
             radius : 0.5*feature.properties.mall
         }
     }
@@ -72,9 +74,9 @@ function highlightFeature(e, features) {
     layer.setStyle({
         weight: 2,
         opacity: 1,
-        color: 'black',
+        color: '#ffffff',
         dashArray: '4',
-        fillOpacity: 0.5
+        fillOpacity: 0.7
     });
 }
 
@@ -262,7 +264,7 @@ function joMed (e){
             {
                 label: 'Bronze medals',
                 data: mb,
-                backgroundColor: '#614E1A'
+                backgroundColor: '#cd7f32'
             },
             ]
         },

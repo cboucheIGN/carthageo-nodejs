@@ -1,0 +1,103 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Carthageo Test</title>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <!-- CSS leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+
+  <!-- script leaflet -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+  <link rel="stylesheet" href="css/design.css">
+
+  <style>
+  #mapBloc { height: 650px; }
+  .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+  .info h4 {
+      margin: 0 0 5px;
+      color: #777;
+  }
+  .legend {
+    line-height: 18px;
+    color: #555;
+  }
+  .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+  }</style>
+</head>
+<body>
+
+  <div class="container">
+
+    <%- include("nav") -%>
+    <h2>Belarus</h2>
+    <p>Athletes from Belarus began their Olympic participation at the 1952 Summer Games in Helsinki, Finland as part of the Soviet Union. After the Soviet Union disbanded in 1991, Belarus, along with four of the other fourteen former Soviet republics, competed in the 1992 Winter Olympics (held in Albertville, France) as the Unified Team. Later in 1992, eleven republics joined Belarus to compete as the Unified Team at the Summer Games in Barcelona, Spain. </p>
+    <p>Two years later, Belarus competed for the first time as an independent nation in the 1994 Winter Olympics, held in Lillehammer, Norway. Since 1994, Belarus has won medals at each Winter and Summer Olympics it has participated in.</p>
+
+    <h2>Bulgaria</h2>
+    <p>Bulgarian athletes have won a total of 224 medals, with wrestling and weightlifting as the top medal-producing sports. After the fall of the communist regime in 1989-1990, in Bulgaria's turbulent transition to free-market democracy, top-notch state support for Bulgarian Olympians disintegrated. Diminishing and marginalized medal returns were evident in the 2012 London Olympics, where Bulgaria, a former top-10 Olympic power in the late 1980s, fell out of its original high stature. Bulgaria's best performance to date has come in the 1980 Summer Olympics where they finished third in the overall medal count. In the 1988 Summer Olympics Bulgaria ranked 7th, but won the nation's largest total of medals to date. The best Winter Olympic result came in 1998 where they ranked 15th.</p>
+
+    <h2>Azerbaijan</h2>
+    <p>Azerbaijan first participated at the Olympic Games as an independent nation in 1996, and has sent athletes to compete in every Games since then. Previously, Azerbaijani athletes competed as part of the Soviet Union at the Olympics from 1952 to 1988, and after the dissolution of the Soviet Union, Azerbaijan was part of the Unified Team in 1992.</p>
+    <p>Azerbaijani athletes have won a total of 42 medals at the Summer Olympic Games. The nation has not won any medals at the Winter Olympic Games.</p>
+
+    <h2>Estonia</h2>
+    <p>After declaring independence from Russia in 1918, Estonia first competed as a nation at the 1920 Summer Olympics, although the National Olympic Committee was established in 1923. The first Winter Olympics were the 1924 Winter Olympics. Estonian athletes took part in the Olympic Games until the country was invaded and occupied by the Soviet Union in 1940. The 1980 Summer Olympics Sailing regatta was held in the capital city Tallinn. Since the end of the Soviet occupation in 1991, Estonia has participated in all Olympics. Estonia has won most of its medals in wrestling (11), weightlifting (7), cross-country skiing (7) and athletics (6).</p>
+
+    <h2>Georgia</h2>
+    <p>Georgia first participated at the Olympic Games as an independent nation in 1994 and has sent athletes to compete in every Summer Olympic Games and Winter Olympic Games since then. Previously, Georgian athletes competed as part of the Soviet Union at the Olympics from 1952 to 1988 and after the dissolution of the Soviet Union, Georgia was part of the Unified Team in 1992.</p>
+    <p>Georgian athletes have won a total of 33 medals, mostly in wrestling, judo and weightlifting.</p>
+
+    <h2>Georgia</h2>
+    <p>Georgia first participated at the Olympic Games as an independent nation in 1994 and has sent athletes to compete in every Summer Olympic Games and Winter Olympic Games since then. Previously, Georgian athletes competed as part of the Soviet Union at the Olympics from 1952 to 1988 and after the dissolution of the Soviet Union, Georgia was part of the Unified Team in 1992.</p>
+    <p>Georgian athletes have won a total of 33 medals, mostly in wrestling, judo and weightlifting.</p>
+
+    <h2>Georgia</h2>
+    <p>Georgia first participated at the Olympic Games as an independent nation in 1994 and has sent athletes to compete in every Summer Olympic Games and Winter Olympic Games since then. Previously, Georgian athletes competed as part of the Soviet Union at the Olympics from 1952 to 1988 and after the dissolution of the Soviet Union, Georgia was part of the Unified Team in 1992.</p>
+    <p>Georgian athletes have won a total of 33 medals, mostly in wrestling, judo and weightlifting.</p>
+
+    <h2>Georgia</h2>
+    <p>Georgia first participated at the Olympic Games as an independent nation in 1994 and has sent athletes to compete in every Summer Olympic Games and Winter Olympic Games since then. Previously, Georgian athletes competed as part of the Soviet Union at the Olympics from 1952 to 1988 and after the dissolution of the Soviet Union, Georgia was part of the Unified Team in 1992.</p>
+    <p>Georgian athletes have won a total of 33 medals, mostly in wrestling, judo and weightlifting.</p>
+
+
+
+
+
+
+    <%- include("footer") -%>
+
+  </div>
+
+<script src='js/bloc.js'></script>
+</body>
+</html>
