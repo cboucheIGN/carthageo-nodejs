@@ -175,3 +175,12 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(carte);
+
+L.control.scale().addTo(carte);
+
+setInterval(function(){
+    map.setView([0, 0]);
+    setTimeout(function(){
+        map.setView([60, 0]);
+    }, 2000);
+}, 4000);

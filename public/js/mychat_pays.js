@@ -59,7 +59,7 @@ function valide2(e){
   var labels = []
   for (let i=0; i<r.features.length; i++){
    console.log(r.features[i])
-   labels.push (r.features[i].propertie.olympiad)
+   labels.push (r.features[i].propertie.year)
   }
 
   var golds = []
