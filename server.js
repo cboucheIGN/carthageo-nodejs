@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 app.get('/map', (req, res) => { res.render('map') });
+app.get('/P1', (req, res) => { res.render('P1') });
+app.get('/P2', (req, res) => { res.render('P2') });
+app.get('/P3', (req, res) => { res.render('P3') });
+app.get('/P4', (req, res) => { res.render('P4') });
 
 
 // Connect to postgresql and set connection variable

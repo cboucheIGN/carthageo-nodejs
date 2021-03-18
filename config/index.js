@@ -1,6 +1,6 @@
 module.exports = {
   'environment': 'development',
   'secret':      'theawesomeanduniquesecret',
-  'database':    'pg://localhost/carthageo',
+  'database':    'postgres://postgres:postgres@localhost:5432/olympics',
   'port':         3000
 };

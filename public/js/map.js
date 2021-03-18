@@ -1,5 +1,3 @@
-alert('Script map.js chargé');
-
 window.onload = function () {
 
   fetch('/api/medal/1')
