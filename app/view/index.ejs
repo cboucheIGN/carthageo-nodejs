@@ -26,31 +26,23 @@
       </div>
     
       <div class="container">
-    
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <p>premier contenu</p>
-          </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <p>deuxieme contenu</p>
-          </div>
-          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <p>dernier contenu</p>
-          </div>
-        </div>
 
         <div id="begin"></div>
+        <p>
+          Après 10 jours de formation et au terme de 10 jours de projet,
+          les étudiants du master Carthageos sont heureux de vous présenter
+          leur projet
+        </p>
+        <p>Les 6 groupes qui on travaillé sans compté :</p>
+        <div id="students"></div>
+        <p>
+          Attention ! Mesdames et Messieurs dans un instant ça va commencer,
+          cliquez ci-dessous pour déterminer l'odre de passage.
+        </p>
+        <button class="cthg-btn" id="sort">Tirage au sort</button>
+        <div id="result"></div>
+
+        <div class="countdown" id="countdown"></div>
 
         <%- include("part_lorem") -%> 
     
