@@ -3,7 +3,7 @@ var mapboxAccessToken = 'pk.eyJ1IjoiY2JvdWNoZWlnbiIsImEiOiJja2x1b3BsMTQwMmk1MnZv
 var mapBloc = L.map('mapBloc', {
         zoomControl: false,
         zoomSnap: 0.25})
-    .setView([49, 50.2], 4.25)
+    .setView([52, 50.2], 4.25)
 mapBloc.touchZoom.disable();
 mapBloc.doubleClickZoom.disable();
 mapBloc.scrollWheelZoom.disable();
@@ -17,51 +17,22 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     tileSize: 512,
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiY2JvdWNoZWlnbiIsImEiOiJja2x1b3BsMTQwMmk1MnZvNmppdHF1NjUyIn0.KNq-KbSgCsLI2rJal-3xSw'
-
 }).addTo(mapBloc);
 
-
-// var annee = document.getElementById("annee");
-// var saison = document.getElementById("season");
-// var medaille = document.getElementById("medal")
-// var jo = document.getElementById("jo");
-// console.log(annee)
-
-
-//Colorisation pays socialistes
+//Colorisation initiale pays socialistes
 const styleBloc = function(feature) {
     const code = feature.properties.code;
-    if (code == 'RUS') {
-        return {
+    return {
             fillColor: '#ff0000',
             color: '#ffffff',
             opacity: 0.3,
             fillOpacity: 0.3,
             weight: 1
         };
-    }
-    if (paysSel == 'exbloc') {
-        return {
-            fillColor: '#800053',
-            color: '#ffffff',
-            opacity: 0.3,
-            fillOpacity: 0.3,
-            weight: 1
-        };
-    }
-    return {
-        fillColor: '#ff0000',
-        color: '#ffffff',
-        opacity: 0.3,
-        fillOpacity: 0.3,
-        weight: 1
-    };
 }
 
-var paysBloc;
-
 //Légende
-var info = L.control();
+var info = L.control({position: 'topleft'});
 
 info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -75,40 +46,47 @@ info.update = function(feature) {
 
     if (feature) {
         this._div.innerHTML = `
-        <p><b>Country : ${feature.properties.name}</b></p>`;
+        <p><b>${feature.properties.name}</b></p>`;
     }
     else {
         this._div.innerHTML = `
-        <p><b>Select a country.</b></p>`;
+        <p>Click on a country to display its Olympics track record.</p>`;
     }
 }
 
 info.addTo(mapBloc);
 
-//Initialisation couches
-var couche = new L.layerGroup().addTo(mapBloc);
+//ajoute legende
+var legend = L.control({position: 'topright'});
 
-var paysSel = 'soc';
-const paysWFS = `http://localhost:8080/geoserver/jol/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=jol%3Acountrysocgeom&outputFormat=application%2Fjson&CQL_FILTER=${paysSel}=+TRUE`;
+legend.onAdd = function(map) {
+  var div = L.DomUtil.create("div", "info legend");
+  div.innerHTML += `
+  <h4>Select an era :</h4> <select id="era" name="Era" style="width: 65%">
+      <option value="soc">Soviet era</option>
+      <option value="exbloc">Post-soviet era</option>
+  </select><br>
+`;
+  div.innerHTML += `<h4>Soviet era</h4>`;
+  div.innerHTML += `<i style="background: #9A1919"></i><span>U.S.S.R.</span><br>`;
+  div.innerHTML += `<br>`;
+  div.innerHTML += `<i style="background: #712423"></i><span>Socialist Republic</span><br>`;
+  div.innerHTML += `<h4>Post-soviet era</h4>`;
+  div.innerHTML += `<i style="background: #5A1942"></i><span>Ex-SSR or socialist republic</span><br>`;
+  div.innerHTML += `<br>`;
+  div.innerHTML += `<i style="background: #9A1919"></i><span>Russian Federation</span><br>`;
 
-fetch(paysWFS)
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
+  return div;
+};
 
-        paysBloc = L.geoJSON(json, {
-            style: styleBloc,
-            onEachFeature: paysOnEachFeature
-        }).addTo(mapBloc);
-    })
+legend.addTo(mapBloc);
 
 
-// era.addEventListener('')
-    
 // ============================================================== //
 // ============== EVENEMENT couche paysBlock ==================== //
 // ============================================================== //
 
+//Fonction comportement pays survol
 function paysOnEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
@@ -117,6 +95,7 @@ function paysOnEachFeature(feature, layer) {
     });
 };
 
+//Fonction style survol
 function highlightFeature(e, features) {
     var layer = e.target;
 
@@ -131,23 +110,15 @@ function highlightFeature(e, features) {
     });
 }
 
+//Fonction style reset
 function resetHighlight(e) {
     paysBloc.resetStyle(e.target);
     info.update();
 }
 
-function paysClickedFunction(e) {
-    console.log(e.target.feature.properties.code)
-    // 1. centrer sur le pays
-    // mapBloc.fitBounds(e.target.getBounds());
-    // 2. lancer l'appel au donnees sur ce pays pour creer les graphiques
-    var paysClick = e.target.feature.properties.code;
-    fetchAndDisplayChart(paysClick);
-}
-
+//Fonction graphique 1: palmarès (top 5 disciplines) par pays
 function graphClass(data) {
 
-    //Graphique: récupération des données de médailles
     var mall = []
     for (i=0; i<data.length; i++) {
         mall.push(data[i].med)
@@ -230,6 +201,7 @@ function graphClass(data) {
 
 }
 
+//Fonction graphique 1: athlètes par nombre et genre
 function graphGenre(data) {
 
     //Graphique: récupération des données de médailles
@@ -272,6 +244,30 @@ function graphGenre(data) {
 
 }
 
+//Fonction tableau: 10 athlètes les plus performants
+function tabAth(data) {
+
+    var divath = document.getElementById('divath')
+    
+    divath.innerHTML = '';
+
+    if (data.length > 0) {
+        console.log(data)
+        for (i = 0; i < data.length; i++) {
+            divath.innerHTML += "<tr>" +
+            //"<th scope='row'>" + i + "</th>" +
+            "<td>" + data[i].name + "</td>" +
+            "<td>" + data[i].med + "</td>" +
+            "<td>" + data[i].all_sport + "</td>" +
+            "<td>" + data[i].all_country + "</td>" +
+            "<td>" + data[i].year + "</td>" +
+            "</tr>"
+
+        }
+    }
+}
+
+//Appel des données à chaque clic du pays
 function fetchAndDisplayChart(countryCode) {
     const url = '.../';
     
@@ -329,49 +325,85 @@ function fetchAndDisplayChart(countryCode) {
     // })
 }
 
-// function displayChart(data) {
-//     // var ctx = ...
-//     var chart = new Chart(ctx, {
-//         type: 'bar',
-//         ...
-//     })
-//     //
-
-// }
-
-// function displayTable(data) {
-//     const table = document.createElement('table');
-//     table.innerHTML = `
-//         <thead>...</thead>
-//     `;
-
-//     document.getElementById('medalsByAthlete').appendChild(table);
-// }
-
-//URS return URS or EUN
-
-
-
-function tabAth(data) {
-
-    var divath = document.getElementById('divath')
-    
-    divath.innerHTML = '';
-
-    if (data.length > 0) {
-        console.log(data)
-        for (i = 0; i < data.length; i++) {
-            divath.innerHTML += "<tr>" +
-            //"<th scope='row'>" + i + "</th>" +
-            "<td>" + data[i].name + "</td>" +
-            "<td>" + data[i].med + "</td>" +
-            "<td>" + data[i].all_sport + "</td>" +
-            "<td>" + data[i].all_country + "</td>" +
-            "<td>" + data[i].year + "</td>" +
-            "</tr>"
-
-        }
-    }
+//Fonction pays cliqué: récuépration du code pays et déclenchement fetchAndDisplayChart
+function paysClickedFunction(e) {
+    console.log(e.target.feature.properties.code)
+    // mapBloc.fitBounds(e.target.getBounds());
+    var paysClick = e.target.feature.properties.code;
+    fetchAndDisplayChart(paysClick);
 }
 
+//Initialisation couches et pays (ère soviétique)
+var couche = new L.layerGroup().addTo(mapBloc);
 
+const paysSoc = `http://localhost:8080/geoserver/jol/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=jol%3Acountrysocgeom&outputFormat=application%2Fjson&CQL_FILTER=soc=+TRUE`;
+fetch(paysSoc)
+    .then((response) => response.json())
+    .then((json) => {
+        console.log(json);
+
+        paysBloc = L.geoJSON(json, {
+            style: styleBloc,
+            onEachFeature: paysOnEachFeature
+        });
+
+        couche.addLayer(paysBloc);//.addTo(mymap);.addTo(mapBloc);
+    })
+
+//Initialisation changement d'ère
+var era = document.getElementById("era");
+era.addEventListener('change', eraChange);
+
+//Changement d'ère
+function eraChange (e) {
+    e.preventDefault();
+
+    var eraSel = era.options[era.selectedIndex].value
+    var paysEra = `http://localhost:8080/geoserver/jol/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=jol%3Acountrysocgeom&outputFormat=application%2Fjson&CQL_FILTER=${eraSel}=+TRUE`;
+
+    console.log(eraSel)
+
+    //nouvelle fonction de style selon l'ère
+    const styleEra = function(feature) {
+        const code = feature.properties.code;
+        if (code == 'RUS') {
+            return {
+                fillColor: '#ff0000',
+                color: '#ffffff',
+                opacity: 0.3,
+                fillOpacity: 0.3,
+                weight: 1
+            };
+        }
+        if (eraSel == 'exbloc') {
+            return {
+                fillColor: '#800053',
+                color: '#ffffff',
+                opacity: 0.3,
+                fillOpacity: 0.3,
+                weight: 1
+            };
+        }
+        return {
+            fillColor: '#ff0000',
+            color: '#ffffff',
+            opacity: 0.3,
+            fillOpacity: 0.3,
+            weight: 1
+        };
+    }
+    
+    fetch(paysEra)
+        .then((response) => response.json())
+        .then((json) => {
+            console.log(json);
+
+            paysBloc = L.geoJSON(json, {
+                style: styleEra,
+                onEachFeature: paysOnEachFeature
+            });
+
+            couche.clearLayers();
+            couche.addLayer(paysBloc);//.addTo(mymap);.addTo(mapBloc);
+        })
+}
