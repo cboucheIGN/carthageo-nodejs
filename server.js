@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
 });
 app.get('/map', (req, res) => { res.render('map') });
 
+app.get('/olympics', (req, res) => { res.render('olympics') });
+
+app.get('/game', (req, res) => { res.render('game') });
+
 
 // Connect to postgresql and set connection variable
 

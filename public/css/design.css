@@ -1,4 +1,128 @@
-.cthg-map-list {
-  list-style: none;
-  color: grey;
+
+
+/* /////////Page Home //////// */
+
+/* /////////General //////// */
+
+.container {margin-top: 10px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 150px;}
+
+/* /////////Page Carte //////// */
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.button{
+  width : 50px;
+  border-width: 2px ;
+  color: black;
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.button:hover {background-color: lightgrey}
+
+.button:active {
+  background-color: grey;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#text1{
+  left: 30px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+#olympique {
+  width : 100px;
+  height: 50px;
+  opacity: 0.7;
+}
+
+#map_home{
+  border: 1px solid black;
+  width : 1000px;
+  height: 500px;
+}
+
+
+
+/* /////////Page Graphique //////// */
+
+#myChart{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* /////////Page Jeux //////// */
+
+.image {
+	width: 90px;
+	height: 90px;
+}
+
+.tete{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-game{
+  color: null;
+  border-radius: 100%;
+  border-width: 0;
+  background-color: #ffffff
+}
+
+
+.button-game:active, .button-game.clicked {
+  box-shadow: 0 5px #666;
+}
+
+#mapgame{
+  border: 1px solid black;
+  width : 1000px;
+  height: 500px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#popupmedal{
+  position: relative;
+  text-align: center;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Carthageo Test</title>
 
-  <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
-  <!-- bootstrap -->
+  <!--CSS de la page-->
+  <link rel="stylesheet" href="/css/design.css">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="/css/design.css">
+  <!--CSS de leaflet-->
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+
+   <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  <script src="https://unpkg.com/@turf/turf@3.5.2/turf.min.js"></script>
 
 </head>
 <body>
@@ -21,18 +33,58 @@
 
     <%- include("nav") -%>
 
-    <p>A venir la carte !!</p>
+    <h1>Bonjour aux JO</h1>
+    <img id ="olympique" src="img/olympique.png" alt="image pas chargee">
+    <p id = text1>
+      Tous les quatre ans les jeux olympiques d’été sont l'occasion de regrouper les pays et leurs peuples, de fédérer, mais aussi de montrer sa suprématie.  Tradition venant de la Grèce antique, les premiers  JO modernes d’été ont eu lieu à Athènes en 1896. La carte ci-dessous montrant l’évolution du nombre de médailles d’or gagné par pays témoigne des transformations historiques et politiques du XXè siècle entre Est et Ouest à travers les JO modernes.
+    </p>
 
-    <p>Ici les resultats de la recherche</p>
-    <div id="result">
 
-    </div>
+
+    <div id="result"></div>
+
+    <div id="map_home"></div>
+
+
+
+    <button class = "button" id = "mille48">1948</button>
+    <button class = "button" id = "mille52">1952</button>
+    <button class = "button" id = "mille56">1956</button>
+    <button class = "button" id = "mille6">1960</button>
+    <button class = "button" id = "mille64">1964</button>
+    <button class = "button" id = "mille68">1968</button>
+    <button class = "button" id = "mille72">1972</button>
+    <button class = "button" id = "mille76">1976</button>
+    <button class = "button" id = "mille8">1980</button>
+    <button class = "button" id = "mille84">1984</button>
+    <button class = "button" id = "mille88">1988</button>
+    <button class = "button" id = "mille92">1992</button>
+    <button class = "button" id = "mille96">1996</button>
+    <button class = "button" id = "deuxmille">2000</button>
+    <button class = "button" id = "deuxmillequatre">2004</button>
+    <button class = "button" id = "deuxmillehuit">2008</button>
+    <button class = "button" id = "deuxmilledouze">2012</button>
+
+
+
+
+
+    <!-- <form id='formu' action="#" method="get">
+      <input type="text" name="date" value="">
+      <input type="submit" name="valide" value="OK">
+    </form> -->
+
+    <p id = text2>
+      Clique sur l’année de ton choix pour découvrir la carte du monde des médailles d’or des Jeux Olympiques d’été puis passe sur les cercles pour connaître le résultat exact.
+    </p>
 
     <%- include("footer") -%>
 
   </div>
-
-  <script src="js/map.js"></script>
+<!-- <script src="js\medal_summer_or.js"></script> -->
+<script src= "js\medal_summer_or.js" ></script>
+<script src= "js\map.js" ></script>
+<!-- <script src= "js\data.js" ></script> -->
 
 </body>
 </html>

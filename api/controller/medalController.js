@@ -13,13 +13,13 @@ const MEDALS = [
     }
   },
   {
-    id: 1,
+    id: 2,
     athlete: {
-      id: 200,
+      id: 201,
       name: 'Bouché'
     },
     epreuve: {
-      id: 1001,
+      id: 1002,
       name: 'Saut à la perche'
     }
   },
@@ -27,10 +27,15 @@ const MEDALS = [
 
 exports.read = function(req, res) {
   // TODO recherche dans la base
-  res.json(MEDALS[0]);
+  res.json(MEDALS[1]);
 };
 
 exports.search = function(req, res) {
   // TODO recherche dans la base
   res.json(MEDALS);
 };
+
+
+
+
+//
