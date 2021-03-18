@@ -73,10 +73,8 @@ function onEachFeature(feature, layer) {
     });
 }
 
-function getColor(first, last,d) {
-  d = last - first;
-    return d <= 0 ? '#ffffcc' :
-           d <= 4 ? '#c2e699' :
+function getColor(d) {
+    return d <= 4 ? '#c2e699' :
            d <= 50 ? '#78c679' :
            d <= 100 ? '#31a354' :
           '#006837';
@@ -123,7 +121,7 @@ function style(feature) {
   reponse = form.elements["valuedate"].value;
   datechoisi = reponse.substring(0, 4);
     return {
-      fillColor: getColor(feature.properties.first_participation, datechoisi),
+      fillColor: getColor(datechoisi - feature.properties.first_participation),
       weight: 2,
       opacity: 1,
       color: 'white',
@@ -153,7 +151,7 @@ function displayInfos(event) {
   console.log("Tu as cliqué sur le pays : " + nompays + " qui a participé pour la première fois en " + event.target.feature.properties.first_participation + " et a participé pour la dernière fois en " + event.target.feature.properties.last_participation);
   popup
     .setLatLng(event.latlng)
-    .setContent("<p id=\"popup\"><br>Pays : " + nompays + "</br><br>Première participation : " + event.target.feature.properties.first_participation + "</br><br>Dernière participation : " + event.target.feature.properties.last_participation + "</br><br>Durée : " + (event.target.feature.properties.last_participation - event.target.feature.properties.first_participation) + " années</br>" + "<br>En " + datechoisi + "</br><br>Durée : " + (datechoisi - event.target.feature.properties.first_participation) + " ans </br><br><a href=\'" + url + "\'target=\"_blank\"><img src=\'" + event.target.feature.properties.img + "\' height=70px></a></br></p>").openOn(carte);
+    .setContent("<p id=\"popup\"><br>Pays : " + nompays + "</br><br>Première participation : " + event.target.feature.properties.first_participation + "</br><br>Dernière participation : " + event.target.feature.properties.last_participation + "</br><br>Durée : " + (event.target.feature.properties.last_participation - event.target.feature.properties.first_participation) + " années</br>" + "<br>En " + datechoisi + "</br><br>Durée : " + (datechoisi - event.target.feature.properties.first_participation) + " ans </br><br><a href=\'" + url + "\'target=\"_blank\"><div id='logojo'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Wikipedia-logo-v2-fr.svg/800px-Wikipedia-logo-v2-fr.svg.png'><img src=\'" + event.target.feature.properties.img + "\' alt=''></a></div></br></p>").openOn(carte);
 }
 
 var legend = L.control({position: 'bottomright'});

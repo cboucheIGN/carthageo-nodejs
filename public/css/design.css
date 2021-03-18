@@ -3,7 +3,6 @@
   color: grey;
 }
 #logo {background-color:white;}
-<<<<<<< HEAD
 
 
 * {
@@ -261,7 +260,7 @@ footer p {
   .banner-wrapper-fixed {
   }
 }
-=======
+
 .rotation180 {
    -webkit-transform: rotate(180deg);
    -moz-transform: rotate(180deg);
@@ -269,9 +268,7 @@ footer p {
    -o-transform: rotate(180deg);
    transform: rotate(180deg);
  }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
  .legend {
     line-height: 18px;
     color: #555;
@@ -283,7 +280,14 @@ footer p {
     margin-right: 8px;
     opacity: 0.7;
 }
-=======
->>>>>>> f53cbb81663235ab4fa7ed1c190c2a5d7bae3b44
->>>>>>> c740d61f3e910e1f40b2da7ad2b008c35bacdfec
->>>>>>> a0e9e01faa4a259184b4a338a9c7f06f192cc986
+
+#logojo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+#logojo img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
