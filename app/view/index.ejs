@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <link rel="stylesheet" href="/css/design.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Site François et Hajime</title>
@@ -32,7 +33,6 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="js/skel.min.js"></script>
   <script src="js/skel-panels.min.js"></script>
-  <script src="js/init.js"></script>
   <noscript>
     <link rel="stylesheet" href="css/skel-noscript.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -50,10 +50,10 @@
     <div class="container">
       <div class="row">
         <button class="w3-button w3-display-left" onclick="plusDivs(-1)" id ="leftbutton">
-          <img src="https://www.direct-signaletique.com/I-Grande-12692-fleches-en-adhesif-mural-gamme-trend-h-140-x-l-170-mm.net.jpg" alt="&#10094;" width="20">
+          <img onclick="plusDivs(-1)" src="https://www.flaticon.com/svg/vstatic/svg/271/271228.svg?token=exp=1615997266~hmac=b9e738dda7893d7edbbf4bc16b40c7f7" alt="&#10094;" width="20" class="rotation180">
         </button>
         <button class="w3-button w3-display-right" onclick="plusDivs(+1)"id ="rightbutton">
-          <img src="https://www.direct-signaletique.com/I-Grande-12692-fleches-en-adhesif-mural-gamme-trend-h-140-x-l-170-mm.net.jpg" alt="&#10095;" width="20" class="rotation180">
+          <img src="https://www.flaticon.com/svg/vstatic/svg/271/271228.svg?token=exp=1615997266~hmac=b9e738dda7893d7edbbf4bc16b40c7f7" alt="&#10095;" width="20">
         </button>
         <div class="Slide">
           <section>
@@ -85,7 +85,7 @@
 
         <div class="Slide">
           <section>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/John_Carlos%2C_Tommie_Smith%2C_Peter_Norman_1968cr.jpg/220px-John_Carlos%2C_Tommie_Smith%2C_Peter_Norman_1968cr.jpg" alt="image non chargé (JO 68 poing levé)" id="events">
+            <img src="https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU3OTIzNTc2Mzg0NDY0ODQ2/how-the-black-power-protest-at-the-1968-olympics-killed-careerss-featured-photo.jpg" alt="image non chargé (JO 68 poing levé)" id="events">
             <header>
               <h2>1968, Le poing levé des sympathisants</h2>
             </header>
@@ -146,7 +146,7 @@
 
         <div class="Slide">
           <section>
-            <img src="https://static.dw.com/image/3515956_4.jpg" alt="1980" id="events">
+            <img src="https://stillmedab.olympic.org/media/Images/OlympicOrg/News/2020/07/19/2020-07-19-moscow-thumbnail.jpg?interpolation=lanczos-none&resize=*:*" alt="1980" id="events">
             <header>
               <h2>1980, Les tensions de la guerre froide</h2>
             </header>
@@ -329,20 +329,26 @@
     </div>
   </div>
 
-
-
 <%- include("footer") -%>
 
+<<<<<<< HEAD
 
 
 </body>
 
 <!--
 <body>
+=======
+>>>>>>> a0e9e01faa4a259184b4a338a9c7f06f192cc986
   <div class="container">
     <%- include("nav") -%>
     <h1>Site des Jeux Olympiques</h1>
     <%- include("footer") -%>
   </div>
+<<<<<<< HEAD
 </body> -->
+=======
+  <script src="js/init.js"></script>
+</body>
+>>>>>>> a0e9e01faa4a259184b4a338a9c7f06f192cc986
 </html>

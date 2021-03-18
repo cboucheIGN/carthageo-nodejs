@@ -75,10 +75,10 @@ function onEachFeature(feature, layer) {
 
 function getColor(first, last,d) {
   d = last - first;
-    return d <= 4 ? '#ffffcc' :
-           d <= 16 ? '#c2e699' :
-           d <= 32 ? '#78c679' :
-           d <= 64 ? '#31a354' :
+    return d <= 0 ? '#ffffcc' :
+           d <= 4 ? '#c2e699' :
+           d <= 50 ? '#78c679' :
+           d <= 100 ? '#31a354' :
           '#006837';
 }
 function highlightFeature(e) {
@@ -157,17 +157,21 @@ function displayInfos(event) {
 }
 
 var legend = L.control({position: 'bottomright'});
-legend.onAdd = function (carte) {
+
+legend.onAdd = function (map) {
+
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [4,16,32,64],
-        labels = []
+        grades = [0, 4, 50, 100],
+        labels = [];
+
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-            '<i style="background:' + getColor() + '"></i> ' +
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-        }
+    }
 
     return div;
 };
+
 legend.addTo(carte);
