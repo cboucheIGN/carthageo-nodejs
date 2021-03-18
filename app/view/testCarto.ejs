@@ -29,35 +29,51 @@
   <script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
 
 
-  <style>#carte_medailles{ height: 600px; width: 900px; }</style>
+  <style>#carte_medailles{ height: 600px; width: 600px; }</style>
+  <link rel="stylesheet" href="css/design.css">
 
+ 
 </head>
 <body>
 
   <div class="container">
 
     <%- include("nav") -%>
-
-    <div><h5>Medal type : </h5>
-
-      <button type="button" class="btn btn-secondary" id="cnt_gold">- GOLD -</button>
-      <button type="button" class="btn btn-secondary" id="cnt_silver">- SILVER -</button>
-      <button type="button" class="btn btn-secondary" id="cnt_bronze">- BRONZE -</button>
-      <label for="pet-select">Choose a medal</label>
   
   <h1></h1>
 
     <div class="wrapper">
-  
-      <div id="carte_medailles"></div>
+		  <form action="#" method="get" id="ath">
+			<legend>Explore the map !</legend>
+			<p><label>Year :  <input type="text" id="annee"></label></p>
 
       <select name="graphique" id="formu">
+
+      <label for="pet-select">Medal : </label>
+
         <option value="">--Please choose a medal </option>
         <option value="cnt_gold">Gold</option>
         <option value="cnt_bronze">Bronze</option>
         <option value="cnt_silver">Silver</option>
       </select>
 
+      <button id='Okey' type="button" class="btn btn-outline-primary" name="envoi" value="Search!">Search!</button>
+      <div id="goback">
+        
+      </div>
+      <!-- <input id='Okey' type="submit" name="envoi" value="Search!"> -->
+
+     
+    </div>
+    
+
+  <h1></h1>
+  <div class="wrapper">
+  
+
+      <div id="carte_medailles"></div>
+
+      
       <div id="chart_container">
       <canvas id="my_chart" width="400" height="400"></canvas>
       </div>
@@ -67,10 +83,11 @@
 
     <%- include("footer") -%>
 
-  </div>
+</div>
 
-<script src="js/carte_medailles.js"></script>
-<script src="js/my_chart.js"></script>
+<script src="js/testCarto.js"></script>
+<script src="js/testChart.js"></script>
 
 </body>
 </html>
+

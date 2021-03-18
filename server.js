@@ -2,6 +2,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+
+const { Pool } = require("pg");
+const pool = new Pool({
+  user: "postgres",
+  host: "localhost",
+  database: "olympic_games",
+  password: "postgres",
+  port: 5432
+});
+
 // Setup server port
 const { database, port, environment } = require('./config/index');
 
@@ -17,6 +27,7 @@ app.use(bodyParser.urlencoded({
 // for parsing application/json
 app.use(bodyParser.json());
 
+//Je peux acceder par le navigateur à tous les fichiers de mon répertoire public
 app.use(express.static(path.join(__dirname, 'public')));
 
 // api routes
@@ -32,8 +43,23 @@ app.get('/', (req, res) => {
   // sur la route '/' on affiche le rendu de la page app/view/index.ejs
   res.render('index');
 });
-app.get('/map', (req, res) => { res.render('map') });
+app.get('/events', (req, res) => { res.render('events') });
 
+app.get('/quizz', (req, res) => { res.render('quizz') });
+
+app.get('/exo2', (req, res) => { res.render('chart') });
+
+app.get('/testcarto', (req, res) => { res.render('testCarto') });
+
+app.get("/recherche", (req, res) => {
+  const sql = "SELECT * FROM json_athlete";
+  pool.query(sql, [], (err, result) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.render("recherche", { model: result.rows });
+  });
+});
 
 // Connect to postgresql and set connection variable
 
