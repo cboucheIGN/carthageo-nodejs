@@ -10,3 +10,18 @@ for(var i = 0; i < anchorButtons.length; i++) {
         });
     }, false);
 }
+
+
+// scroll
+const scrollBtn = document.getElementById('go-to-header');
+scrollBtn.style.display = 'none';
+
+window.addEventListener('scroll', function(event) {
+    console.log('event scroll', event);
+    var y = window.scrollY;
+    if (y > 200) {
+        scrollBtn.style.display = 'block';
+    } else {
+        scrollBtn.style.display = 'none';
+    }
+});
