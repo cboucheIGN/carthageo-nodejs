@@ -11,3 +11,91 @@
 }
 #map { height: 500px; }
 
+html {
+  --clr-black: rgb(8, 22, 36);
+  --clr-primary: rgb(71, 42, 214);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, button, a {
+  font-family: 'Fira Sans', sans-serif;
+}
+h1, h2, h3, h4, button, a, p {
+  color: var(--clr-black);
+}
+
+.page {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+}
+.cthg-navigation {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+
+  height: 80px;
+  border-bottom: 1px solid #333;
+  box-shadow: 2px 2px 5px #333;
+  background: white;
+  display: flex;
+}
+.cthg-navigation > * {
+  display: inline-block;
+  min-width: 150px;
+}
+.cthg-navigation .main {
+  border-right: 1px solid var(--clr-black);
+}
+.cthg-navigation img {
+  height: 60px;
+  
+}
+.cthg-navigation li:first-child a {
+  padding-top: 9px;
+}
+.cthg-navigation li:first-child a img {
+  padding-right: 10px;
+}
+.cthg-navigation li a {
+  width: 100%; height: 100%;
+  padding: 25px;
+  padding-top: calc(40px - 1.0em);
+  text-align: center;
+}
+.cthg-navigation li a {
+  display: block;
+}
+.cthg-navigation .separator {
+  flex-grow: 1;
+}
+.page-content {
+  margin-top: 80px;
+  overflow: auto;
+}
+.header {
+  background: linear-gradient(90deg,#472ad6,#8774e4);
+  text-align: center;
+  padding: 20px;
+  height: 500px;
+
+  background: url('../img/background.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+.container {
+  background: white;
+  padding: 20px;
+}
+footer {
+  height: 200px;
+  padding: 20px;
+  box-shadow: -2px -2px 5px #333;
+  background: var(--clr-black);
+}
+footer p {
+  color: white;
+  font-weight: 500;
+}
