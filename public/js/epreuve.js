@@ -15,19 +15,32 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var summer = L.icon({iconUrl: scr='img/summer.png',iconSize: [10, 10]});
 var winter = L.icon({iconUrl: scr='img/winter.png',iconSize: [10, 10]});
 
-
 /*Legend specific*/
 
-
 var legend = L.control({position: 'bottomright'});
+
 legend.onAdd = function (mymap) {
   var div = L.DomUtil.create("div", "legend");
-  div.innerHTML += '<span><img scr=\'img/summer.png\'Summer</span><br>';
-  div.innerHTML += '<span><img scr=\'img/winter.png\'Winter</span><br>';
+  div.innerHTML += '<span><img src=\'img/summer.png\'>Summer</span><br>';
+  div.innerHTML += '<span><img src=\'img/winter.png\'>Winter</span><br>';
   return div;
 };
-
 legend.addTo(mymap);
+
+
+
+L.control.scale().addTo(mymap);
+
+setInterval(function(){
+    map.setView([0, 0]);
+    setTimeout(function(){
+        map.setView([60, 0]);
+    }, 2000);
+}, 4000);
+
+
+
+
 // var marker = L.marker([37.985096, 23.727036], {icon: summer}).addTo(mymap);
 // marker.bindPopup("<form action="#" method="get" id="Date"><fieldset><select name="date"><option class="date" type="option" id="1"><b style='color:red'>1896 : Athènes</b><br><img id=logo src=img/1896.jpg></select></fieldset></form></option>").openPopup();
 

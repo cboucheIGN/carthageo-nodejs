@@ -164,7 +164,7 @@ exports.medal_track = function(req, res){
 
 exports.medal_track2 = function(req, res){
   console.log("il est passé par ici !")
-  let sql = "SELECT * FROM medaller_country WHERE medaller_country.name = '"+ req.body.hola +"' ORDER BY olympiad_id";
+  let sql = "SELECT * FROM medaller_all WHERE medaller_all.name = '"+ req.body.hola +"' ORDER BY olympiad_id";
   console.log(sql);
   db.any(sql)
     .then((data) => {
@@ -178,6 +178,7 @@ exports.medal_track2 = function(req, res){
             gold: item.gold,
             silver: item.silver,
             bronze: item.bronze,
+            year:item.year,
             geometry:  item.geometry
           }
         }
