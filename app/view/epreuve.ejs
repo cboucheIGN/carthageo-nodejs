@@ -40,7 +40,7 @@
   <!-- <style>#geomap { height: 500px; background-color: pink; }</style> -->
   <style>#logo { height:auto ;width:200px; background-color: white; }
   .leaflet-control.info{
-    background-color: blue;
+    background-color: antiquewhite;
   }
   </style>
 
@@ -212,15 +212,15 @@
     </div>
 
 
-<div id="tabpage2">
-  <h3>Statistiques de changements de nombres de médailles de chaque pays</h3>
+  <div id="tabpage2">
+    <h3>Statistiques de changements de nombres de médailles de chaque pays</h3>
 
-  <form action="#" method="get" id="forme_pays">
-    <fieldset>
-    <span>Pays : </span>
-    <select name="olym_pays" id="pays">
-    </select>
-    </fieldset>
+    <form action="#" method="get" id="forme_pays">
+      <fieldset>
+      <span>Pays : </span>
+      <select name="olym_pays" id="pays">
+      </select>
+      </fieldset>
 
     </form>
 
@@ -229,24 +229,13 @@
 
   </div>
  </div>
-
-    </div>
-
-
-
+</div>
   </div>
-
-
-
-
   <script type="text/javascript">
-
   var tabs = document.getElementById('tabcontrol').getElementsByTagName('a');
   var pages = document.getElementById('tabbody').getElementsByTagName('div');
   function changeTab() {
-
      var targetid = this.href.substring(this.href.indexOf('#')+1,this.href.length);
-
      for(var i=0; i<pages.length; i++) {
         if( pages[i].id != targetid ) {
            pages[i].style.display = "none";
@@ -255,8 +244,6 @@
            pages[i].style.display = "block";
         }
      }
-
-
      for(var i=0; i<tabs.length; i++) {
         tabs[i].style.zIndex = "0";
      }
@@ -268,8 +255,6 @@
   }
   tabs[0].onclick();
   </script>
-
-
   <script>
     function myAlert(element) {
       console.log(element);
@@ -279,19 +264,6 @@
       window.open('https://www.olympic.org/fr/'+element.id+'');
     }
   </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--chercher exoleaflet.js sur folder js(ordre est important. FA)-->
 <!-- <script src="js/us-states.js"></script>
 <script src="js/exoleaflet.js"></script> -->

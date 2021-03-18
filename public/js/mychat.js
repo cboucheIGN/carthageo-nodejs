@@ -1,19 +1,15 @@
-
 //selection de date(en utilisant le olympiad_id)
 var select_date = document.getElementById('year');
 //year.addEventListener('submit', valide);
 select_date.onchange = function(){
   alert(this.value)
 }
-
 document.getElementById('year').addEventListener('change',valide)
-
 function valide(e){
   //j'empêche le comportement par défaut du formulaire
   e.preventDefault();
   //Je récupère ce qu'a écrit l'utilisateur dans le formualaire
   var select = document.getElementById('year').value;
-
   //j'insère dans un objet literal ce que je viens de récupérer (ici : la variable saisie)
   data = {hello: select}
   // data_medal = {Hola: saisie_type}
@@ -26,11 +22,7 @@ function valide(e){
   .then(r => r.json())
   .then((r) => {
     console.log(r);
-
-
   var ctx = document.getElementById('myChart').getContext('2d');
-
-
   var labels = []
   for (i=0; i<r.features.length; i++){
     labels.push (r.features[i].propertie.country)
@@ -47,8 +39,6 @@ function valide(e){
   for (i=0; i<r.features.length; i++){
     bronzes.push (r.features[i].propertie.bronze)
   }
-
-
   var dataens = {
     labels: labels,
     datasets: [
@@ -69,7 +59,6 @@ function valide(e){
         }
     ]
   };
-
   var myBarChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: dataens,
@@ -87,5 +76,4 @@ function valide(e){
 });
 
   })
-
 }
