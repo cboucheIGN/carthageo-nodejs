@@ -27,13 +27,9 @@ apiRoutes(app);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'app/view'));
 
-// app routes
-app.get('/', (req, res) => {
-  // sur la route '/' on affiche le rendu de la page app/view/index.ejs
-  res.render('index');
-});
-app.get('/map', (req, res) => { res.render('map') });
-
+app.get('/', (req,res) => {res.render('olympics')});
+app.get('/particip', (req,res) => {res.render('particip')});
+app.get('/medailles', (req,res) => {res.render('medal')});
 
 // Connect to postgresql and set connection variable
 

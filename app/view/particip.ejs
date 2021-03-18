@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Carthageo Test</title>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="js/jquery_1.9.js"></script>
+  <script src="js/jquery_ui.js"></script>
+  <link rel = "stylesheet" href = "http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+ <!-- leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+ <script src = "js/sliderControl.js"></script>
+  <link rel="stylesheet" href="/css/particip.css">
+  <link rel="stylesheet" href="css/general.css">
+
+   <!-- anychart -->
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+  <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+  <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+  <style type="text/css"></style>
+
+  <!--typo h1-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+<!--typo h2-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@100;400&family=Montserrat:wght@100&display=swap" rel="stylesheet"> 
+<!--typo texte-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
+<!--typo legende-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div>
+    
+      <%- include("nav") -%>
+
+      <div id ="grid">
+
+        <div id ="one">
+          <h6>Regions en marges des JO ?</h6>
+          <p>Les Jeux Olympiques sont une compétition sportive internationale où des athlètes du monde entier participent. L'étendue du nombre de pays concourant c'est étendu au cours du XXe siècle...</p>
+        </div>
+
+        <div id ="two">
+          <h4>L'accessibilité à l'Olympisme</h4>
+          <h2>Première participation des pays aux JO</h2>
+          <div id="participmap"></div>
+        </div>
+
+        <div id ="three">
+          <h6>Vers une parité des sexes ?</h6>
+          <p>BLABLA ...</p>
+        </div>
+
+        <div id ="Four">
+          <h2>Egalité des sexes dans le monde du sport</h2>
+          <select name="annees" id="selectionner_annee">
+            <option value="">Choisir une année</option>
+            <option value="1896">1896</option>
+            <option value="1900">1900</option>
+            <option value="1904">1904</option>
+            <option value="1908">1908</option>
+            <option value="1912">1912</option>
+            <option value="1920">1920</option>
+            <option value="1924">1924</option>
+            <option value="1928">1928</option>
+            <option value="1932">1932</option>
+            <option value="1936">1936</option>
+            <option value="1948">1948</option>
+            <option value="1952">1952</option>
+            <option value="1956">1956</option>
+            <option value="1960">1960</option>
+            <option value="1964">1964</option>
+            <option value="1968">1968</option>
+            <option value="1972">1972</option>
+            <option value="1976">1976</option>
+            <option value="1980">1980</option>
+            <option value="1984">1984</option>
+            <option value="1988">1988</option>
+            <option value="1992">1992</option>
+            <option value="1996">1996</option>
+            <option value="1998">1998</option>
+            <option value="2000">2000</option>
+            <option value="2002">2002</option>
+            <option value="2004">2004</option>
+            <option value="2006">2006</option>
+            <option value="2008">2008</option>
+            <option value="2010">2010</option>
+            <option value="2012">2012</option>
+            <option value="2014">2014</option>
+          </select>
+          <div id="graphgender"></div>
+        </div>
+
+        <div id ="Five">
+          <h6>Portrait de sportive inspirante</h6>
+          <p>Quelques femmes du monde qui ont marqué l'histoire des Jeux olympiques</p>
+        </div>
+
+        <div id ="Six">
+          <p>1900 - CHARLOTTE COOPER
+            Joueuse de tennis britannique, elle est la première femme à avoir remporté une médaille aux Jeux Olympiques en 1900. Surnommée "Chattie", elle triomphera ensuite à Wimbledon en 1908.</p>
+      
+            <p>1900 - MARGARET ABBOTT
+            Golfeuse américaine, Margaret Abbott remporte la médaille d'or aux Jeux Olympiques de 1900. Elle détient le même statut que Charlotte Cooper : première femme à remporter une médaille aux JO.</p>
+      
+            <p>ANNÉES 30 - MARJORIE GESTRING
+            L'américaine remporte les JO à Berlin à l'âge de 13 ans avec la médaille d'or au plongeon à 3 mètres. Elle devient la plus jeune participante de l'histoire à remporter un titre olympique.</p>
+      
+            <p>ANNÉES 60 - NORMA ENRIQUETA
+            Comme Giuliana Chenal-Minuzzo, Norma Enriqueta marquera les esprits : en 1968, elle est la première femme à brandir la torche olympique pour enflammer la vasque.</p>
+      
+            <p>ANNÉES 70 : NADIA COMANECI
+            La gymnase roumaine-américaine est la seule gymnaste à obtenir la note parfaite de 10 aux Jeux Olympiques pour l'épreuve des barres asymétriques. C'était à Montréal en 1976, elle avait 14 ans. Depuis, personne n'a obtenu ce score.</p>
+      
+            <p>ANNÉES 80 : NAWAL EL-MOUTAWAKEL
+            L'athlète marocaine commence sa carrière dans les années 70. Elle est la première femme à obtenir la médaille d'or du premier 400 mètres haies féminin de l'histoire des JO. Elle devient ensuite dirigeante sportive et femme politique dans son pays avant d'être vice-présidente du Comité International Olympique et présidente de la Commission de Coordination des JO de Rio en 2016.</p>
+      
+            <p>ANNÉES 2000 : GABBY DOUGLAS
+            La gymnaste américaine est la première femme noire de l'histoire à avoir remporté la médaille d'or en individuel et la médaille d'or en équipe en 2012 aux JO de Londres.</p>
+      
+            <p>ANNÉES 2000 : LAURA FLESSEL
+            L’escrimeuse française qu'on surnomme la guêpe est la plus décorée des escrimeuses françaises. Laura Flessel est quintuple médaillée olympique, six fois championne du monde, une fois championne d'Europe. En 2012 à Londres, elle est le porte-drapeau de l'équipe de France lors de la cérémonie d'ouverture et de clôture. </p>        </div>
+      </div>
+      <%- include("footer") -%>
+    </div>
+    
+  <script src = "js/ath_gender.js"></script>  
+  <script src = "js/partpays.js"></script>  
+  <script src = "js/particip.js"></script>
+
+  
+  </body>
+  </html>
+    
+      
+<!-- 
+      <p> Depuis 1896, les pays du monde participent petit à petit aux Jeux Olympiques. En premier lieu, la France qui a créée le CIO et la Grèce qui a créée les jeux. Puis, on retrouve les pays des "Nords", progressivement les autres pays du monde en marges.</p>
+
+
+      <h2>Première participation des pays aux JO</h2>
+
+  
+      
+      <div id ="blocktxt">
+      <div id="txt">
+      <p>Les Jeux Olympiques sont uniques. Des athlètes du monde entier y participent. Leurs exploits sont suivis, de près ou de loin, par des centaines  de millions de spectateurs. Les cinq anneaux représentés sur le drapeau olympique symbolisent cette rencontre internationale.La participation aux Jeux est ce qui compte le plus pour la majorité des concurrents : avoir l’honneur de représenter son pays et défiler derrière son drapeau pendant la cérémonie d’ouverture, se retrouver parmi les sportifs d’élite, avoir l’occasion de donner le meilleur de soi-même. Tout cela, c’est l’esprit des Jeux Olympiques! Pour participer aux JO l’athlète doit se conformer à la Charte olympique et suivre les règles de la Fédération Internationale (FI) propre à son sport. Les FI organisent les qualifications, tandis que le Comité National Olympique (CNO) du pays de l’athlète se charge de sa sélection et de son inscription aux JO. Si un athlète a plusieurs nationalités, il est libre de concourir pour le pays de son choix. Par contre, s’il a déjà représenté un pays aux JO ou à d’autres grands rendez-vous sportifs, il ne peut concourir pour une autre nation avantun délai de trois ans.Il n’existe pas de limite d’âge pour participer aux JO, sauf celle imposée pour des raisons de santé par chaque FI. Dans certains sports, comme l’équitation, l’escrime ou la voile, des athlètes connaissent une très longue carrière olympique – parfois jusqu’à 40 ans !En s’inscrivant aux Jeux, l’athlète s’engage à respecter les valeurs olympiques et à se soumettre à des contrôles antidopage. Dans le cadre des JO, les contrôles sont effectués sous l’autorité du CIO et de sa commission médicale. Des tests peuvent avoir lieu avant ou pendant les Jeux. Pour les sports pratiqués de manière individuelle, chaque athlète terminant parmi les cinq premiers du classement de chaque épreuve, plus deux autres athlètes (dans les compétitions préliminaires ou la finale) sont choisis au hasard. Pour les sports d'équipe ou les autres sports dans lesquels les équipes sont récompensées, les contrôles sont effectués tout au long de la période  des Jeux Olympiques. Après les Jeux Olympiques, les vainqueurs sont souvent considérés comme de véritables stars. Pour beaucoup ils sont un modèle à suivre. Selon la Charte olympique, les noms des athlètes qui ont remporté une médaille d’or doivent être gravés sur les murs du stade principal. Toutefois, une médaille ne garantit pas toujours la célébrité. Décrochée dans un sport peu connu ou peu médiatique, la médaille ne suffira pas à attirer sur l’athlète l’intérêt des sponsors, ou celui du public.Quoi qu’il en soit, vainqueurs ou non, tous ceux qui participent aux Jeux Olympiques en retirent une expérience humaine exceptionnelle.  </p></div>
+      </div>
+      <div id="participmap"></div>
+      
+
+      <h2>Egalité des sexes dans le monde du sport</h2>
+
+      <p>Comme dans l’Antiquité, les athlètes femmes sont absentes de la première édition des JO modernes. En 1896 à Athènes, seuls les hommes participent aux compétitions. A cette époque, les sportives doivent faire face à beaucoup de préjugés: on craint qu’elles perdent leur féminité, qu’elles soient trop musclées ou encore qu’elles deviennent stériles. Elles doivent donc combattre ce genre  de mentalité et, petit à petit, faire leur place aux Jeux. En 1919, Alice Milliat demande au Comité international olympique d'inclure des épreuves féminines lors des prochains Jeux olympiques, mais sa demande est refusée. Les femmes sont finalement admises aux épreuves athlétiques des Jeux olympiques d'été de 1928 à Amsterdam.</p>
+      <p> Les effets de genre marquent aussi, depuis toujours, la composition du CIO : exclusivement masculin jusqu’en 1981, il l’est majoritairement jusqu’à la fin du siècle. Mais depuis 2007, la Charte olympique affirme : « Le rôle du CIO est d’encourager et soutenir la promotion des femmes dans le sport, à tous les niveaux et dans toutes les structures, dans le but de mettre en œuvre le principe d’égalité entre hommes et femmes. » (Charte olympique 2015, Règle 2, paragraphe 7.) L’Union européenne approuve cette orientation qui rejoint la sienne :  après avoir organisé en décembre 2013 à Vilnius la conférence Gender equality in sport [Égalité de genre dans le sport], la Commission européenne publie en 2014 ses Propositions stratégiques pour l’égalité dans le sport. La même année, la 11e recommandation du CIO (alors à un tiers féminin) inscrite à l’agenda olympique 2020 fait de la parité un objectif. La revendication des hommes à concourir en gymnastique rythmique et en natation synchronisée rejetée en 2012 devrait donc réexaminée. </p>
+
+
+      <select name="annees" id="selectionner_annee">
+        <option value="">Choisir une année</option>
+        <option value="1896">1896</option>
+        <option value="1900">1900</option>
+        <option value="1904">1904</option>
+        <option value="1908">1908</option>
+        <option value="1912">1912</option>
+        <option value="1920">1920</option>
+        <option value="1924">1924</option>
+        <option value="1928">1928</option>
+        <option value="1932">1932</option>
+        <option value="1936">1936</option>
+        <option value="1948">1948</option>
+        <option value="1952">1952</option>
+        <option value="1956">1956</option>
+        <option value="1960">1960</option>
+        <option value="1964">1964</option>
+        <option value="1968">1968</option>
+        <option value="1972">1972</option>
+        <option value="1976">1976</option>
+        <option value="1980">1980</option>
+        <option value="1984">1984</option>
+        <option value="1988">1988</option>
+        <option value="1992">1992</option>
+        <option value="1996">1996</option>
+        <option value="1998">1998</option>
+        <option value="2000">2000</option>
+        <option value="2002">2002</option>
+        <option value="2004">2004</option>
+        <option value="2006">2006</option>
+        <option value="2008">2008</option>
+        <option value="2010">2010</option>
+        <option value="2012">2012</option>
+        <option value="2014">2014</option>
+      </select>
+
+
+      <div id="graphgender"></div>
+
+      <h3> Les femmes du monde qui ont marqué l'histoire</h3>
+
+      <p>1900 - CHARLOTTE COOPER
+      Joueuse de tennis britannique, elle est la première femme à avoir remporté une médaille aux Jeux Olympiques en 1900. Surnommée "Chattie", elle triomphera ensuite à Wimbledon en 1908.</p>
+
+      <p>1900 - MARGARET ABBOTT
+      Golfeuse américaine, Margaret Abbott remporte la médaille d'or aux Jeux Olympiques de 1900. Elle détient le même statut que Charlotte Cooper : première femme à remporter une médaille aux JO.</p>
+
+      <p>ANNÉES 30 - MARJORIE GESTRING
+      L'américaine remporte les JO à Berlin à l'âge de 13 ans avec la médaille d'or au plongeon à 3 mètres. Elle devient la plus jeune participante de l'histoire à remporter un titre olympique.</p>
+
+      <p>ANNÉES 60 - NORMA ENRIQUETA
+      Comme Giuliana Chenal-Minuzzo, Norma Enriqueta marquera les esprits : en 1968, elle est la première femme à brandir la torche olympique pour enflammer la vasque.</p>
+
+      <p>ANNÉES 70 : NADIA COMANECI
+      La gymnase roumaine-américaine est la seule gymnaste à obtenir la note parfaite de 10 aux Jeux Olympiques pour l'épreuve des barres asymétriques. C'était à Montréal en 1976, elle avait 14 ans. Depuis, personne n'a obtenu ce score.</p>
+
+      <p>ANNÉES 80 : NAWAL EL-MOUTAWAKEL
+      L'athlète marocaine commence sa carrière dans les années 70. Elle est la première femme à obtenir la médaille d'or du premier 400 mètres haies féminin de l'histoire des JO. Elle devient ensuite dirigeante sportive et femme politique dans son pays avant d'être vice-présidente du Comité International Olympique et présidente de la Commission de Coordination des JO de Rio en 2016.</p>
+
+      <p>ANNÉES 2000 : GABBY DOUGLAS
+      La gymnaste américaine est la première femme noire de l'histoire à avoir remporté la médaille d'or en individuel et la médaille d'or en équipe en 2012 aux JO de Londres.</p>
+
+      <p>ANNÉES 2000 : LAURA FLESSEL
+      L’escrimeuse française qu'on surnomme la guêpe est la plus décorée des escrimeuses françaises. Laura Flessel est quintuple médaillée olympique, six fois championne du monde, une fois championne d'Europe. En 2012 à Londres, elle est le porte-drapeau de l'équipe de France lors de la cérémonie d'ouverture et de clôture. </p>
+      </div>
+    
+    </div>
+      
+      <%- include("footer") -%>
+
+    </div> -->
+
+  
+

@@ -1,0 +1,121 @@
+/* 
+a applique au header
+box-shadow: 2px 2px 15px black;
+*/
+#grid{
+  display: grid;
+  grid-template-columns: 400px 1fr;
+}
+#grid > * {
+  padding : 20px;
+}
+#one, #three, #six{
+  background-color : #ddd3d3e7;
+  box-shadow: 1px -2px 16px #4d4d4d45;
+
+}
+#one{
+  grid-column: 1;
+  grid-row: 1;
+
+}
+#two{
+  grid-column: 2;
+  grid-row: 1;
+}
+#three{
+  grid-column: 1;
+  grid-row: 2;
+  background-color : #4d4d4d;
+}
+#four{
+  grid-column: 2;
+  grid-row: 2;
+}
+#five{
+  grid-column: 1;
+  grid-row: 3;
+  background-color : #4d4d4d;
+}
+#six{
+  grid-column: 2;
+  grid-row: 3;
+}
+
+
+#view2 {
+  display:flex;
+}
+
+#participmap { 
+  height: 600px;
+  width: 900px;
+  margin-left: 10px;
+  margin-top: 0px;
+}
+#txt {
+  height: 600px;
+  width: 900px;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+#graphgender {
+  width: 900px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+}
+
+.leaflet-top.leaflet-right {
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.8;
+  padding-bottom: 30px;
+  padding-top: 5px;
+  margin: 5px;
+
+}
+
+.slider.leaflet-control {
+  background:white;
+  border : 1px solid black;
+  border-radius : 5px;
+
+}
+
+.ui-slider-handle {
+  background: url("../img/summer.png"), white;
+  background-size: contain;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: url("../img/summer.png"), white;
+  background-size: contain;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+/* BLOCK DE TEXTE */
+
+#introcadre {
+  background-color : #4d4d4d;
+  /* margin : 50px; */
+  padding:20px;
+}
+
+#introcadre p {
+  text-align: justify;
+  color : white;
+}

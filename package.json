@@ -10,11 +10,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@amcharts/amcharts4": "^4.10.16",
+    "@amcharts/amcharts4-fonts": "^4.0.1",
+    "@amcharts/amcharts4-geodata": "^4.1.19",
+    "@turf/centroid": "^6.3.0",
+    "@turf/turf": "^6.3.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "i": "^0.3.6",
     "moment": "^2.29.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "pg-promise": "^10.9.4",
+    "polygon-centroid": "^1.1.0"
   }
 }

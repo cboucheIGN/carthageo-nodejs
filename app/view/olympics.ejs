@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Carthageo Test</title>
+
+ <!-- bootstrap -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+ <!-- leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/olympics.css">
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
+<!--typo h1-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+<!--typo h2-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@100;400&family=Montserrat:wght@100&display=swap" rel="stylesheet"> 
+<!--typo texte-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
+<!--typo legende-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <div class="container">
+
+    <%- include("nav") -%>
+  
+    <h1>- CartO'lympic -</h1>
+  </div>
+    <div class="container">
+      <div id="image">
+        <img class="img-thumbnail" id="JO" src="img/photoINTRO.jpg" alt="image pas chargee">
+        <div class="overlay">
+          <div class="text"> 
+          <h6>Qui sommes-nous ?</h6>
+           Héritage du passé, cristalisation géopolitique du monde moderne ou simple compétition sportive, les Jeux Olympiques ont une inconographie véhiculée dans le monde entier. CARTO'LYMPICS est né d'une initiative de cartographes (or-pères) de retarcer les grandes thèmatiques des jeux qui nous tiennes à coeur de manière dynamique. Le but est de se laisser emporter par l'exploration des différentes applications. </div>
+        </div>
+      </div>
+    </div>
+
+
+  <div>
+    <div id= 'introcadre'>
+      <h6>Histoire</h6>
+      <div>
+        <div class="row">
+          <div class="col" >
+            <p>Les Jeux olympiques, aussi appelés Jeux olympiques modernes, puisqu'ils prolongent la tradition des jeux olympiques de la Grèce antique, sont des événements sportifs internationaux majeurs, regroupant les sports d’été ou d’hiver, auxquels des milliers d’athlètes participent à travers différentes compétitions tous les quatre ans, pour chaque olympiade moderne. Originellement tenus dans le centre religieux d’Olympie, dans la Grèce antique du VIIIe siècle av. J.-C. au Ve siècle apr. J.-C., les Jeux sont rénovés par le baron français Pierre de Coubertin en 1894 lorsqu’il fonde le Comité international olympique (CIO). Depuis lors, le CIO est devenu l’organisation gouvernant le mouvement olympique dont la structure et les décisions sont définies par la Charte olympique. Pendant le XXe siècle, le CIO adapte les Jeux à sa perception des changements économiques, politiques et techniques du monde. Ainsi, les Jeux olympiques sont, comme le voulait Pierre de Coubertin, d'abord réservés aux purs amateurs, le règlement du CIO interdisant la participation de sportifs professionnels. Le CIO adapte aussi les Jeux aux changements sociaux qui se produisent au XXe siècle. Certains de ces ajustements incluent l'instauration des Jeux olympiques d’hiver, les Jeux paralympiques ou encore les Jeux olympiques de la jeunesse et la création de nombreuses épreuves mixtes. Le calendrier olympique, le déroulement des cérémonies et leur symbolique est le résultat d'une évolution.</p>
+          </div>
+          <div class="col">
+            <p>Ainsi, il n'y a pas de cérémonie d'ouverture en 1900 à Paris. Le drapeau olympique dessiné par Coubertin en 1913 apparaît aux Jeux de 1920 tout comme le serment olympique.La flamme olympique, symbolisant le lien entre Jeux antiques et Jeux modernes, est en usage depuis 1928. Depuis 1936 elle effectue un parcours sous forme de relais avant la tenue des Jeux. Cette dernière innovation fut créée par Goebbels. Un hymne olympique existe depuis 1896. Cette pièce de musique grecque est officiellement hymne olympique depuis 1960. Le défilé des athlètes est la plus longue des séquences des cérémonies d'ouverture et de clôture. Le défilé est toujours ouvert par la délégation grecque et le pays qui accueille les Jeux ferme la marche. Entre les cérémonies d'ouverture et de clôtures, deux semaines de compétitions se tiennent sur différents sites, parfois assez éloignés. Les athlètes sont logés dans un village olympique exclusivement réservé aux athlètes et aux entraîneurs. Les journalistes sont regroupés au sein d'un centre médias et ont un accès limité au village olympique des athlètes. L'organisation fait appel à des milliers de volontaires bénévoles afin d'assister les athlètes, les officiels, les journalistes et les spectateurs. L'une des traditions typiques des Jeux est l'échange de Pin's entre délégations et médias. Les volontaires terminent souvent les Jeux couverts de ces épinglettes. La mascotte olympique apparaît officiellement pendant les Jeux d'hiver de 1968 à Grenoble. Depuis, chaque édition crée sa propre mascotte afin de symboliser les valeurs de l'olympisme.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div id="suite-intro" class="container">
+    <h2>Les Jeux Olympiques dans le monde depuis 1896</h2>
+
+    <div id = "carte1"><div id="jomap"></div>
+    <div id="infoville"> </div></div>
+
+
+
+    <div>
+      <div id= 'detailjo'>
+        <h6><h3>Les sports des Jeux d’été</h3></h6>
+        <div>
+          <div class="row">
+            <div class="col" >
+              <p> A Athènes, en 1896, neuf sports sont au programme: l’athlétisme, le cyclisme, l’escrime, la gymnastique, l’haltérophilie, la lutte, la natation, le tennis et le tir.Depuis, le programme olympique a beaucoup évolué: certains sports ont disparu (ex. le polo, le baseball) ; d’autres ont été écartés, puis réintroduits (ex. le tir à l’arc, le tennis), tandis que de nouveaux sports ont fait leur apparition (ex. le triathlon, le taekwondo).Aux Jeux d’Athènes en 2004, le programme inclut les neuf sports originaux, plus 19 autres: l’aviron, le badminton, le baseball, le basketball, la boxe, le canoë/kayak, les sports équestres, le football, le handball, le hockey, le judo, le pentathlon moderne, le softball, le taekwondo, le tennis de table, le tir à l’arc, le triathlon, la voile et le volleyball.Cela représente 301 épreuves !Les deux sports phares du programme des Jeux d’été sont l’athlétismeet la natation.</p>
+            </div>
+            <div class="col">
+              <p>Ce sont les deux sports olympiques les plus suivis dans le monde, ce sont aussi ceux qui comptent le plus grand nombre d’épreuves et le plus de participants de différents pays.L’athlétisme se compose d’une grande variété d’épreuves : sauts, lancers, courses de sprint, fond ou demi-fond. Certaines d’entre elles étaient pratiquées dans les Jeux antiques : la course à pied (de longueurs variables), le lancer du javelot, le lancer du disque et le saut en longueur. Les premières compétitions de natation aux Jeux Olympiques se disputent dans la mer ou dans une rivière. Aujourd’hui, les concours ont lieu dans une piscine de 50m de long, le plus souvent à l’intérieur. Le programme actuel comporte les disciplines suivantes : lanage (crawl, brasse, dos et papillon), le water-polo, le plongeon et la natation synchronisée.</p>
+            </div>
+            <div class="col">
+              <img class="photoete" id="JO" src="img/joete.jpg" alt="image pas chargee">
+              <p id="source">La cérémonie d’ouverture des XXIIes Jeux olympiques d’été, Moscou, 1980.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div id= 'detailjo'>
+          <h6><h3>Les sports des Jeux d’hiver</h3></h6>
+          <div>
+            <div class="row">
+              <div class="col">
+                <img class="photohiver" id="JO" src="img/johiver.jpg" alt="image pas chargee">
+                <p id="source2">Le patineur artistique Alain Calmat allumant la flamme olympique lors de la cérémonie d'ouverture des JO d'hiver de Grenoble 1968. © Valerie GENIN</p>
+                <p>   La première apparition des sports d’hiver aux Jeux Olympiques a lieu aux Jeux d’été de Londres en 1908! Des concours de patinage artistique sont organisés pour hommes, femmes et couples. L’expérience se répète aux Jeux d’Anvers en 1920, avec en plus un tournoi de hockey sur glace. À Chamonix en 1924, les sports d’hiver ont enfin leurs Jeux Olympiques. Six sports sont au programme : le bobsleigh, le curling, le hockey sur glace, le patinage, le ski et la patrouille militaire. </p>
+              </div>
+              <div class="col" >
+                <p>Certains sports sont absents du programme officiel pendant plusieurs éditions des Jeux avant d’être réintroduits. Le skeleton en est un exemple : présent seulement aux Jeux de Saint-Moritz en 1928 et 1948, il entre définitivement au programme lors des Jeux de Salt Lake City en 2002.Le nombre de sports aux JO d’hiver reste relativement stable au cours des années. Aux Jeux de Vancouver en 2010 on compte sept sports : Le Musée Olympique11le biathlon, le bobsleigh, le curling, le hockey sur glace, la luge, le patinage et le ski. En revanche, le nombre d’épreuves augmente fortement: en 2010, on en compte 86 au programme ! Parmi les 15 disciplines des Jeux Olympiques d’hiver de Sotchi en 2014, seule celle du combiné nordique n’est pas encore ouverte aux femmes!Les trois sports phares du programme des Jeux d’hiver sont le patinage,  le ski et le hockey sur glace. Avec une première apparition aux Jeux de Londres en 1908, le patinagea l’histoire olympique la plus longue.</p>
+              </div>
+              <div class="col">
+                <p>C’est en patinage artistique que les femmes font leur début aux JO d’hiver. Le patinage de vitesse est réservé aux hommes jusqu’en 1960. En plein air jusqu’en 1956, les épreuves de patinage se déroulent aujourd’hui à l’intérieur.Le ski est le sport qui comporte le plus grand nombre de disciplines. Le ski  de fond est la plus ancienne et le surf des neiges la dernière arrivée (Jeux de Nagano, Japon, en 1998). Le ski alpin apparaît relativement tard : il est présent aux Jeux de 1936 mais c’est aux Jeux de Saint-Moritz (Suisse), en 1948, qu’un programme plus complet pour hommes et femmes est organisé. À partir de 1952, le slalom géant est ajouté au programme. Enfin, depuis 1988, le super-G constitue la dernière épreuve olympique de ski alpin.Le hockey sur glace, comme le patinage et le ski, est un sport qui a contribué à la naissance des Jeux Olympiques d’hiver. Très populaire, le hockey bénéficie d’un taux d’audience élevé. C’est un sport spectaculaire où le palet peut aller jusqu’à 180km/h.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <h3>Les sports des Jeux d’été</h3>
+    <p>A Athènes, en 1896, neuf sports sont au programme: l’athlétisme, le cyclisme, l’escrime, la gymnastique, l’haltérophilie, la lutte, la natation, le tennis et le tir.Depuis, le programme olympique a beaucoup évolué: certains sports ont disparu (ex. le polo, le baseball) ; d’autres ont été écartés, puis réintroduits (ex. le tir à l’arc, le tennis), tandis que de nouveaux sports ont fait leur apparition (ex. le triathlon, le taekwondo).Aux Jeux d’Athènes en 2004, le programme inclut les neuf sports originaux, plus 19 autres: l’aviron, le badminton, le baseball, le basketball, la boxe, le canoë/kayak, les sports équestres, le football, le handball, le hockey, le judo, le pentathlon moderne, le softball, le taekwondo, le tennis de table, le tir à l’arc, le triathlon, la voile et le volleyball. Cela représente 301 épreuves !Les deux sports phares du programme des Jeux d’été sont l’athlétismeet la natation. Ce sont les deux sports olympiques les plus suivis dans le monde, ce sont aussi ceux qui comptent le plus grand nombre d’épreuves et le plus de participants de différents pays.L’athlétisme se compose d’une grande variété d’épreuves : sauts, lancers, courses de sprint, fond ou demi-fond. Certaines d’entre elles étaient pratiquées dans les Jeux antiques : la course à pied (de longueurs variables), le lancer du javelot, le lancer du disque et le saut en longueur. Les premières compétitions de natation aux Jeux Olympiques se disputent dans la mer ou dans une rivière. Aujourd’hui, les concours ont lieu dans une piscine de 50m de long, le plus souvent à l’intérieur. Le programme actuel comporte les disciplines suivantes : lanage (crawl, brasse, dos et papillon), le water-polo, le plongeon et la natation synchronisée.</p>
+
+    <h3>Les sports des Jeux d’hiver</h3>
+    <p>La première apparition des sports d’hiver aux Jeux Olympiques a lieu aux Jeux d’été de Londres en 1908! Des concours de patinage artistique sont organisés pour hommes, femmes et couples. L’expérience se répète aux Jeux d’Anvers en 1920, avec en plus un tournoi de hockey sur glace.À Chamonix en 1924, les sports d’hiver ont enfin leurs Jeux Olympiques. Six sports sont au programme : le bobsleigh, le curling, le hockey sur glace, le patinage (artistique et de vitesse), le ski (ski de fond et saut à ski) et la patrouille militaire. Certains sports sont absents du programme officiel pendant plusieurs éditions des Jeux avant d’être réintroduits. Le skeleton en est un exemple : présent seulement aux Jeux de Saint-Moritz en 1928 et 1948, il entre définitivement au programme lors des Jeux de Salt Lake City en 2002.Le nombre de sports aux JO d’hiver reste relativement stable au cours des années. Aux Jeux de Vancouver en 2010 on compte sept sports : Le Musée Olympique11le biathlon, le bobsleigh, le curling, le hockey sur glace, la luge, le patinage et le ski. En revanche, le nombre d’épreuves augmente fortement: en 2010, on en compte 86 au programme ! Parmi les 15 disciplines des Jeux Olympiques d’hiver de Sotchi en 2014, seule celle du combiné nordique n’est pas encore ouverte aux femmes. Les trois sports phares du programme des Jeux d’hiver sont le patinage,  le ski et le hockey sur glace. Avec une première apparition aux Jeux de Londres en 1908, le patinagea l’histoire olympique la plus longue. C’est en patinage artistique que les femmes font leur début aux JO d’hiver. Le patinage de vitesse est réservé aux hommes jusqu’en 1960. En plein air jusqu’en 1956, les épreuves de patinage se déroulent aujourd’hui à l’intérieur.Le ski est le sport qui comporte le plus grand nombre de disciplines. Le ski  de fond est la plus ancienne et le surf des neiges la dernière arrivée (Jeux de Nagano, Japon, en 1998). Le ski alpin apparaît relativement tard : il est présent aux Jeux de 1936 mais c’est aux Jeux de Saint-Moritz (Suisse), en 1948, qu’un programme plus complet pour hommes et femmes est organisé. À partir de 1952, le slalom géant est ajouté au programme. Enfin, depuis 1988, le super-G constitue la dernière épreuve olympique de ski alpin.Le hockey sur glace, comme le patinage et le ski, est un sport qui a contribué à la naissance des Jeux Olympiques d’hiver. Très populaire, le hockey bénéficie d’un taux d’audience élevé. C’est un sport spectaculaire où le palet peut aller jusqu’à 180km/h.</p> -->
+    
+    <%- include("footer") -%>
+  </div>
+
+<script src = "js/villes.js"></script>
+<script src = "js/olympics.js"></script>
+
+</body>
+</html>
