@@ -1,143 +1,34 @@
 
-// var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-//
-// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//     maxZoom: 18,
-//     id: 'mapbox/streets-v11',
-//     tileSize: 512,
-//     zoomOffset: -1,
-//     accessToken: 'pk.eyJ1IjoiY2JvdWNoZWlnbiIsImEiOiJja2x1b3BsMTQwMmk1MnZvNmppdHF1NjUyIn0.KNq-KbSgCsLI2rJal-3xSw'
-// }).addTo(mymap);
-//
-// var marker = L.marker([51.5, -0.09]).addTo(mymap);
-//
-// var circle = L.circle([51.508, -0.11], {
-//     color: 'red',
-//     fillColor: '#f03',
-//     fillOpacity: 0.5,
-//     radius: 500
-// }).addTo(mymap);
-//
-//
-// var polygon = L.polygon([
-//     [51.509, -0.08],
-//     [51.503, -0.06],
-//     [51.51, -0.047]
-// ]).addTo(mymap);
-//
-// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-// circle.bindPopup("I am a circle.");
-// polygon.bindPopup("I am a polygon.");
-//
-//
-// var popup = L.popup();
-//
-// function onMapClick(e) {
-//     popup
-//         .setLatLng(e.latlng)
-//         .setContent("You clicked the map at " + e.latlng.toString())
-//         .openOn(mymap);
-// }
-//
-//
-// mymap.on('click', onMapClick);
-//
-// function createcanard(e){
-//     var icone = L.icon({
-//         iconUrl: 'canard.png',
-//         iconSize: [30,30]
-//     });
-//     var marker = L.marker(e.latlng, {
-//         icon: icone,
-//         draggable: true
-//     });
-//     marker.on('click',function(){marker.remove()});
-//     marker.addTo(mymap)
-//
-// }
-//
-// mymap.on('click', createcanard);
-//
-
-// CARTE JEUX
-
-// function onMapClick(e) {
-//     popup
-//         .setLatLng(e.latlng)
-//         .setContent("You clicked the map at " + e.latlng.toString())
-//         .openOn(map);
-// }
-//
-// function createcanard(e){
-//     var icone = L.icon({
-//         iconUrl: 'canard.png',
-//         iconSize: [30,30]
-//     });
-//     var marker = L.marker(e.latlng, {
-//         icon: icone,
-//         draggable: true
-//     });
-//     marker.on('click',function(){marker.remove()});
-//     marker.addTo(map)
-//
-// }
-// function getColor(d) {
-//     return d > 1000 ? '#800026' :
-//            d > 500  ? '#BD0026' :
-//            d > 200  ? '#E31A1C' :
-//            d > 100  ? '#FC4E2A' :
-//            d > 50   ? '#FD8D3C' :
-//            d > 20   ? '#FEB24C' :
-//            d > 10   ? '#FED976' :
-//                       '#FFEDA0';
-// }
-
-// function style(feature) {
-//     return {
-//         fillColor: getColor(feature.properties.density),
-//         weight: 2,
-//         opacity: 1,
-//         color: 'white',
-//         dashArray: '3',
-//         fillOpacity: 0.7
-//     };
-// }
-
-
-// function getState(statename) {
-//     for(i=0; i<statesData.features.length; i++){
-//         if (statesData.features[i].properties.name == statename) {
-//             return statesData.features[i];
-//         }
-//     }
-// }
-
-
+// Création de la carte
 var map = L.map('mapgame').setView([40, 0], 1.7);
-
-
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map)
-
 const url = 'http://localhost:8080/geoserver/olympics/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=olympics%3Athebestathlete&outputFormat=application%2Fjson'
 
 
+// Appel du boutons et crétions variables pays
 var elements = document.getElementsByClassName('button-game');
-// reponse est declare globlament
 var codePays = null;
 var poly = null;
+var oldTarget = null;
+var sportIconName = "athl";
+var LeafIcon = L.Icon.extend({
+    options: {
+        iconSize: [50,50],
+    }
+});
+var compte = 0
 
-
+// Création de deux évenements pour chaque boutons
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', startGame);
     elements[i].addEventListener('mouseover', over);
 }
 
-
 /// Fonction Pop-up qui récupere les données du bouton appeler plus haut
+// A partir d'un mouseover de l'utilisateur sur le boutton
 function over(event) {
   if (event == null) {
     return;
@@ -148,6 +39,7 @@ function over(event) {
   if (target.classList.contains('image')) {
     target = target.parentNode;}
 
+// Création de la div contenant les infos
   madiv = document.getElementById("popupmedal");
   madiv.innerHTML = target.getAttribute("data-nom")+
     " a gagné "+
@@ -156,16 +48,12 @@ function over(event) {
     target.getAttribute("data-sport")
   };
 
-var oldTarget = null;
 
-
-
-
-/// Fonction Jeux
+/// Fonction Jeux ///
+// A partir d'un clique de l'utilisateur sur le boutton
 function startGame(event) {
   console.log('envent', event);
   var target = event.target;
-
 
   //Pour appliquer les evenements du bouton sur les images
   if (target.classList.contains('image')) {
@@ -176,13 +64,13 @@ function startGame(event) {
   if (oldTarget !== null) {
     oldTarget.classList.remove('clicked');
   }
-
   target.classList.add('clicked');
+
+	// Récupèrer les informations du bouttons
   codePays = target.value;
   sportIconName = target.getAttribute("data-sport");
-  console.log("Réponse: l'utilisateur doit clicker sur le pays ", codePays);
 
-// applique une valeur dans le url pour selectionner la bonne tile
+// Applique une valeur dans lurl pour selectionner la bonne tile
   var newUrl = url + "&CQL_FILTER=id+=+" + codePays;
   fetch(newUrl)
       .then((r) => r.json())
@@ -191,29 +79,12 @@ function startGame(event) {
         if (poly !== null) {
             poly.remove();
         }
+				// Mettre le pays de l'athlète avec un style de transparence
         poly = L.geoJson(data, {color: "#ffffff", opacity: 0, fillOpacity: 0}).addTo(map);
       });
 
-
-// le nouveau c'est le prochain ancien
   oldTarget = target;
 }
-
-
-//
-var sportIconName = "athl";
-
-
-var LeafIcon = L.Icon.extend({
-    options: {
-        // shadowUrl: 'img/shadow.png',
-        iconSize: [50,50],
-        // shadowSize:   [50, 64],
-        // // iconAnchor:   [22, 94],
-        // shadowAnchor: [4, 62],
-        // popupAnchor:  [-3, -76]
-    }
-});
 
 
 /// Fonction qui créer les marqueurs
@@ -223,17 +94,29 @@ map.on('click',function(e){
   var theMarker = L.marker([lat,lon], {
     icon: new LeafIcon({iconUrl: "img/"+sportIconName+"_rouge-01.png"})
   })
-
   poly.eachLayer(function(layer) {
     var inside =
+		// Turf nous permet de créer un booleen
       turf.booleanPointInPolygon(
         theMarker.toGeoJSON(),
         layer.toGeoJSON()
       );
+// Si le marqueur est dans le polygone, tu m'affiche un marqueur vert
     if (inside) {
         theMarker.setIcon(new LeafIcon({iconUrl: "img/"+sportIconName+"_vert-01.png"}));
     }
+// Sinon, tu m'affiche un marqueur rouge
+		else{
+			theMarker.setIcon(new LeafIcon({iconUrl: "img/"+sportIconName+"_rouge-01.png"}));
+		}
+
   });
+// Décompte
+	compte = compte + 1;
+	divCompteur = document.getElementById("compteur");
+	divCompteur.innerHTML = "Vous avez joué "+compte+" fois. "
+
+	// Application du marqueur
   theMarker.on('click', function(){theMarker.remove()});
   theMarker.addTo(map)
   });

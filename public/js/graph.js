@@ -1,3 +1,4 @@
+// On appelle la ddiv contenant le graph
 var ctx2 = document.getElementById('myChartFR').getContext('2d');
 var ctx3 = document.getElementById('chart_sport').getContext('2d');
 
@@ -13,6 +14,7 @@ fetch('/api/bdd/charto')
         var uk = []
         var germany = []
         var annee = []
+        // On envoie les données pour chaque features dans les variables vides créées ci-dessus
         for (i=0; i<r.features.length ; i++) {
                  russia.push(r.features[i].properties.russia);
                  france.push(r.features[i].properties.france);
@@ -21,6 +23,7 @@ fetch('/api/bdd/charto')
                  usa.push(r.features[i].properties.usa);
                  annee.push(r.features[i].properties.year);
             }
+            // On fait notre graphique
         var myChart = new Chart(ctx2, {
             type: 'line',
             data: {
@@ -29,41 +32,41 @@ fetch('/api/bdd/charto')
                     label: '# of russia',
                     data: russia,
                     backgroundColor:  'rgba(0, 0, 0, 0)',
-                    borderWidth: 3,
+                    borderWidth: 2,
                     lineTension: 0,
-                    borderColor : 'red'
+                    borderColor : 'rgba(238, 51, 78, 0.8)'
                 },
                 {
                     label: '# of france',
                     data: france,
                     backgroundColor:  'rgba(0, 0, 0, 0)',
-                    borderWidth: 3,
+                    borderWidth: 2,
                     lineTension: 0,
-                    borderColor : 'blue'
+                    borderColor : 'rgba(0, 129, 200, 0.8)'
                 },
                 {
                     label: '# of germany',
                     data: germany,
                     backgroundColor:  'rgba(0, 0, 0, 0)',
-                    borderWidth: 3,
+                    borderWidth: 2,
                     lineTension: 0,
-                    borderColor : 'yellow'
+                    borderColor : 'rgba(252, 177, 49, 0.8)'
                 },
                 {
                     label: '# of usa',
                     data: usa,
                     backgroundColor:  'rgba(0, 0, 0, 0)',
-                    borderWidth: 3,
+                    borderWidth: 2,
                     lineTension: 0,
-                    borderColor : 'green'
+                    borderColor : 'rgba(0, 166, 81, 0.8)'
                 },
                 {
                     label: '# of uk',
                     data: uk,
                     backgroundColor: 'rgba(0, 0, 0, 0)',
-                    borderWidth: 3,
+                    borderWidth: 2,
                     lineTension: 0,
-                    borderColor : 'black'
+                    borderColor : 'rgba(0, 0, 0, 0.9)'
                 }]
             },
             options: {
@@ -80,7 +83,6 @@ fetch('/api/bdd/charto')
 
 /////Graphique 2 //////
 
-
     fetch('/api/bdd/sport_country')
     .then((r) => r.json())
     .then((r) =>  {
@@ -91,6 +93,7 @@ fetch('/api/bdd/charto')
         var germany = []
         var sport = [];
         console.log('result', r);
+        // On envoie les données pour chaque features dans les variables vides créées ci-dessus
         for (i=0; i<r.length ; i++) {
                     russia.push(r[i].russia);
                     france.push(r[i].france);
@@ -99,7 +102,7 @@ fetch('/api/bdd/charto')
                     usa.push(r[i].usa);
                     sport.push(r[i].sport);
             }
-
+// Création graphique
     var chart_sport = new Chart(ctx3, {
         type: 'radar',
         data: {
