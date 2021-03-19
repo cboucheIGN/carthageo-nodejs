@@ -145,6 +145,7 @@ button {
 .container #countdown {
   font-size: 4.0em;
   font-weight: 600;
+  padding-bottom: 400px;
 }
 
 footer {

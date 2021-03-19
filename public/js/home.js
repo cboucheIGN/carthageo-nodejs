@@ -32,11 +32,11 @@ window.addEventListener('scroll', function(event) {
 // tirage au sort
 const groups = [
     { name: 'WWWaW', students: [{ name: 'Mehdi' }, { name: 'Maggie'}] },
-    { name: '', students: [{ name: 'Mamadou' }, { name: 'Marcus'}] },
+    { name: 'Carthageos à un incroyable talent : Tanyacroyable & Nina flute dans le nez. Marcus gardient du Oube', students: [{ name: 'Mamadou' }, { name: 'Marcus'}] },
     { name: 'Olympics et pics et colégram', students: [{ name: 'François' }, { name: 'Hajime'}] },
     { name: 'Les Divinités Olympiennes', students: [{ name: 'Clemence' }, { name: 'Capucine'}] },
     { name: 'Cart\'Olympics', students: [{ name: 'Tanya' }, { name: 'Nina'}] },
-    { name: '', students: [{ name: 'Ludovic' }, { name: 'Young Mi'}] },
+    { name: 'Olympus Mons', students: [{ name: 'Ludovic' }, { name: 'Young Mi'}] },
 ];
 const getRandomGroups = function(groups) {
     for (let i = groups.length - 1; i > 0; i--) {
@@ -52,7 +52,7 @@ const getGroupsHtml = function(groups, withTime) {
         let time = '';
         if (withTime) {
             time =`
-              Passage à ${moment('2021-03-19 14:30').add(20*(index), 'minutes').format('HH:mm')}
+              Passage à ${moment('2021-03-19 13:30').add(25*(index), 'minutes').format('HH:mm')}
             `;
         }
         return `
@@ -95,7 +95,7 @@ const displayTime = function(duration) {
     return str;
 }
 
-const eventTime = moment('2021-03-19 14:00');
+const eventTime = moment('2021-03-19 13:30');
 const currentTime = moment();
 const diffTime = eventTime.diff(currentTime);
 let duration = moment.duration(diffTime, 'milliseconds');
