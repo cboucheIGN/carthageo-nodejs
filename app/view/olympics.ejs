@@ -36,13 +36,9 @@
 
 </head>
 <body>
-
-  <div class="container">
-
     <%- include("nav") -%>
   
-    <h1>- CartO'lympic -</h1>
-  </div>
+    <h1>- CartO'lympics -</h1>
     <div class="container">
       <div id="image">
         <img class="img-thumbnail" id="JO" src="img/photoINTRO.jpg" alt="image pas chargee">
@@ -75,12 +71,11 @@
 
     <div id = "carte1"><div id="jomap"></div>
     <div id="infoville"> </div></div>
-
-
+    <p id="cadre">Cette carte permet de visualiser les villes dans lesquels les Jeux Olympiques ont eu lieu. Il suffit de cliquer sur une ville pour voir s'afficher le nom de la ville, la date des JO, les évenements remarquable et enfin, les images représentant les JO de l'année. Grâce à la légende, on peut également savoir si les jeux se déroulent en hiver, en été ou s'ils ont été annulés ou déclaés.</p>
 
     <div>
       <div id= 'detailjo'>
-        <h6><h3>Les sports des Jeux d’été</h3></h6>
+        <h3>Les sports des Jeux d’été</h3>
         <div>
           <div class="row">
             <div class="col" >
@@ -98,7 +93,7 @@
       </div>
       <div>
         <div id= 'detailjo'>
-          <h6><h3>Les sports des Jeux d’hiver</h3></h6>
+          <h3>Les sports des Jeux d’hiver</h3>
           <div>
             <div class="row">
               <div class="col">
@@ -115,30 +110,15 @@
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <h3>Les sports des Jeux d’été</h3>
-    <p>A Athènes, en 1896, neuf sports sont au programme: l’athlétisme, le cyclisme, l’escrime, la gymnastique, l’haltérophilie, la lutte, la natation, le tennis et le tir.Depuis, le programme olympique a beaucoup évolué: certains sports ont disparu (ex. le polo, le baseball) ; d’autres ont été écartés, puis réintroduits (ex. le tir à l’arc, le tennis), tandis que de nouveaux sports ont fait leur apparition (ex. le triathlon, le taekwondo).Aux Jeux d’Athènes en 2004, le programme inclut les neuf sports originaux, plus 19 autres: l’aviron, le badminton, le baseball, le basketball, la boxe, le canoë/kayak, les sports équestres, le football, le handball, le hockey, le judo, le pentathlon moderne, le softball, le taekwondo, le tennis de table, le tir à l’arc, le triathlon, la voile et le volleyball. Cela représente 301 épreuves !Les deux sports phares du programme des Jeux d’été sont l’athlétismeet la natation. Ce sont les deux sports olympiques les plus suivis dans le monde, ce sont aussi ceux qui comptent le plus grand nombre d’épreuves et le plus de participants de différents pays.L’athlétisme se compose d’une grande variété d’épreuves : sauts, lancers, courses de sprint, fond ou demi-fond. Certaines d’entre elles étaient pratiquées dans les Jeux antiques : la course à pied (de longueurs variables), le lancer du javelot, le lancer du disque et le saut en longueur. Les premières compétitions de natation aux Jeux Olympiques se disputent dans la mer ou dans une rivière. Aujourd’hui, les concours ont lieu dans une piscine de 50m de long, le plus souvent à l’intérieur. Le programme actuel comporte les disciplines suivantes : lanage (crawl, brasse, dos et papillon), le water-polo, le plongeon et la natation synchronisée.</p>
-
-    <h3>Les sports des Jeux d’hiver</h3>
-    <p>La première apparition des sports d’hiver aux Jeux Olympiques a lieu aux Jeux d’été de Londres en 1908! Des concours de patinage artistique sont organisés pour hommes, femmes et couples. L’expérience se répète aux Jeux d’Anvers en 1920, avec en plus un tournoi de hockey sur glace.À Chamonix en 1924, les sports d’hiver ont enfin leurs Jeux Olympiques. Six sports sont au programme : le bobsleigh, le curling, le hockey sur glace, le patinage (artistique et de vitesse), le ski (ski de fond et saut à ski) et la patrouille militaire. Certains sports sont absents du programme officiel pendant plusieurs éditions des Jeux avant d’être réintroduits. Le skeleton en est un exemple : présent seulement aux Jeux de Saint-Moritz en 1928 et 1948, il entre définitivement au programme lors des Jeux de Salt Lake City en 2002.Le nombre de sports aux JO d’hiver reste relativement stable au cours des années. Aux Jeux de Vancouver en 2010 on compte sept sports : Le Musée Olympique11le biathlon, le bobsleigh, le curling, le hockey sur glace, la luge, le patinage et le ski. En revanche, le nombre d’épreuves augmente fortement: en 2010, on en compte 86 au programme ! Parmi les 15 disciplines des Jeux Olympiques d’hiver de Sotchi en 2014, seule celle du combiné nordique n’est pas encore ouverte aux femmes. Les trois sports phares du programme des Jeux d’hiver sont le patinage,  le ski et le hockey sur glace. Avec une première apparition aux Jeux de Londres en 1908, le patinagea l’histoire olympique la plus longue. C’est en patinage artistique que les femmes font leur début aux JO d’hiver. Le patinage de vitesse est réservé aux hommes jusqu’en 1960. En plein air jusqu’en 1956, les épreuves de patinage se déroulent aujourd’hui à l’intérieur.Le ski est le sport qui comporte le plus grand nombre de disciplines. Le ski  de fond est la plus ancienne et le surf des neiges la dernière arrivée (Jeux de Nagano, Japon, en 1998). Le ski alpin apparaît relativement tard : il est présent aux Jeux de 1936 mais c’est aux Jeux de Saint-Moritz (Suisse), en 1948, qu’un programme plus complet pour hommes et femmes est organisé. À partir de 1952, le slalom géant est ajouté au programme. Enfin, depuis 1988, le super-G constitue la dernière épreuve olympique de ski alpin.Le hockey sur glace, comme le patinage et le ski, est un sport qui a contribué à la naissance des Jeux Olympiques d’hiver. Très populaire, le hockey bénéficie d’un taux d’audience élevé. C’est un sport spectaculaire où le palet peut aller jusqu’à 180km/h.</p> -->
-    
-    <%- include("footer") -%>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  </div>  
   </div>
+  </div>
+  <%- include("footer") -%>
 
 <script src = "js/villes.js"></script>
 <script src = "js/olympics.js"></script>
 
 </body>
 </html>
+

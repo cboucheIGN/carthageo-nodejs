@@ -1,29 +1,11 @@
-
-//LEAFLET//
-
-
+// Creation de la carte et choix d'une tuile
 var jomap = L.map('jomap').setView([27.444586473380898, 2.955829199696631], 2);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
 	maxZoom: 16
 }).addTo(jomap);
 
-
-//Creation de la carte 1 sur leaflet
-// var mapboxAccessToken = 'pk.eyJ1IjoidGFueWFnZW9tIiwiYSI6ImNrbHVweml0MDBreHkycG8zY2djMDN6dG0ifQ.dA-K7tKA6OZQ7gn6e-9wdQ';
-
-
-
-// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-//     id: 'mapbox/light-v9',
-//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//     tileSize: 512,
-//     zoomOffset: -1
-// }).addTo(jomap);
-
-
 // Creation des icons flammes pour identifier quels types de JO pour chaque points
-
 
 var fireIcon = L.icon({
     iconUrl: 'img/summer.png',
@@ -51,8 +33,7 @@ var interIcon = L.icon({
     iconSize:     [20, 25]
 });
 
-
-
+// Fonction qui permet d'associer au type de JO un icon lui correspondant
 function iconfirejo (feature){
     var icon; 
     if (feature.properties.type === "Summer") icon = fireIcon;
@@ -64,7 +45,7 @@ function iconfirejo (feature){
 
     return icon;
 }
-
+// Fonction qui permet d'afficher un cadre contenant les informations de la base de données voulues quand l'utilisateur clic sur un icon
 function whenclick(e) {
     console.log(e.target)
     var info = '';
@@ -101,7 +82,7 @@ function onEachFeature(feature,markerevent) {
     });
 }
 
-
+// Application des fonctions sur la table et l'afficher sur la carte
 var jsville = L.geoJson(ville, {
     pointToLayer : function(feature, latlng) { 
         return L.marker(latlng, {icon : iconfirejo(feature)})
@@ -110,25 +91,37 @@ var jsville = L.geoJson(ville, {
     onEachFeature: onEachFeature, 
 }).addTo(jomap);
 
-//Legende carte1
-
+//Legende de la carte
 var legend = L.control({ position: "bottomleft" });
 
 legend.onAdd = function(jomap) {
   var div = L.DomUtil.create("div", "legend");
-  div.innerHTML += "<h4>Villes hôtes des JO</h4>";
+  div.innerHTML += "<h4 id='ville'>Villes hôtes des JO</h4>";
   div.innerHTML += '<i class="icon" style="background : #ff7f2aff"></i><span>Eté</span><br>';
   div.innerHTML += '<i class="icon" style="background : #5f8dd3ff"></i><span>Hiver</span><br>';
   div.innerHTML += '<i class="icon" style="background : #ffe680ff"></i><span>Intercalés</span><br>';
   div.innerHTML += '<i class="icon" style="background : #ff8080ff"></i><span>Reportés</span><br>';
   div.innerHTML += '<i class="icon" style="background : #916f6fff"></i><span>Annulés</span><br>';
   div.innerHTML += '<i class="icon" style="background : #8dd35fff"></i><span>Futurs</span><br>';
-//   div.innerHTML += '<i class="icon" style="background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/194515-200.png);background-repeat: no-repeat;"></i><span>Grænse</span><br>';
-  
-  
-
   return div;
 };
 
 legend.addTo(jomap);
 
+// Insertion d'un bouton TOP 
+var mybutton = document.getElementById("myBtn");
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}

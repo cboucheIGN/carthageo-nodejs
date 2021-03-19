@@ -1,4 +1,5 @@
-//Creation de la carte sur leaflet
+
+//Creation de la carte sur leaflet et affichage de sa tuile
 var mapboxAccessToken = 'pk.eyJ1IjoidGFueWFnZW9tIiwiYSI6ImNrbHVweml0MDBreHkycG8zY2djMDN6dG0ifQ.dA-K7tKA6OZQ7gn6e-9wdQ';
 var medalmap = L.map('medal').setView([27.444586473380898, 2.955829199696631], 2);
 
@@ -169,8 +170,6 @@ function updateStyle(event) {
 function createBulle(feature, layer) {
     
     layer.on({
-        // mouseover: highlightFeature,
-        // mouseout: resetHighlight,
         click: getcodepays
     });
 
@@ -241,10 +240,6 @@ function loadNewChart(codePays) {
         // parcourir sportMedal et push dans la liste sport
 
         var options = {
-            title: {
-                display: true,
-                text: 'Médailles par disciplines olympiques'
-            },
             tooltips: {
                 mode: 'index',
                 intersect: false
@@ -261,7 +256,7 @@ function loadNewChart(codePays) {
         }
 
         $('#resultContainer').html(''); //remove canvas from container
-        $('#resultContainer').html('<canvas id="myChart" height="5" width="6"></canvas>'); //add it back to the container
+        $('#resultContainer').html('<canvas id="myChart"></canvas>'); //add it back to the container
         var ctx = document.getElementById('myChart').getContext('2d');
         var barChartData = {
             labels : listsports,
@@ -293,164 +288,46 @@ function loadNewChart(codePays) {
 
 }
 
-// // Creation du style selon les medailles choisies 
-// const styleMed = function(maselection, feature) {
-//     console.log("hello")
-//     if (maselection === "sum_gold") {
-//         return {
-//             fillColor: '#C0C0C0',
-//             radius : 0.05*feature.properties.sum_gold
-//         }
-//     } 
-//     else if (maselection === "sum_silv") {
-//         return {
-//             fillColor: '#FFD700',
-//             radius : 0.05*feature.properties.sum_silv
-//         }
-//     }
-//     else if (maselection === "sum_bronz") {
-//         return {
-//             fillColor: '#614E1A',
-//             radius : 0.05*feature.properties.sum_bronz
-//         }
-//     }
-//     else if (maselection === "wint_gold") {
-//         return {
-//             fillColor: '#0000ff',
-//             radius : 0.05*feature.properties.wint_gold
-//         }
-//     }
-//     else if (maselection === "wint_silv") {
-//         return {
-//             fillColor: '#0000ff',
-//             radius : 0.05*feature.properties.wint_silv
-//             }
-//         }
-//     else if (maselection === "wint_bronz") {
-//         return {
-//             fillColor: '#0000ff',
-//             radius : 0.05*feature.properties.wint_bronz
-//             }
-//     }
-// }
+//GIF
+var gif = new GIF({
+    workers: 2,
+    quality: 10,
+    repeat: forever
+});
+  
+gif.addFrame("gif1");
+  
+gif.render();
 
 
-// // Création d'une liste d'identidiant pour chaque choix 
-// const listIdentifiant = [
-//     { id: "sum_gold", name: "Medailles jeux d'été OR" },
-//     { id: "sum_silv", name: "Medailles jeux d'été ARGENT" },
-//     { id: "sum_bronz", name: "Medailles jeux d'été BRONZE" },
-//     { id: "wint_gold", name: "Medailles jeux d'hiver OR" },
-//     { id: "wint_silv", name: "Medailles jeux d'hiver ARGENT" },
-//     { id: "wint_bronz", name: "Medailles jeux d'hiver BRONZE" }
-// ];
 
-// const listIdentifiantete = [
-//     { id: "sum_gold", name: " OR " },
-//     { id: "sum_silv", name: " ARGENT " },
-//     { id: "sum_bronz", name: " BRONZE " },
-// ];
-
-// const listIdentifianthiver = [
-//     { id: "wint_gold", name: " OR " },
-//     { id: "wint_silv", name: " ARGENT " },
-//     { id: "wint_bronz", name: " BRONZE " }
-// ];
-
-// // Creation du menu 
-// var command = L.control({position: 'bottomleft'});
-// command.onAdd = function(map) {
-//     var div = L.DomUtil.create('div', 'command');
-//     div.innerHTML += '<div style="text-align:center;"> <br /><span style="font-size:18px;">Été</span><br /><span style="color:grey;font-size:14px;"></span></div>';
-//     for (var i = 0; i < listIdentifiantete.length; i++) {
-//         var objetIdentifiantete = listIdentifiantete[i];
-//         div.innerHTML += `
-//             <input id="${objetIdentifiantete.id}" type="radio" name="filter"> <br />
-//             <label for="${objetIdentifiantete.id}">${objetIdentifiantete.name}</label> <br />
-//         `;
-//     }
-//     div.innerHTML += '<div style="text-align:center;"><br /><span style="font-size:18px;">Hiver</span><br /><span style="color:grey;font-size:14px;"></span></div>';
-//     for (var i = 0; i < listIdentifianthiver.length; i++) {
-//         var objetIdentifianthiver = listIdentifianthiver[i];
-//         div.innerHTML += `
-//             <input id="${objetIdentifianthiver.id}" type="radio" name="filter"> <br />
-//             <label for="${objetIdentifianthiver.id}">${objetIdentifianthiver.name}</label> <br />
-//         `;
-//     }
-//     return div;
-// }
-// command.addTo(medalmap);
-
-// // 
-// for (var i = 0; i < listIdentifiant.length; i++) {
-//     var objetIdentifiant = listIdentifiant[i];
-//     document.getElementById(objetIdentifiant.id).addEventListener('click', updateStyle, false);
-// }
-
-// // Groupe du choix de medailles 
-// var group = new L.LayerGroup().addTo(medalmap);
-// var filterLayer = '';
-
-// // Fonction de style 
-// function updateStyle(event) {
-//     console.log(event, event.target.id);
-//     filterLayer = event.target.id;
-//     // TODO 
-//     // 1. supprimer les couches anciennes
-//     group.clearLayers();
-//     // 2. chercher les événements 'été' et les médailles 'or'
-//     // 2.1 soit un on fait un fetch mais tu nous embete
-//     // 2.2 soit on recupere toutes les données et on filtre
-//     // filterData(paramedal, 'ete');
-//     // 3. creer une nouvelle couche avec les données filter
-//     L.geoJson(paramedal, { onEachFeature: createBulle });
-// }
-
-// function createBulle(feature, layer) {
-//     var listArea = [];
-//     for (var i = 0; i < feature.geometry.coordinates.length; i++) {
-//         var polygon = turf.polygon(feature.geometry.coordinates[i]);
-//         var area = turf.area(polygon);
-//         listArea.push(area);
-//     }
-//     var index = listArea.findIndex((area) => area === Math.max(...listArea));
-//     var polygon = turf.polygon(feature.geometry.coordinates[index]);
-//     var centroid = turf.centroid(polygon);
-//     var lat = centroid.geometry.coordinates[1];
-//     var lon = centroid.geometry.coordinates[0];
-//     const circle =  L.circleMarker([lat, lon],
-//         styleMed(filterLayer, feature)
-//     );
-//     circle.addTo(group);
-// }
+var giflucifer = new GIF({
+    workers: 2,
+    quality: 10,
+    repeat: forever
+});
+  
+giflucifer.addFrame("gif2");
+  
+giflucifer.render();
 
 
-// var couche = new L.layerGroup().addTo(medalmap);
-// couche.clearLayers();
+//Get the button
+var mybutton = document.getElementById("myBtn");
 
-// L.geoJson(jomedal, {
-//     onEachFeature: function(feature, layer) {
-//         var listArea = [];
-//         for (var i = 0; i < feature.geometry.coordinates.length; i++) {
-//             var polygon = turf.polygon(feature.geometry.coordinates[i]);
-//             var area = turf.area(polygon);
-//             listArea.push(area);
-//         }
-//         var index = listArea.findIndex((area) => area === Math.max(...listArea));
-//         var polygon = turf.polygon(feature.geometry.coordinates[index]);
-//         var centroid = turf.centroid(polygon);
-//         var lat = centroid.geometry.coordinates[1];
-//         var lon = centroid.geometry.coordinates[0];
-//         var circle = L.circleMarker([lat, lon], {
-//             color: 'red',
-//             fillColor: '#f03',
-//             fillOpacity: 0.5,
-//             radius : 0.05*feature.properties.gold
-//         });
-//         circle.addTo(couche);
-//     }
-// });
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
 
-//creer le L.control = boite avec un innerHTML avec des buttons checkbox
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
 
-
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}

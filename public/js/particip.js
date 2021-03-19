@@ -1,5 +1,6 @@
 
-// SLIDER 
+
+// Creation de la carte et affichage de sa tuile
 var mapboxAccessToken = 'pk.eyJ1IjoidGFueWFnZW9tIiwiYSI6ImNrbHVweml0MDBreHkycG8zY2djMDN6dG0ifQ.dA-K7tKA6OZQ7gn6e-9wdQ';
 var participmap = L.map('participmap').setView([27.444586473380898, 2.955829199696631], 2);
 
@@ -11,7 +12,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1
 }).addTo(participmap);
 
-
+// Appel du geojson et application des fonctions et du style
 var map2 = L.geoJSON(partpays, {
     style: styleByDate,
     onEachfeature : function(feature, layer) {
@@ -19,7 +20,7 @@ var map2 = L.geoJSON(partpays, {
     }
 })
 
-// // CREATION DU SLIDER SUR LA CARTE
+//Creation du slider
 
 var sliderControl = L.control.sliderControl({position: "topright", layer: map2, timeAttribute : 'first_participation'});
 
@@ -32,48 +33,7 @@ sliderControl.options.markers.sort(function(a, b) {
 sliderControl.startSlider(); 
 
 
-
-// event
-
-
-// function highlightFeature(e) {
-//     var paysevent = e.target;
-// }
-
-// function resetHighlight(e) {
-//     paysparticipation.resetStyle(e.target);
-// }
-
-// function onEachFeature(feature,paysevent) {
-//     paysevent.on({
-//         mouseover: highlightFeature,
-//         mouseout: resetHighlight,
-//     });
-// }
-
-// var paysparticipation = L.geoJson(partpays, {
-//     onEachFeature: onEachFeature, 
-// }).addTo(participmap);
-
-
-// var info = L.control();
-// info.onAdd = function (map) {
-//     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-//     this.update();
-//     return this._div;
-// };
-
-// // method that we will use to update the control based on feature properties passed
-// info.update = function (props) {
-//     this._div.innerHTML = '<h4>IFNO</h4>' +  (props ?
-//         '<b> Le pays : ' + props.nom_pays + '</b><br /> participe pour al première fois aux jo en : ' + props.first_participation  + '</br>'
-//         : 'Hover over a state');
-// };
-
-// info.addTo(participmap);
-
-
-// style 
+//Fonction de style et attribution des couleurs
 
 function coloryear(first_participation) {
     return first_participation > 2012 ? '#0D0D0D' :
@@ -94,9 +54,19 @@ function styleByDate(feature) {
     };
 }
 
+var legendannee = L.control({ position: "bottomleft" });
 
+legendannee.onAdd = function(map) {
+  var div = L.DomUtil.create("div", "legendannee");
+  div.innerHTML += "<p id='ville'>Participation selon les années</p>";
+  div.innerHTML += '<i class="carre" style="background : #F20505"></i><span>1979-2012</span><br>';
+  div.innerHTML += '<i class="carre" style="background : #F2D022"></i><span>1959-1978</span><br>';
+  div.innerHTML += '<i class="carre" style="background : #3FBF48"></i><span>1925-1958</span><br>';
+  div.innerHTML += '<i class="carre" style="background : #29A7D9"></i><span>1896-1924</span><br>';
+  return div;
+};
+legendannee.addTo(participmap);
 // Graphique du genre par athlete
-
 
 var anneeBoite = document.getElementById("selectionner_annee");
 var graphGender = document.getElementById("graphgender")
@@ -129,25 +99,6 @@ anychart.onDocumentReady(function () {
                         value: value
                     });
                 }
-        //   if (name === "homme" && year == '1960') {
-        // //   parseInt(anneeBoite.options[anneeBoite.selectedIndex].text)) {
-        //     console.log(anneeBoite.options[anneeBoite.selectedIndex].text)
-        //     data.push({
-        //       x: gender[i][0],
-        //       low: center,
-        //       high: center + value,
-        //       value: value
-        //     });
-        //   } else if (name === "femme" && year == '1960') {
-        // //   parseInt(anneeBoite.options[anneeBoite.selectedIndex].text)) {
-        //     console.log(anneeBoite.options[anneeBoite.selectedIndex].text)
-        //     data.push({
-        //       x: gender[i][0],
-        //       low: center,
-        //       high: center - value,
-        //       value: value
-        //     });
-        //   }
         }
           
         var series = chart.rangeBar(data);
@@ -172,3 +123,22 @@ anychart.onDocumentReady(function () {
     });
 }
 anneeBoite.addEventListener("change", generateChart)
+
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
