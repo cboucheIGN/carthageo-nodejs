@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <header>
+    <img src = '/img/logo.png' alt="logo" title="Accueil" id="logo"
+    style = "float:right; width : 150px ; margin : 2%"/>
+  </header>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Carthageo Test</title>
+  <title>J.O. - La rivalité de deux puissances olympiques</title>
 
-  <!-- jquery -->
+  <!--chart js    -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+  <!-- chargement de leaflet, styles et tout -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <!-- carte teste -->
+
+<!-- <style>#carteTest{ height : 400px; }</style> -->
+
+  <style>
+  #map{ height : 400px; width: 700px;}
+  #myChart{style="height : 400; width: 500;
+  float: right;"}
+  </style>
+
+  <!-- Definition de la taille du graphique -->
+
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+  <!-- jquery :  pour appeler des couches au cas ou, ne pas effacer très important-->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
-  <!-- bootstrap -->
+  <!-- bootstrap: aussi important que le jquery -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
@@ -21,10 +49,58 @@
 
     <%- include("nav") -%>
 
-    <p>A venir la carte !!</p>
+    <h1>La rivalité de deux puissances olympiques</h1>
 
-    <p>Ici les resultats de la recherche</p>
-    <div id="result">
+    <div id="intro">
+    </div>
+
+    <div>
+      <h2 id=annee class="annee">1948</h2>
+      <button  id=avant class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><</button>
+      <button id=apres class="btn btn-primary btn-lg active" role="button" aria-pressed="true">></button>
+    </div>
+
+
+    <div class="grid">
+
+      <div class="one">
+        <h2 align="center">Portrait d'un athlete célebre</h2>
+        <div id="portrait" style="clear:both">
+        </div>
+      </div>
+
+      <div class="two">
+        <h2 align="center">Carte des participants</h2>
+        <div id="map"></div>
+      </div>
+
+      <div class="three">
+        <h2 align="center">Les épreuves</h2>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Nouvelles</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Disparues</a>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div id="nouveaux"></div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div id="disparu"></div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="four">
+        <h2 align="center">Top 10</h2>
+        <canvas id="myChart"></canvas>
+      </div>
 
     </div>
 
@@ -32,7 +108,7 @@
 
   </div>
 
-  <script src="js/map.js"></script>
+  <script src="js/P3.js"></script>
 
 </body>
 </html>

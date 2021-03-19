@@ -7,7 +7,7 @@
   </header>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>J.O. - L'Avant guerre</title>
+  <title>J.O. - Le commencement</title>
 
   <!--chart js    -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
@@ -21,8 +21,7 @@
 <!-- <style>#carteTest{ height : 400px; }</style> -->
 
   <style>
-  #map{ height : 400px; width: 700px;
-  float: right;}
+  #map{ height : 400px; width: 700px;}
   #myChart{style="height : 400; width: 500;
   float: right;"}
   </style>
@@ -50,54 +49,59 @@
 
     <%- include("nav") -%>
 
-    <h1>L'AVANT GUERRE</h1>
+    <h1>Le commencement</h1>
 
     <div id="intro">
     </div>
 
-    <h2 id=annee>1896</h2>
-    <button  id=avant type="submit"><</button>
-    <button c id=apres type="submit">></button>
+    <div>
+      <h2 id=annee class="annee">1896</h2>
+      <button  id=avant class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><</button>
+      <button id=apres class="btn btn-primary btn-lg active" role="button" aria-pressed="true">></button>
+    </div>
 
 
     <div class="grid">
 
       <div class="one">
-        <p>Portrait d'un athlete célebre</p>
+        <h2 align="center">Portrait d'un athlete célebre</h2>
         <div id="portrait" style="clear:both">
         </div>
       </div>
 
       <div class="two">
+        <h2 align="center">Carte des participants</h2>
         <div id="map"></div>
       </div>
 
       <div class="three">
-        <p>Les nouvelles épreuves de cette année</p>
-        <div class="row">
-          <div class="col-3">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Nouveaux</a>
-              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Disparus</a>
-            </div>
+        <h2 align="center">Les épreuves</h2>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Nouvelles</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Disparues</a>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div id="nouveaux"></div>
           </div>
-          <div class="col-9">
-            <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                <div id="nouveaux"></div>
-              </div>
-              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                <div id="disparu"></div>
-              </div>
-            </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div id="disparu"></div>
           </div>
         </div>
+
 
       </div>
 
       <div class="four">
+        <h2 align="center">Top 10</h2>
         <canvas id="myChart"></canvas>
       </div>
+
 
     </div>
 

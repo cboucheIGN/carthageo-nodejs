@@ -30,13 +30,23 @@ exports.listPost = function(req, res){
   }
 }
 
-//liste épreuves
+//liste nouvelles épreuves
 const listEvent = function(req, res){
-  var listAnnee = ['1896', '1900', '1904', '1908', '1912', '1920']
+  var listAnnee = ['1896', '1900', '1904', '1908', '1912', '1920','1924','1928','1932','1936','1948','1952','1956','1960','1964','1968','1972','1976','1980','1984','1988','1992','1996','2000','2004','2008','2012']
+  //recupere année actuelle et précédente
   var annee = req.body.annee
   var place = listAnnee.indexOf(annee);
-  var anneeSuivant = listAnnee[place+1]
-  let sql = 'SELECT discipline FROM sport_'+anneeSuivant+' WHERE discipline NOT IN(SELECT discipline FROM sport_'+annee+') order by discipline';
+  var anneePrecedent = listAnnee[place-1]
+  let sql = '';
+  if (annee==1896) {
+    sql = 'SELECT discipline FROM sport_1896';
+  }else{
+    sql = 'SELECT discipline FROM sport_'+annee+' WHERE discipline NOT IN(SELECT discipline FROM sport_'+anneePrecedent+') order by discipline'
+    console.log('cest la fin')
+    console.log(annee)
+    console.log(anneePrecedent)
+
+  }
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {
@@ -57,12 +67,19 @@ const listEvent = function(req, res){
     })
 }
 
+//liste épreuves disparus
 const listEventDisparu = function(req, res){
-  var listAnnee = ['1896', '1900', '1904', '1908', '1912', '1920']
+  var listAnnee = ['1896', '1900', '1904', '1908', '1912', '1920','1924','1928','1932','1936','1948','1952','1956','1960','1964','1968','1972','1976','1980','1984','1988','1992','1996','2000','2004','2008','2012']
+  //recupere année actuelle et précédente
   var annee = req.body.annee
   var place = listAnnee.indexOf(annee);
-  var anneeSuivant = listAnnee[place+1]
-  let sql = 'SELECT discipline FROM sport_'+annee+' WHERE discipline NOT IN(SELECT discipline FROM sport_'+anneeSuivant+') order by discipline';
+  var anneePrecedent = listAnnee[place-1]
+  let sql = '';
+  if (annee==1896) {
+    sql = 'SELECT * from table_vide';
+  }else{
+    sql = 'SELECT discipline FROM sport_'+anneePrecedent+' WHERE discipline NOT IN(SELECT discipline FROM sport_'+annee+') order by discipline';
+  }
   db.any(sql)
     .then((data) => {
       const result = data.map((item) => {

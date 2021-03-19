@@ -319,7 +319,7 @@ info.addTo(map);
 legend.addTo(map);
 
 //création des boutons pour passer les années
-var listAnnee = ['1896', '1900', '1904', '1908', '1912'];
+var listAnnee = ['1920', '1924', '1928', '1932', '1936'];
 const boiteAnnee = document.getElementById('annee');
 const buttonBefore = document.getElementById('avant');
 const buttonAfter = document.getElementById('apres');
@@ -338,7 +338,7 @@ function after(e) {
   var place = listAnnee.indexOf(anneeEnCours);
   var anneeEnCours = listAnnee[place+1]
   if(anneeEnCours==undefined){
-    boiteAnnee.innerHTML = 1896
+    boiteAnnee.innerHTML = 1920
   }else{
     boiteAnnee.innerHTML = anneeEnCours
   }
@@ -351,7 +351,7 @@ function before(e) {
   var place = listAnnee.indexOf(anneeEnCours);
   var anneeEnCours = listAnnee[place-1]
   if(anneeEnCours==undefined){
-    boiteAnnee.innerHTML = 1912
+    boiteAnnee.innerHTML = 1936
   }else{
     boiteAnnee.innerHTML = anneeEnCours
   }
@@ -542,6 +542,7 @@ function valide(e){
               })
             .then((response) => response.json())
             .then((r) => {
+              console.log(r)
               const nouveaux = document.getElementById('nouveaux');
               output = "<ul class='list-group list-group-flush'>";
               for (var i = 0; i<r.features.length; i++){
